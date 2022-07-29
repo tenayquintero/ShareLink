@@ -1,17 +1,17 @@
 
-## APP PARA COMPARTIR ENLACES ## 
+# APP PARA COMPARTIR ENLACES 
  -- usa este icono cuando tengas la tarea realizada ✅
  -- usa este icono cuando tengas la tarea incompleta ❗️
  -- usa este icono para que quede asignada la tarea a un miembro del equipo 🧔🏻G    👨🏻‍🦱L   👱🏻‍♀️Y
 
-# DESCRIPCIÓN:
+## DESCRIPCIÓN:
 Implementar una API que permita a los usuarios registrarse y compartir enlaces web que consideren interesantes. 
 Otros usuarios podrán votarlos si les gustan.
 
-# USUARIOS ANÓNIMOS:
+## USUARIOS ANÓNIMOS:
 Los usuarios anónimos sólo podrán registrarse y acceder.
 
-# USUARIOS REGISTRADOS:
+## USUARIOS REGISTRADOS:
 ● Ver los enlaces publicados en el día de hoy y en días anteriores
 ● Publicar nuevo enlace
 ○ URL
@@ -22,15 +22,15 @@ Los usuarios anónimos sólo podrán registrarse y acceder.
 ● Opcional:
 ○ Editar perfil de usuario (Nombre, Email, Biografía, Foto, …)
 
-# TITULO
+## TITULO
 -- Crear un título a nuestra Api
 
-# BASE DE DATOS.
+## BASE DE DATOS.
 -- Diseñar modelo relacional de la BD de nuestra api
 
-# ENDPOINTS:
+## ENDPOINTS:
 
-USERS:
+### USERS:
 
 - POST - '/users' - Creación de usuario sin activar - obligatorio email y password.
 
@@ -44,7 +44,7 @@ USERS:
 
 - DELETE - '/users/:id' - Sólo el admin podrá realizar un eliminación de usuario
 
-LINKS:
+### LINKS:
 
 - GET - '/links' - Ver enlaces publicados por orden de publicación de más actual a anterior.
 
@@ -56,7 +56,7 @@ LINKS:
 
 - POST - '/links/:id/votes' -Votar publicaiones de otros enlaces --Solo se podra votar un vez --Token obligatorio
 
-EXTRA:
+### EXTRA:
 - DELETE - /links/:id/votes
 - PUT - /links/:id  -- Editar título, o descrpcion del enlace.
 - PUT - '/users/:id' -- Editar perfil del usuario (Nombre, Email, Biografía, Foto, …)
