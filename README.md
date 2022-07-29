@@ -26,13 +26,13 @@ Los usuarios anónimos sólo podrán registrarse y acceder.
 -- Crear un título a nuestra Api
 
 ## BASE DE DATOS.
--- Diseñar modelo relacional de la BD de nuestra api
+-- Diseñar modelo relacional de la BD de nuestra api 👱🏻‍♀️Y
 
 ## ENDPOINTS:
 
 ### USERS:
 
-- POST - '/users' - Creación de usuario sin activar - obligatorio email y password.
+- POST - '/users' - Creación de usuario sin activar - obligatorio email y password. 🧔🏻G
 
 - GET - '/users/validate/:registrationCode' - Validaremos al usuario que se ha registrado. -Envio de mail para verificació de mail.
 
@@ -50,7 +50,7 @@ Los usuarios anónimos sólo podrán registrarse y acceder.
 
 - GET - '/links/:id' - Ver información de una publicación específica.
 
-- POST - '/links/:id' - Compartir un enlace -URL -Título -Descrpción --Token obligatorio.
+- POST - '/links/:id' - Compartir un enlace -URL -Título -Descrpción --Token obligatorio. 👨🏻‍🦱L 
 
 - DELETE - '/links/:id' -Borrar un enlace creado por el mismo usuario, tambien lo podrá elimina el admin si así lo require --Token obligatorio.
 

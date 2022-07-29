@@ -11,6 +11,9 @@ const{PORT}=process.env;
 app.use(morgan('dev'));
 app.use(express.json());
 
+//POST - '/users' - Creación de usuario sin activar - obligatorio email y password.
+//app.post('/user', newUser)
+
 //middleware Not Found-404
 app.use((req,res)=>{
    res.status(404).send({
