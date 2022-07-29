@@ -18,7 +18,7 @@ Los usuarios anónimos sólo podrán registrarse y acceder.
 ○ Título
 ○ Descripción
 ● Borrar un enlace publicado por el usuario
-● Votar un enlace de otro usuario
+● Votar un enlace de otro usuario.
 ● Opcional:
 ○ Editar perfil de usuario (Nombre, Email, Biografía, Foto, …)
 
@@ -42,7 +42,7 @@ Los usuarios anónimos sólo podrán registrarse y acceder.
 
 - PUT - '/users/:id/password' - Que el usuario pueda editar su contraseña - Sólo el usuario propio no el admin -Token obligatorio.
 
-- DELETE - '/users/:id' - Sólo el admin podrá realizar un eliminación de usuario
+- DELETE - '/users/:id' - Sólo el admin podrá realizar un eliminación de usuario y el usuario solo podra anularse
 
 ### LINKS:
 
@@ -57,9 +57,9 @@ Los usuarios anónimos sólo podrán registrarse y acceder.
 - POST - '/links/:id/votes' -Votar publicaiones de otros enlaces --Solo se podra votar un vez --Token obligatorio
 
 ### EXTRA:
-- DELETE - /links/:id/votes
-- PUT - /links/:id  -- Editar título, o descrpcion del enlace.
-- PUT - '/users/:id' -- Editar perfil del usuario (Nombre, Email, Biografía, Foto, …)
+- DELETE - /links/:id/votes -Token obligatorio
+- PUT - /links/:id  -- Editar título, o descrpcion del enlace. -Token obligatorio.
+- PUT - '/users/:id' -- Editar perfil del usuario (Nombre, Email, Biografía, Foto, …) Token obligatorio
 
 
 
