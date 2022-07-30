@@ -23,10 +23,11 @@ Los usuarios anónimos sólo podrán registrarse y acceder.
 ○ Editar perfil de usuario (Nombre, Email, Biografía, Foto, …)
 
 ## TITULO
--- Crear un título a nuestra Api
+-- Crear un título a nuestra Api✅
+SHARE LINK
 
 ## BASE DE DATOS.
--- Diseñar modelo relacional de la BD de nuestra api 👱🏻‍♀️Y
+-- Diseñar modelo relacional de la BD de nuestra api 👱🏻‍♀️Y ✅
 
 ## ENDPOINTS:
 
