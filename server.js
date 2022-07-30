@@ -2,6 +2,9 @@
 require('dotenv').config();
 const express=require('express');
 const morgan = require('morgan');
+
+const {newUser} = require('./controllers/users');
+
 const app= express();
 
 //Importaciones Locales
@@ -12,7 +15,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 //POST - '/users' - Creación de usuario sin activar - obligatorio email y password.
-//app.post('/user', newUser)
+app.post('/user', newUser);
 
 //middleware Not Found-404
 app.use((req,res)=>{
