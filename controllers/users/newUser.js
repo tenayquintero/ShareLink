@@ -1,13 +1,47 @@
 //PRobar que usuario mande por body name y email y que se imprima por console
 ////require.body 
+const {validate} = require("../../helpers");
+const {registrationSchema} = require("../../schemas");
+const getDB = require("../../db/db");
 
-const newUser = (req,res,next)=>{
-    //crear el usuario en la base de datos
+const newUser = async (req,res,next)=>{
+    
+    let connection;
+    try{
+        //connection to db
+        connection = await getDB();
+        //user validation
+        await validate(registrationSchema, req.body);
+        const {email, password}= req.body;
+        //email exist?
+        const [existingUser] = await connection.query(`
+        SELECT id_users
+        FROM users
+        WHERE email=?
+        `, [email])
+        if(existingUser.length>0){
+            const error = new Error("Ya existe un usuario con este email");
+            error.httpStatus = 409;
+            throw error;
+        }
+
+        //send validation email to created user
+        await connection.query(`
+            INSERT INTO users (date, email, password, registation_code)
+            VALUES(?, ?, SHA2(?,512), registation_code)
+        `,[])
+        //comentar con Yaneth
+        //video martes 26 1:16:48 stefano pone formatDateToDB(new Date(), email, password, registration_code) y lo importa de helpers
     res.status(201).send({
         status: "ok",
         message:"usuario creado",
         data:1,
     });
+}catch(error){
+    next(error);
+}finally{
+    if(connection) connection.release();
+}
 };
 
 module.exports = newUser;
