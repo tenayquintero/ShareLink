@@ -4,6 +4,12 @@ const {validate, formatDateToDB, generateRandomString} = require("../../helpers"
 const {registrationSchema} = require("../../schemas");
 const getDB = require("../../db/db");
 
+
+const newUser = (req,res,next)=>{
+    //crear el usuario en la base de datos
+    const{email,password}=req.body;
+    console.log(email,password);
+
 const newUser = async (req,res,next)=>{
     
     let connection;
@@ -36,6 +42,7 @@ const newUser = async (req,res,next)=>{
         `,[formatDateToDB(new Date()), email,password, registration_code])
         //comentar con Yaneth
         //video martes 26 1:16:48 stefano pone formatDateToDB(new Date(), email, password, registration_code) y lo importa de helpers
+
     res.status(201).send({
         status: "ok",
         message:"usuario creado",
