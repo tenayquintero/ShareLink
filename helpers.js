@@ -1,11 +1,12 @@
 "use strict"
 
-const { format } = require("mysql2");
+const sgMail=require('@sendgrid/mail');
 const crypto = require("crypto");
 
-function formatDateToDB(dateObject){
-    return format(dateObject, 'yyyy-MM-dd HH:mm:ss');
-}
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+
+
 const generateError=(message, code)=>{
     const error= new Error(message);
     error.httpStatus=code
@@ -24,4 +25,30 @@ function generateRandomString(byteString){
     return crypto.randomBytes(byteString).toString("hex");
 }
 
-module.exports = {generateError, validate, generateRandomString, formatDateToDB }
+const sendEmail=async({to,subject,body})=>{
+      try{
+          const msg = {
+              to,
+              from: process.env.EMAIL_VERIFICATION,
+              subject,
+              text: body,
+              html:
+                  `
+         <section>
+            <h1>${subject}</h1>
+            <p>${body}</p>
+        </section>
+          
+        `
+          }
+        await sgMail.send(msg)
+
+      }catch(error){
+           generateError('Error sending the email');
+      }
+       
+      }
+
+
+
+module.exports = {generateError, validate, generateRandomString,sendEmail }
