@@ -27,7 +27,7 @@ Los usuarios anónimos sólo podrán registrarse y acceder.
 SHARE LINK
 
 ## BASE DE DATOS.
--- Diseñar modelo relacional de la BD de nuestra api 👱🏻‍♀️Y ✅
+-- Diseñar modelo relacional de la BD de nuestra api ✅
 
 ## ENDPOINTS:
 

@@ -3,6 +3,8 @@
 
 const newUser = (req,res,next)=>{
     //crear el usuario en la base de datos
+    const{email,password}=req.body;
+    console.log(email,password);
     res.status(201).send({
         status: "ok",
         message:"usuario creado",
