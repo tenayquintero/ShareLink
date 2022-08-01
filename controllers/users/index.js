@@ -1,5 +1,6 @@
 "use strict"
 
 const newUser = require("./newUser");
+const validateUser=require("./validateUser")
 
-module.exports = {newUser};
+module.exports = {newUser,validateUser};

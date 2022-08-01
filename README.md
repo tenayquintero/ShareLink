@@ -33,7 +33,7 @@ SHARE LINK
 
 ### USERS:
 
-- POST - '/users' - Creación de usuario sin activar - obligatorio email y password. 🧔🏻G
+- POST - '/users' - Creación de usuario sin activar - obligatorio email y password. ❗️
 
 - GET - '/users/validate/:registrationCode' - Validaremos al usuario que se ha registrado. -Envio de mail para verificació de mail.
 
