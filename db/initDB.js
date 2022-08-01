@@ -72,7 +72,7 @@ throw new error('Conection is not possible')
 
 }finally{
 
-  //Solatar la conexión
+  //Soltar la conexión
  if(connection) {connection.release()
  process.exit();
 }

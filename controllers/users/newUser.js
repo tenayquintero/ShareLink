@@ -1,6 +1,6 @@
 //PRobar que usuario mande por body name y email y que se imprima por console
 ////require.body 
-const {validate} = require("../../helpers");
+const {validate, formatDateToDB, generateRandomString} = require("../../helpers");
 const {registrationSchema} = require("../../schemas");
 const getDB = require("../../db/db");
 
@@ -25,11 +25,15 @@ const newUser = async (req,res,next)=>{
             throw error;
         }
 
+        const registration_code=generateRandomString(40);
+
         //send validation email to created user
+
+        //add user to db
         await connection.query(`
             INSERT INTO users (date, email, password, registation_code)
             VALUES(?, ?, SHA2(?,512), registation_code)
-        `,[])
+        `,[formatDateToDB(new Date()), email,password, registration_code])
         //comentar con Yaneth
         //video martes 26 1:16:48 stefano pone formatDateToDB(new Date(), email, password, registration_code) y lo importa de helpers
     res.status(201).send({
