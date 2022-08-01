@@ -33,9 +33,9 @@ SHARE LINK
 
 ### USERS:
 
-- POST - '/users' - Creación de usuario sin activar - obligatorio email y password. ❗️
+- POST - '/users' - Creación de usuario sin activar - obligatorio email y password. ✅
 
-- GET - '/users/validate/:registrationCode' - Validaremos al usuario que se ha registrado. -Envio de mail para verificació de mail.
+- GET - '/users/validate/:registrationCode' - Validaremos al usuario que se ha registrado. -Envio de mail para verificació de mail.✅
 
 - POST - '/users/login' - Comprobar que el usuario existe -mail y password obligatoria - Devolverá el token.
 

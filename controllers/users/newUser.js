@@ -24,7 +24,7 @@ const newUser = async (req,res,next)=>{
         WHERE email=?
         `, [email]);
 
-        if(existingUser.length>0){
+        if(existingUser.length > 0){
           generateError('The email is exists already', 409)
         }
 
