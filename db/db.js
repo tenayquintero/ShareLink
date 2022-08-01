@@ -18,20 +18,6 @@ if(!pool){
      return await pool.getConnection();
 }
 }
-//module.exports=getDB;
-//***************
-// async function getDB() {
-//    if (!pool) {
-//      pool = mysql.createPool({
-//        connectionLimit: 10,
-//        host: HOST,
-//        user: USER,
-//        password: PASSWORD_USER,
-//        database: DATABASE,
-//        timezone: 'Z',
-//      });
-//    }
-//    return await pool.getConnection();
-//  }
+
  
  module.exports = getDB;

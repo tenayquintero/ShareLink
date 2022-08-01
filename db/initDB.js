@@ -22,13 +22,13 @@ try{
      CREATE TABLE users(
      id_user INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
      date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-     name VARCHAR(50) NOT NULL,
+     name VARCHAR(50),
      email VARCHAR(100) UNIQUE NOT NULL,
      password VARCHAR(150) NOT NULL,
      perfil VARCHAR(150),
      role ENUM("admin", "normal"),
      active BOOLEAN DEFAULT false,
-     registation_code VARCHAR(150),
+     registration_code VARCHAR(150),
      last_up_ps DATETIME,
      deleted BOOLEAN DEFAULT false
      );
