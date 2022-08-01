@@ -7,7 +7,8 @@ const main = async()=>{
  
   let connection;
 try{
-
+console.log(process.env.USER);
+console.log(process.env.PASSWORD_USER);
   //Crear la conexión
  connection = await getDB();
  
