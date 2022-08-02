@@ -1,23 +1,21 @@
-"use strict"
+'use strict';
 require('dotenv').config();
 
-const getDB=require('./db')
+const getDB = require('./db');
 
-const main = async()=>{
- 
+const main = async () => {
   let connection;
-try{
+  try {
+    //Crear la conexión
+    connection = await getDB();
 
-  //Crear la conexión
- connection = await getDB();
- 
-//Eliminar tablas si existen
-  await connection.query(`DROP TABLE IF EXISTS votes_links`)
-  await connection.query(`DROP TABLE IF EXISTS links`)
-  await connection.query(`DROP TABLE IF EXISTS users`)
+    //Eliminar tablas si existen
+    await connection.query(`DROP TABLE IF EXISTS votes_links`);
+    await connection.query(`DROP TABLE IF EXISTS links`);
+    await connection.query(`DROP TABLE IF EXISTS users`);
 
-  //Crear las tablas
- await  connection.query(`
+    //Crear las tablas
+    await connection.query(`
  
      CREATE TABLE users(
      id_user INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -26,14 +24,14 @@ try{
      email VARCHAR(100) UNIQUE NOT NULL,
      password VARCHAR(150) NOT NULL,
      perfil VARCHAR(150),
-     role ENUM("admin", "normal"),
+     role ENUM("admin", "normal") DEFAULT "normal",
      active BOOLEAN DEFAULT false,
      registration_code VARCHAR(150),
      last_up_ps DATETIME,
      deleted BOOLEAN DEFAULT false
      );
  `);
- await connection.query(`
+    await connection.query(`
     CREATE TABLE links(
     id_link INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL, 
@@ -45,7 +43,7 @@ try{
    );
  `);
 
- await connection.query(`
+    await connection.query(`
    CREATE TABLE votes_links(
    id_votes INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
    date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
@@ -58,24 +56,21 @@ try{
 )
  `);
 
- //Creación de usuario admin
- //Chicos la base de datos tiene por default current_timestamp por lo tanto se genera sola.
- await connection.query(`
+    //Creación de usuario admin
+    //Chicos la base de datos tiene por default current_timestamp por lo tanto se genera sola.
+    await connection.query(`
    INSERT INTO users(name,email,password,role,active)
    VALUES("Gregorio","gregorio@mail.com",SHA2("${process.env.PASSWORD_USER_ADMIN}",512),"admin",true)
- `)
-
-}catch(error){
-
-  console.log(error)
-throw new error('Conection is not possible')
-
-}finally{
-
-  //Soltar la conexión
- if(connection) {connection.release()
- process.exit();
-}
-}
-}
+ `);
+  } catch (error) {
+    console.log(error);
+    throw new error('Conection is not possible');
+  } finally {
+    //Soltar la conexión
+    if (connection) {
+      connection.release();
+      process.exit();
+    }
+  }
+};
 main();

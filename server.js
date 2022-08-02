@@ -3,7 +3,7 @@ require('dotenv').config();
 const express=require('express');
 const morgan = require('morgan');
 
-const {newUser, validateUser} = require('./controllers/users');
+const {newUser, validateUser, userLogin} = require('./controllers/users');
 
 const app= express();
 
@@ -19,6 +19,9 @@ app.post('/users', newUser);
 
 //- GET - '/users/validate/:registration_code' - Validaremos al usuario que se ha registrado.
 app.get('/users/validate/:registration_code',validateUser);
+
+//POST - '/users/login' - Comprobar que el usuario existe -mail y password obligatoria - Devolverá el token.
+app.post('/users/login', userLogin);
 
 //middleware Not Found-404
 app.use((req,res)=>{
