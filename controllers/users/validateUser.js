@@ -9,7 +9,7 @@ const validateUser=async (req,res, next)=>{
 
 let connection;
 const {registration_code}=req.params;
-console.log(registration_code)
+
 
     try {
         connection = await getDB();
@@ -20,7 +20,7 @@ console.log(registration_code)
             
 
         `,[registration_code])
-        console.log(compareRC)
+        
         if (compareRC.length === 0){
             generateError("Registration code not valid", 404)
         }
