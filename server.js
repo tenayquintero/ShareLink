@@ -3,15 +3,14 @@ require('dotenv').config();
 const express=require('express');
 const morgan = require('morgan');
 
+//Importaciones Locales
+const { PORT } = process.env;
 const {newUser, validateUser, userLogin, getUser} = require('./controllers/users');
 const thisIsUser = require('./middlewares/thisIsUser');
 
 const app= express();
 
-//Importaciones Locales
-const{PORT}=process.env;
-
-//middleware
+//middlewares
 app.use(morgan('dev'));
 app.use(express.json());
 
@@ -34,6 +33,7 @@ app.use((req,res)=>{
    })
 });
 
+//middleware httpStatus
 app.use((error,req,res,next)=>{
      res.status(error.httpStaus || 500).send({
         status:'Error',

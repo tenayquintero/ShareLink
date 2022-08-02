@@ -1,18 +1,19 @@
 "use strict"
 
-const sgMail=require('@sendgrid/mail');
 const crypto = require("crypto");
+const sgMail=require('@sendgrid/mail');
+
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-
-
+//Generador de errores
 const generateError=(message, code)=>{
     const error= new Error(message);
     error.httpStatus=code
     throw error;
 }
 
+//validador de shemas
 async function validate(schema, data ){
     try {
         await schema.validateAsync(data)
@@ -25,29 +26,14 @@ function generateRandomString(byteString){
     return crypto.randomBytes(byteString).toString("hex");
 }
 
-const sendEmail=async({to,subject,body})=>{
-      try{
-          const msg = {
-              to,
-              from: process.env.EMAIL_VERIFICATION,
-              subject,
-              text: body,
-              html:
-                  `
-         <section>
-            <h1>${subject}</h1>
-            <p>${body}</p>
-        </section>
-          
-        `
-          }
+//envio de email
+const sendEmail = async (msg) => {
+    try {
         await sgMail.send(msg)
+    } catch (error) {
+        generateError("The email could not be sent")    }
 
-      }catch(error){
-           generateError('Error sending the email');
-      }
-       
-      }
+}
 
 
 

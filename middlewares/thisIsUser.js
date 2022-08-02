@@ -6,26 +6,31 @@ const { generateError } = require("../helpers");
 
 const thisIsUser=async(req,res,next)=>{
     let connection;
-try{
+    try{
+    //Se realiza la conexión a la base de datos
     connection = await getDB();
+
+    //Se extrae el token de la cabecera
     const { authorization } = req.headers;
 
+    //Si el token no se encuentra en la cabecera este middleware pasa a error 401(Unauthorized)
     if (!authorization) {
         generateError('The authorization is missing', 401)
     }
     res.send({
-        nstatus: "ok",
-        message: "this is user"
+        nstatus: "OK",
+        message: "The user has athorization for this action"
     });
     next();
 
 
-}catch(error){
+   }catch(error){
     next(error);
-}finally{
+
+    }finally{
+    //Se suelta la conexión
     if(connection) connection.release();
 }
-
 
 }
   

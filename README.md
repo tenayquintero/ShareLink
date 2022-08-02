@@ -37,7 +37,7 @@ SHARE LINK
 
 - GET - '/users/validate/:registrationCode' - Validaremos al usuario que se ha registrado. -Envio de mail para verificació de mail.✅
 
-- POST - '/users/login' - Comprobar que el usuario existe -mail y password obligatoria - Devolverá el token.
+- POST - '/users/login' - Comprobar que el usuario existe -mail y password obligatoria - Devolverá el token.✅
 
 - GET - '/users/:id' -Devolvemos información del usuario teniendo en cuenta si es el propio usuario o admin se le dará más información y si no lo es se le dará menos información. - Token obligatorio.
 
