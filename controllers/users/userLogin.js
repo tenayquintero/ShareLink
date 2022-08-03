@@ -32,6 +32,8 @@ const userLogin = async (req, res, next) => {
       generateError('Email or Password not valid', 404);
     }
 
+    //Comprabar que el cliente esta activo
+
     //Se introduce la informacion que llevará el token
     const info = {
       id: existUser[0].id_user,
