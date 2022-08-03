@@ -10,4 +10,5 @@ const registrationSchema = Joi.object().keys({
     ),
 });
 
+
 module.exports ={registrationSchema};

@@ -26,6 +26,14 @@ app.post('/users/login', userLogin);
 app.get('/users/:id',thisIsUser,getUser);
 
 //middleware Not Found-404
+app.use((error, req, res, next) => {
+   res.status(error.httpStaus || 500).send({
+      status: 'Error',
+      message: error.message,
+      
+   })
+});
+
 app.use((req,res)=>{
    res.status(404).send({
     status:'Error',
@@ -34,12 +42,7 @@ app.use((req,res)=>{
 });
 
 //middleware httpStatus
-app.use((error,req,res,next)=>{
-     res.status(error.httpStaus || 500).send({
-        status:'Error',
-        message: error.message
-     })
-})
+
 
 
 app.listen(PORT,()=>{
