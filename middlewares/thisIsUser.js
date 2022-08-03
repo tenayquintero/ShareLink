@@ -2,7 +2,7 @@
 const getDB=require('../db/db')
 const { generateError } = require("../helpers");
 
-//const jwt=require('jsonwebtoken');
+const jwt=require('jsonwebtoken');
 
 const thisIsUser=async(req,res,next)=>{
     let connection;
@@ -17,10 +17,19 @@ const thisIsUser=async(req,res,next)=>{
     if (!authorization) {
         generateError('The authorization is missing', 401)
     }
-    res.send({
-        nstatus: "OK",
-        message: "The user has athorization for this action"
-    });
+    //Checkea que el token sea válido(virificar autorizacion y firma)
+    let infoToken;
+    try{
+      infoToken=  jwt.verify(authorization, process.env.JWT_SECRET)
+    }catch(error){
+        generateError("The token is not valid",401)
+    }
+
+    //Añadimos en la req el tokeInfo 
+    req.Auth=infoToken;
+    console.log(infoToken);
+
+  
     next();
 
 
