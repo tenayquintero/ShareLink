@@ -38,6 +38,17 @@ app.get('/users/:id',userExist ,thisIsUser,getUser);
 //- PUT - '/users/:id' -- Editar perfil del usuario(Nombre, Email, Biografía, Foto, …) Token obligatorio
 app.put('/users/:id',userExist,thisIsUser,editUser);
 
+/**
+ * LINKS
+ */
+ //GET - '/links' - Ver enlaces publicados por orden de publicación de más actual a anterior.
+ app.get('/links', listLink);
+ //GET - '/links/:id' - Ver información de una publicación específica.
+ app.get('links/:id', getLink);
+ 
+ // POST - '/links/:id' - Compartir un enlace -URL -Título -Descrpción --Token obligatorio.
+ app.post('/links/:id', newLink);
+
 //middleware httpStatus
 app.use((error, req, res, next) => {
    res.status(error.httpStatus || 500).send({
