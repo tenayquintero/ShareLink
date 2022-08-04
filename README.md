@@ -60,7 +60,7 @@ SHARE LINK
 ### EXTRA:
 - DELETE - /links/:id/votes -Token obligatorio
 - PUT - /links/:id  -- Editar título, o descrpcion del enlace. -Token obligatorio.
-- PUT - '/users/:id' -- Editar perfil del usuario (Nombre, Email, Biografía, Foto, …) Token obligatorio
+- PUT - '/users/:id' -- Editar perfil del usuario (Nombre, Email, Biografía, Foto, …) Token obligatorio✅
 
 
 
