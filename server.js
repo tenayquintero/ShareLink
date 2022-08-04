@@ -43,11 +43,12 @@ app.put('/users/:id',userExist,thisIsUser,editUser);
  */
  //GET - '/links' - Ver enlaces publicados por orden de publicación de más actual a anterior.
  app.get('/links', listLink);
+
  //GET - '/links/:id' - Ver información de una publicación específica.
- app.get('links/:id', getLink);
+ app.get('/links/:id', getLink);
  
  // POST - '/links/:id' - Compartir un enlace -URL -Título -Descrpción --Token obligatorio.
- app.post('/links/:id', newLink);
+ app.post('/links',thisIsUser, newLink);
 
 //middleware httpStatus
 app.use((error, req, res, next) => {

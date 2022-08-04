@@ -9,15 +9,15 @@ const getLink = async (req, res, next)=>{
         connection=await getDB();
 
         //Comprobar :id
-        //const{id} = req.params;
+        const{id} = req.params;
         const [link] = await connection.query(`
-        SELECT id_link
+        SELECT url,title,description
         FROM links
         WHERE id_link =?
-        `);
+        `,[id]);
         res.send({
             status:"ok",
-            message: "link",
+            message: "Link",
             data: link
         })
         
@@ -27,8 +27,8 @@ const getLink = async (req, res, next)=>{
         
     }finally{
         //solatamos conexión
-        if(connection)connection.release();
-        process.exit(0);
+      if(connection)connection.release();
+      
     }
 }
 

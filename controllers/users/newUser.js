@@ -54,7 +54,7 @@ const newUser = async (req, res, next) => {
                  <h1>verification email</h1>
                  <p>
                    Welcome to Share Link.Click on the next link for verification your email:
-                   <a style= "background=blue"; href=${verificationLink}" class="enlace">Confirm Email Adress</a>
+                   <a style= "background=blue"; href=${verificationLink} class="enlace">Confirm Email Adress</a>
                 </p>
                </section>
             </body>

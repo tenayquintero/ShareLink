@@ -66,7 +66,7 @@ const userLogin = async (req, res, next) => {
   } finally {
     //Se suelta la conexión
     if (connection) connection.release();
-    process.exit(0);
+  
   }
 };
 
