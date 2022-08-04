@@ -27,7 +27,7 @@ const thisIsUser=async(req,res,next)=>{
 
     //Añadimos en la req el tokeInfo 
     req.Auth=infoToken;
-    console.log(infoToken);
+    console.log(">Estoy en thisIsUser ",infoToken);
 
   
     next();

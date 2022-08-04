@@ -46,7 +46,7 @@ const {registration_code}=req.params;
     }finally{
     //Se suelta la conexión 
     if (connection) connection.release();
-    process.exit;   
+     
 
 }
   

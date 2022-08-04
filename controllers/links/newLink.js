@@ -1,7 +1,7 @@
 "use strict"
 const getDB =require("../../db/db");
-const { validate, generateError } = require("../../helpers");
-const { registrationLink } = require("../../schemas");
+ const { validate} = require("../../helpers");
+ const { registrationLink } = require("../../schemas");
 
 
 const newLink = async (req, res, next) =>{
@@ -15,26 +15,26 @@ const newLink = async (req, res, next) =>{
 
         //se extrae url - title - description
         const {url, title, description} = req.body;
-
+       
+        console.log("Estoy en newLink",req.Auth)
+        console.log(">>>>", url, title, description)
+        
         //se realiza la busqueda de url - title -description en la bd
-        const [existingLink]= await connection.query(`
-        SELECT url, title, description
-        FROM links
-        WHERE url=? , title=?, description=?
-        `,[url,title,description]);
-
-        //si el link no existe se genera un error 404(Not found)
-        if(existingLink.length ==0){
-            generateError('The link not exist',404)
-        }
-        res.status().send({
+        await connection.query(`
+        INSERT INTO links( url, title, description, id_user)
+        VALUES(?,?,?,?)
+       `,[url,title,description,req.Auth.id]);
+        
+        
+        res.send({
             status:"ok",
-            message: "link compartido",
-            data: existingLink
+            message: "Your link has been successful!!!!",
+            
         });
         
     } catch (error) {
         next(error);
+        console.log(error)
     }finally{
         //se suelta la conexión
         if(connection) connection.release();

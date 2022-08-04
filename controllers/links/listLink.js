@@ -7,11 +7,12 @@ const listLink = async (req,res,next)=>{
     try {
         //se abre conexion
         connection=await getDB();
-
+        
+        //ver todas los enlaces solo mostrar url,title
         const [link]= await connection.query(`
-        SELECT id_link, url, title, description
+        SELECT url, title, description
         FROM links
-        WHERE id_link=?, url=?, title=?, description=?
+        
         `)
 
         res.send({
@@ -22,11 +23,11 @@ const listLink = async (req,res,next)=>{
         
     } catch (error) {
         next(error);
-        throw error
+        
     }finally{
         //soltamos la conexión
         if(connection)connection.release();
-        process.exit(0);
+       
     }
    
 }
