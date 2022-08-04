@@ -3,7 +3,7 @@ const { validate, generateRandomString, generateError,sendEmail } = require("../
 const { registrationSchema } = require("../../schemas");
 const getDB = require("../../db/db");
 
-//borrar lg
+
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -29,6 +29,7 @@ const newUser = async (req, res, next) => {
         //Si el email existe se genera un error 409(conflict)
         if (existingUser.length > 0) {
             generateError('The email is exists already', 409)
+          
         }
 
         //Se genera un código de registro
@@ -77,10 +78,12 @@ const newUser = async (req, res, next) => {
 
     } catch (error) {
         next(error);
+         console.log(error)
 
     } finally {
         //Se suelta la conexión
         if (connection) connection.release();
+        
     }
 };
 

@@ -9,14 +9,14 @@ const getDB=async()=>{
 if(!pool){
      pool= mysql.createPool({
        connectionLimit:10,
-          user:MYSQL_USER,
-          host:MYSQL_HOST,
-        password:PASSWORD_USER,
-          database:MYSQL_DATABASE,
-        timezone:"Z"
+       user:MYSQL_USER,
+       host:MYSQL_HOST,
+       password:PASSWORD_USER,
+       database:MYSQL_DATABASE,
+       timezone:"Z"
      });
-     return await pool.getConnection();
-}
+     }
+  return await pool.getConnection();
 }
 
  

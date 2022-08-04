@@ -2,19 +2,22 @@
 require('dotenv').config();
 const express=require('express');
 const morgan = require('morgan');
+const fileupload=require('express-fileupload')
 
 
 //Importaciones Locales
 const { PORT } = process.env;
-const {newUser, validateUser, userLogin, getUser} = require('./controllers/users');
+const {newUser, validateUser, userLogin, getUser, editUser} = require('./controllers/users');
 const thisIsUser = require('./middlewares/thisIsUser');
 const {newLink, listLink, getLink} = require('./controllers/links');
+const userExist = require('./middlewares/userExist');
 
 const app= express();
 
 //middlewares
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(fileupload());
 
 /**
  * USERS
@@ -29,22 +32,20 @@ app.get('/users/validate/:registration_code',validateUser);
 //POST - '/users/login' - Comprobar que el usuario existe -mail y password obligatoria - Devolverá el token.
 app.post('/users/login', userLogin);
 
-//GET - '/users/:id' -Devolvemos información del usuario teniendo en cuenta si es el propio usuario o admin se le dará más información y si no lo es se le dará menos información. - Token obligatorio.
-app.get('/users/:id',thisIsUser,getUser);
+//- GET - '/users/:id'
+app.get('/users/:id',userExist ,thisIsUser,getUser);
 
-/**
- * LINKS
- */
- //GET - '/links' - Ver enlaces publicados por orden de publicación de más actual a anterior.
-app.get('/links', listLink);
-//GET - '/links/:id' - Ver información de una publicación específica.
-app.get('links/:id', getLink);
+//- PUT - '/users/:id' -- Editar perfil del usuario(Nombre, Email, Biografía, Foto, …) Token obligatorio
+app.put('/users/:id',userExist,thisIsUser,editUser);
 
-// POST - '/links/:id' - Compartir un enlace -URL -Título -Descrpción --Token obligatorio.
-app.post('/links/:id', newLink);
-
-
-
+//middleware httpStatus
+app.use((error, req, res, next) => {
+   res.status(error.httpStatus || 500).send({
+      status: 'Error',
+      message: error.message,
+      
+   })
+});
 //middleware Not Found-404
 app.use((req,res)=>{
    res.status(404).send({
@@ -53,13 +54,8 @@ app.use((req,res)=>{
    })
 });
 
-//middleware httpStatus
-app.use((error,req,res,next)=>{
-     res.status(error.httpStaus || 500).send({
-        status:'Error',
-        message: error.message
-     })
-})
+
+
 
 
 app.listen(PORT,()=>{
