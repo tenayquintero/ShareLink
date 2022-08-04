@@ -36,7 +36,7 @@ const main = async () => {
     id_link INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL, 
     url VARCHAR(250) NOT NULL,
-    tittle VARCHAR(100) NOT NULL,
+    title VARCHAR(100) NOT NULL,
     description VARCHAR(200),
     id_user INT NOT NULL,
     FOREIGN KEY (id_user) REFERENCES users(id_user)

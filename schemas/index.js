@@ -10,4 +10,16 @@ const registrationSchema = Joi.object().keys({
     ),
 });
 
-module.exports ={registrationSchema};
+const registrationLink = Joi.object().keys({
+    url: Joi.string().required().error(
+        new Error('The url must be valid')
+    ),
+    title: Joi.string().required().error(
+        new Error("title is required")
+    ),
+    description: Joi.string().required().error(
+        new Error("description is required")
+    ),
+});
+
+module.exports ={registrationSchema, registrationLink};
