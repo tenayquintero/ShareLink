@@ -19,7 +19,7 @@ const main = async () => {
  
      CREATE TABLE users(
      id_user INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-     date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+     discharge date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
      name VARCHAR(50),
      email VARCHAR(100) UNIQUE NOT NULL,
      password VARCHAR(150) NOT NULL,
@@ -34,7 +34,7 @@ const main = async () => {
     await connection.query(`
     CREATE TABLE links(
     id_link INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL, 
+    creation date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL, 
     url VARCHAR(250) NOT NULL,
     tittle VARCHAR(100) NOT NULL,
     description VARCHAR(200),

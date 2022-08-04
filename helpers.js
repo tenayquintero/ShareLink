@@ -2,6 +2,9 @@
 
 const crypto = require("crypto");
 const sgMail=require('@sendgrid/mail');
+const sharp=require('sharp');
+const fs=require('fs/promises');
+const path = require("path");
 
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -35,6 +38,22 @@ const sendEmail = async (msg) => {
 
 }
 
+const cryptoPhoto=generateRandomString(40)
+const staticDir = path.join(__dirname, process.env.STATIC_FILE);
+//guardo fotoPerfil en carpeta static:
+const savePhoto=async(dataPhoto)=>{
+      await fs.access(staticDir);
+
+      //sharp lee la imágen
+     const img= sharp(dataPhoto.data);
+
+     const photoName=(`upload_${cryptoPhoto}_${dataPhoto.name}`);
+
+     await img.toFile(path.join(staticDir,photoName));
+     
+     return photoName;
+}
 
 
-module.exports = {generateError, validate, generateRandomString,sendEmail }
+
+module.exports = {generateError, validate, generateRandomString,sendEmail,savePhoto }

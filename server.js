@@ -2,17 +2,20 @@
 require('dotenv').config();
 const express=require('express');
 const morgan = require('morgan');
+const fileupload=require('express-fileupload')
 
 //Importaciones Locales
 const { PORT } = process.env;
-const {newUser, validateUser, userLogin, getUser} = require('./controllers/users');
+const {newUser, validateUser, userLogin, getUser, editUser} = require('./controllers/users');
 const thisIsUser = require('./middlewares/thisIsUser');
+const userExist = require('./middlewares/userExist');
 
 const app= express();
 
 //middlewares
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(fileupload());
 
 //POST - '/users' - Creación de usuario sin activar - obligatorio email y password.
 app.post('/users', newUser);
@@ -23,17 +26,21 @@ app.get('/users/validate/:registration_code',validateUser);
 //POST - '/users/login' - Comprobar que el usuario existe -mail y password obligatoria - Devolverá el token.
 app.post('/users/login', userLogin);
 
-app.get('/users/:id',thisIsUser,getUser);
+//- GET - '/users/:id'
+app.get('/users/:id',userExist ,thisIsUser,getUser);
 
-//middleware Not Found-404
+//- PUT - '/users/:id' -- Editar perfil del usuario(Nombre, Email, Biografía, Foto, …) Token obligatorio
+app.put('/users/:id',userExist,thisIsUser,editUser);
+
+//middleware httpStatus
 app.use((error, req, res, next) => {
-   res.status(error.httpStaus || 500).send({
+   res.status(error.httpStatus || 500).send({
       status: 'Error',
       message: error.message,
       
    })
 });
-
+//middleware Not Found-404
 app.use((req,res)=>{
    res.status(404).send({
     status:'Error',
@@ -41,7 +48,7 @@ app.use((req,res)=>{
    })
 });
 
-//middleware httpStatus
+
 
 
 
