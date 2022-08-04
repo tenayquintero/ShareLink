@@ -10,43 +10,42 @@ try{
 
     //Comprobación de usuario :id url y id authoritation
     const{id}=req.params;
-    console.log(">>>>>",id)
-   
-    // console.log(typeof(id))
-    // console.log(typeof(req.Auth.id)) 
-    
-    const [user]= await connection.query(`
-        SELECT id_user
+  
+    const [user]=await connection.query(`
+        SELECT date,name,email,perfil,role
         FROM users
-        WHERE id_user = 1
-        `);
+        WHERE id_user = ?
+    `
+        ,[id]);
        
+        //Información que se le da a un usuario ajeno a su perfil
+        const info={
+        name:user[0].name,
+        perfil:user[0].perfil
+    }  
 
-    // const info={
-    //     name:user[0].name,
-    //     perfil:user[0].perfil
-    // }    
-    // if (req.Auth.id !== Number(id)) {
-    //     info
-    // }else{
-    //     info.date=user[0].date
-    //     info.email=user[0].email,
-    //     info.role=user[0].role
-    // }
+    if (req.Auth.id === Number(id) || req.Auth.role==="admin") {
+        
+       //Información que se le da a un usuario dueño de su perfil o admin
+        info.date = user[0].date
+        info.email = user[0].email,
+        info.role = user[0].role
+    }
     
     res.send({
         status: "ok",
         message: "User",
-        data:user
+        data:info
+       
+       
     })
-}catch(error){
-next(error);
-throw error
-}finally{
+     }catch(error){
+        next(error);
+
+    }finally{
     //Soltamos la conexión
-    if(connection) connection.release();
-    process.exit(0);
-}
+    if(connection) connection.release()
+   }
 
  }
  module.exports=getUser;

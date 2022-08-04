@@ -32,7 +32,16 @@ const userLogin = async (req, res, next) => {
       generateError('Email or Password not valid', 404);
     }
 
-    //Comprabar que el cliente esta activo
+    //Comprobar que el cliente esta activo
+    const [userAcive] = await connection.query(`
+    SELECT active
+    FROM users
+    WHERE email=? AND password=SHA2(?, 512) AND active=true 
+    `,[email,password])
+
+    if(userAcive.length===0){
+      generateError("The user is not active already", 402)
+    }
 
     //Se introduce la informacion que llevará el token
     const info = {
