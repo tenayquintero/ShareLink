@@ -10,14 +10,14 @@ const listLink = async (req,res,next)=>{
         
         //ver todas los enlaces solo mostrar url,title
         const [link]= await connection.query(`
-        SELECT url, title, description
+        SELECT url, title
         FROM links
         
         `)
 
         res.send({
             status:"ok",
-            message: "Listado Link",
+            message: "List Link",
             data:link,
         })
         
