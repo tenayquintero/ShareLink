@@ -9,8 +9,11 @@ const fileupload=require('express-fileupload')
 const { PORT } = process.env;
 const {newUser, validateUser, userLogin, getUser, editUser} = require('./controllers/users');
 const thisIsUser = require('./middlewares/thisIsUser');
-const {newLink, listLink, getLink} = require('./controllers/links');
+const {newLink, listLink, getLink, deleteLink} = require('./controllers/links');
+
+//middelwares locales
 const userExist = require('./middlewares/userExist');
+const linkExists = require('./middlewares/linkExist');
 
 const app= express();
 
@@ -42,13 +45,17 @@ app.put('/users/:id',userExist,thisIsUser,editUser);
  * LINKS
  */
  //GET - '/links' - Ver enlaces publicados por orden de publicación de más actual a anterior.
- app.get('/links', listLink);
+ app.get('/links' ,listLink);
 
  //GET - '/links/:id' - Ver información de una publicación específica.
- app.get('/links/:id', getLink);
+ app.get('/links/:id', linkExists, getLink);
  
  // POST - '/links/:id' - Compartir un enlace -URL -Título -Descrpción --Token obligatorio.
  app.post('/links',thisIsUser, newLink);
+
+ //- DELETE - '/links/:id' -Borrar un enlace creado por el mismo usuario, 
+ //tambien lo podrá elimina el admin si así lo require --Token obligatorio.
+app.delete('/links/:id',thisIsUser,deleteLink);
 
 //middleware httpStatus
 app.use((error, req, res, next) => {

@@ -15,6 +15,10 @@ const newLink = async (req, res, next) =>{
 
         //se extrae url - title - description
         const {url, title, description} = req.body;
+
+        // if(!description){
+        //     generateError("description is require", 400)
+        // }
        
         console.log("Estoy en newLink",req.Auth)
         console.log(">>>>", url, title, description)

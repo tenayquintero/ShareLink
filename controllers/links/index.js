@@ -1,6 +1,7 @@
 const listLink= require("./listLink");
 const newLink = require("./newLink");
 const getLink = require("./getLinks");
+const deleteLink=require('./deleteLink')
 
 
 
@@ -8,4 +9,4 @@ const getLink = require("./getLinks");
 
 
 
-module.exports ={newLink, listLink, getLink}
+module.exports ={newLink, listLink, getLink,deleteLink}

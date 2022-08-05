@@ -12,7 +12,7 @@ try{
     const{id}=req.params;
   
     const [user]=await connection.query(`
-        SELECT date,name,email,perfil,role
+        SELECT discharge_date,name,email,perfil,role
         FROM users
         WHERE id_user = ?
     `

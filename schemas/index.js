@@ -11,14 +11,14 @@ const registrationSchema = Joi.object().keys({
 });
 
 const registrationLink = Joi.object().keys({
-    url: Joi.string().required().error(
+    url: Joi.string().uri().required().error(
         new Error('The url must be valid')
     ),
-    title: Joi.string().required().error(
-        new Error("title is required")
+    title: Joi.string().required().min(5).max(100).error(
+        new Error("title is required and long max 100 ")
     ),
-    description: Joi.string().required().error(
-        new Error("description is required")
+    description: Joi.string().required().min(5).max(200).error(
+        new Error("description is require and long max 200 characteres")
     ),
 });
 
