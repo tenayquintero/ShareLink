@@ -14,6 +14,7 @@ const {newLink, listLink, getLink, deleteLink} = require('./controllers/links');
 //middelwares locales
 const userExist = require('./middlewares/userExist');
 const linkExists = require('./middlewares/linkExist');
+const authEdit = require('./middlewares/authEdit');
 
 const app= express();
 
@@ -55,7 +56,7 @@ app.put('/users/:id',userExist,thisIsUser,editUser);
 
  //- DELETE - '/links/:id' -Borrar un enlace creado por el mismo usuario, 
  //tambien lo podrá elimina el admin si así lo require --Token obligatorio.
-app.delete('/links/:id',thisIsUser,deleteLink);
+app.delete('/links/:id',thisIsUser,linkExists,authEdit,deleteLink);
 
 //middleware httpStatus
 app.use((error, req, res, next) => {
