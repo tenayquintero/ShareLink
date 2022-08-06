@@ -7,7 +7,7 @@ const fileupload=require('express-fileupload')
 
 //Importaciones Locales
 const { PORT } = process.env;
-const {newUser, validateUser, userLogin, getUser, editUser} = require('./controllers/users');
+const {newUser, validateUser, userLogin, getUser, editUser, newPsw} = require('./controllers/users');
 const thisIsUser = require('./middlewares/thisIsUser');
 const {newLink, listLink, getLink, deleteLink, voteLink} = require('./controllers/links');
 
@@ -42,6 +42,9 @@ app.get('/users/:id',userExist ,thisIsUser,getUser);
 //- PUT - '/users/:id' -- Editar perfil del usuario(Nombre, Email, Biografía, Foto, …) Token obligatorio
 app.put('/users/:id',userExist,thisIsUser,editUser);
 
+// PUT - '/users/:id/password' - Que el usuario pueda editar su contraseña --Token obligatorio.
+app.put('/users/:id/password',thisIsUser,newPsw)
+
 /**
  * LINKS
  */
@@ -54,9 +57,10 @@ app.put('/users/:id',userExist,thisIsUser,editUser);
  // POST - '/links/:id' - Compartir un enlace -URL -Título -Descrpción --Token obligatorio.
  app.post('/links',thisIsUser, newLink);
 
- //- DELETE - '/links/:id' -Borrar un enlace creado por el mismo usuario, 
- //tambien lo podrá elimina el admin si así lo require --Token obligatorio.
-app.delete('/links/:id',thisIsUser,linkExists,authEdit,deleteLink);
+ //- DELETE - '/links/:id' -Borrar un enlace creado por el mismo usuario, --Token obligatorio.
+ app.delete('/links/:id',thisIsUser,linkExists,authEdit,deleteLink);
+
+
 
 //POST - '/links/:id/votes' -Votar publicaiones de otros enlaces --Solo se podra votar un vez --Token obligatorio
 app.post('/links/:id',thisIsUser,linkExists,voteLink)

@@ -39,6 +39,7 @@ const sendEmail = async (msg) => {
 }
 
 const cryptoPhoto=generateRandomString(40)
+
 const staticDir = path.join(__dirname, process.env.STATIC_FILE);
 //guardo fotoPerfil en carpeta static:
 const savePhoto=async(dataPhoto)=>{
