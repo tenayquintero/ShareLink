@@ -9,7 +9,7 @@ const fileupload=require('express-fileupload')
 const { PORT } = process.env;
 const {newUser, validateUser, userLogin, getUser, editUser} = require('./controllers/users');
 const thisIsUser = require('./middlewares/thisIsUser');
-const {newLink, listLink, getLink, deleteLink} = require('./controllers/links');
+const {newLink, listLink, getLink, deleteLink, voteLink} = require('./controllers/links');
 
 //middelwares locales
 const userExist = require('./middlewares/userExist');
@@ -57,6 +57,9 @@ app.put('/users/:id',userExist,thisIsUser,editUser);
  //- DELETE - '/links/:id' -Borrar un enlace creado por el mismo usuario, 
  //tambien lo podrá elimina el admin si así lo require --Token obligatorio.
 app.delete('/links/:id',thisIsUser,linkExists,authEdit,deleteLink);
+
+//POST - '/links/:id/votes' -Votar publicaiones de otros enlaces --Solo se podra votar un vez --Token obligatorio
+app.post('/links/:id',thisIsUser,linkExists,voteLink)
 
 //middleware httpStatus
 app.use((error, req, res, next) => {
