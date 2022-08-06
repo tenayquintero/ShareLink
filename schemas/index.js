@@ -22,4 +22,13 @@ const registrationLink = Joi.object().keys({
     ),
 });
 
-module.exports ={registrationSchema, registrationLink};
+const newPasswordSchema= Joi.object().keys({
+    oldPassword: Joi.string().required().error(
+        new Error("The oldPassword is require")
+),
+    newPassword: Joi.string().min(6).max(20).error(
+        new Error("Password length not correct, must be between 6-20")
+    )
+})
+
+module.exports ={registrationSchema, registrationLink,newPasswordSchema};

@@ -12,12 +12,12 @@ const authEdit=async(req,res,next)=>{
 
         const [result] = await connection.query(`
         
-        SELECT id_user
+        SELECT id_user,
         FROM links
         WHERE id_link=?
         `,[id]);
 
-        if(result[0].id_user !== req.Auth.id){
+        if (result[0].id_user !== req.Auth.id && req.Auth.role!=="admin"){
             generateError("The user is unauthorizade")
         }
 

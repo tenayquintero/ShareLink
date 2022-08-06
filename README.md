@@ -41,25 +41,25 @@ SHARE LINK
 
 - GET - '/users/:id' -Devolvemos información del usuario teniendo en cuenta si es el propio usuario o admin se le dará más información y si no lo es se le dará menos información. - Token obligatorio.✅
 
-- PUT - '/users/:id/password' - Que el usuario pueda editar su contraseña - Sólo el usuario propio no el admin -Token obligatorio.
+- PUT - '/users/:id/password' - Que el usuario pueda editar su contraseña - Sólo el usuario propio no el admin -Token obligatorio.👱🏻‍♀️Y ❗️--falta validar el schema
 
-- DELETE - '/users/:id' - Sólo el admin podrá realizar un eliminación de usuario y el usuario solo podra anularse
+- DELETE - '/users/:id' - Sólo el admin podrá realizar un eliminación de usuario y el usuario solo podra anularse 
 
 ### LINKS:
 
-- GET - '/links' - Ver enlaces publicados por orden de publicación de más actual a anterior.
+- GET - '/links' - Ver enlaces publicados por orden de publicación de más actual a anterior. ✅
 
-- GET - '/links/:id' - Ver información de una publicación específica.
+- GET - '/links/:id' - Ver información de una publicación específica. ✅
 
-- POST - '/links/:id' - Compartir un enlace -URL -Título -Descrpción --Token obligatorio. 
+- POST - '/links/:id' - Compartir un enlace -URL -Título -Descrpción --Token obligatorio. ✅
 
-- DELETE - '/links/:id' -Borrar un enlace creado por el mismo usuario, tambien lo podrá elimina el admin si así lo require --Token obligatorio.
+- DELETE - '/links/:id' -Borrar un enlace creado por el mismo usuario, tambien lo podrá elimina el admin si así lo require --Token obligatorio✅
 
-- POST - '/links/:id/votes' -Votar publicaiones de otros enlaces --Solo se podra votar un vez --Token obligatorio
+- POST - '/links/:id/votes' -Votar publicaiones de otros enlaces --Solo se podra votar un vez --Token obligatorio 🧔🏻G 
 
 ### EXTRA:
 - DELETE - /links/:id/votes -Token obligatorio
-- PUT - /links/:id  -- Editar título, o descrpcion del enlace. -Token obligatorio.
+- PUT - /links/:id  -- Editar título, o descrpcion del enlace. -Token obligatorio.👨🏻‍🦱L
 - PUT - '/users/:id' -- Editar perfil del usuario (Nombre, Email, Biografía, Foto, …) Token obligatorio✅
 
 
