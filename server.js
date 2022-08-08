@@ -75,8 +75,6 @@ app.post('/users/reset_password',recoverNewPassword);
  //- DELETE - '/links/:id' -Borrar un enlace creado por el mismo usuario, --Token obligatorio.
  app.delete('/links/:id',thisIsUser,linkExists,authEdit,deleteLink);
 
-
-
 //POST - '/links/:id/votes' -Votar publicaiones de otros enlaces --Solo se podra votar un vez --Token obligatorio
 app.post('/links/:id/votes',thisIsUser,linkExists,voteLink)
 

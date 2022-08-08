@@ -1,7 +1,6 @@
 "use strict"
 const getDB = require("../../db/db");
 
-
 const listLink = async (req,res,next)=>{
     let connection;
     try {
@@ -9,26 +8,42 @@ const listLink = async (req,res,next)=>{
         connection=await getDB();
         
         //ver todas los enlaces solo mostrar url,title
-        const [link]= await connection.query(`
-        SELECT url, title
-        FROM links
+       const{search,order,direction}=req.query;
         
-        `);
-        // const{search}=req.query;
-        // console.log(search);
-        // if(search){
-        //   const[result]=  await connection.query(`
-        //     SELECT url,title
-        //     FROM links
-        //     WHERE url like? or title like or description like ?
+        let result;
+        
+        //ordenar por orden
+        const fieldCkeck = ["title","creation_date","vote"];
+        const orderByfield = fieldCkeck.includes(order) ? order : "creation_date";
+
+        //ASC || DESC
+        const orderCheck=["ASC", "DESC"];
+        const orderByDirection= orderCheck.includes(direction) ? direction :"ASC";
+
+        //preferencia de búsqueda
+        if(search){
+          [result]=  await connection.query(`
+            SELECT title,url,AVG(IFNULL(votes_links.vote,0)) AS vote
+            FROM links
+            INNER JOIN votes_links ON(links.id_link = votes_links.id_link)
+            WHERE url like ? or title like ? or description like ?
+            GROUP BY links.id_link
+            ORDER BY ${orderByfield} ${orderByDirection}
              
-        //     `, [`%${search}%`, `%${search}%`, `%${search}%`])
-        // }
+            `, [`%${search}%`, `%${search}%`, `%${search}%`])
+        }else{
+
+         [result] = await connection.query(`
+        SELECT title, url
+        FROM links
+        ORDER BY ${orderByfield} ${orderByDirection}
+         `);
+        }
 
         res.send({
             status:"ok",
             message: "List Link",
-            data:link,
+            data:result,
         })
         
     } catch (error) {
