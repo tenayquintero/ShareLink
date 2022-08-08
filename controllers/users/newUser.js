@@ -3,9 +3,14 @@ const { validate, generateRandomString, generateError,sendEmail } = require("../
 const { registrationSchema } = require("../../schemas");
 const getDB = require("../../db/db");
 
-
+const fs=require('fs/promises');
+const path=require('path');
+const Hogan=require('hogan.js');
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+const filePath= path.join(__dirname,"..","..","views","emailNewUser.hjs");
+console.log(filePath);
 
 const newUser = async (req, res, next) => {
     let connection;
@@ -38,29 +43,19 @@ const newUser = async (req, res, next) => {
         //Se envia el email de verificación al usuario
        const verificationLink = `${process.env.HOST_PUBLIC}/users/validate/${registration_code}` 
         
+        //configurar la plantilla del email
+        const template = await fs.readFile(filePath, 'utf-8');
+
+        //compilar la plantilla
+        const compiledTemplate = Hogan.compile(template)
              
        sendEmail({
             to: email,
             from: process.env.EMAIL_VERIFICATION,
             subject: "Verification code",
             text: "all easy",
-            html:
-                `
-           <html>
-            <head>
-              </head>
-              <body>
-                <section>
-                 <h1>verification email</h1>
-                 <p>
-                   Welcome to Share Link.Click on the next link for verification your email:
-                   <a style= "background=blue"; href=${verificationLink} class="enlace">Confirm Email Adress</a>
-                </p>
-               </section>
-            </body>
-          </html>
-
-        `}
+           html: compiledTemplate.render({ verificationLink:verificationLink})
+           }
         )
        
         //Se añaden los datos en la db
