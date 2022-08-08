@@ -16,8 +16,8 @@ const newLink = async (req, res, next) =>{
         //se extrae url - title - description
         const {url, title, description} = req.body;
 
-        console.log("Estoy en newLink",req.Auth)
-        console.log(">>>>", url, title, description)
+        // console.log("Estoy en newLink",req.Auth)
+        // console.log(">>>>", url, title, description)
         
         //se realiza la busqueda de url - title -description en la bd
         await connection.query(`

@@ -28,7 +28,8 @@ const main = async () => {
      active BOOLEAN DEFAULT false,
      registration_code VARCHAR(150),
      last_up_ps DATETIME,
-     deleted BOOLEAN DEFAULT false
+     deleted BOOLEAN DEFAULT false,
+     recover_code VARCHAR(150)
      );
  `);
     await connection.query(`

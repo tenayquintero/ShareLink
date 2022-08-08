@@ -28,17 +28,17 @@ const thisIsUser = async (req, res, next) => {
         //Añadimos en la req el tokeInfo 
         req.Auth = infoToken;
 
-        const [checkDatePassword] = await connection.query(`
+//         const [checkDatePassword] = await connection.query(`
    
-   SELECT last_up_ps
-   FROM users
-   WHERE id_user=?
-   `, [req.Auth.id]);
+//    SELECT last_up_ps
+//    FROM users
+//    WHERE id_user=?
+//    `, [req.Auth.id]);
         
-      //Se pasa la fechade la db a formato unix y se compara con la date del token
-        if (checkDatePassword[0].last_up_ps.getTime() > (req.Auth.iat * 1000) ) {
-             generateError("Expired token", 401)
-        }
+//       //Se pasa la fechade la db a formato unix y se compara con la date del token
+//         if (checkDatePassword[0].last_up_ps.getTime() > (req.Auth.iat * 1000) ) {
+//              generateError("Expired token", 401)
+//         }
 
         next();
 

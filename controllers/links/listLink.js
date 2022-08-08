@@ -13,7 +13,17 @@ const listLink = async (req,res,next)=>{
         SELECT url, title
         FROM links
         
-        `)
+        `);
+        // const{search}=req.query;
+        // console.log(search);
+        // if(search){
+        //   const[result]=  await connection.query(`
+        //     SELECT url,title
+        //     FROM links
+        //     WHERE url like? or title like or description like ?
+             
+        //     `, [`%${search}%`, `%${search}%`, `%${search}%`])
+        // }
 
         res.send({
             status:"ok",

@@ -7,7 +7,16 @@ const fileupload=require('express-fileupload')
 
 //Importaciones Locales
 const { PORT } = process.env;
-const {newUser, validateUser, userLogin, getUser, editUser, newPsw} = require('./controllers/users');
+const {
+   newUser, 
+   validateUser, 
+   userLogin, 
+   getUser, 
+   editUser, 
+   newPsw,
+   recoverPassword,
+   recoverNewPassword
+} = require('./controllers/users');
 const thisIsUser = require('./middlewares/thisIsUser');
 const {newLink, listLink, getLink, deleteLink, voteLink} = require('./controllers/links');
 
@@ -45,6 +54,12 @@ app.put('/users/:id',userExist,thisIsUser,editUser);
 // PUT - '/users/:id/password' - Que el usuario pueda editar su contraseña --Token obligatorio.
 app.put('/users/:id/password',thisIsUser,newPsw)
 
+// POST - '/users/recoverPassword' - Que el usuario pueda recuperar su contraseña --Token obligatorio.
+app.post('/users/recover_password',recoverPassword);
+
+// POST - '/users/recoverPassword' - Que el usuario pueda editar su contraseña --Token obligatorio.
+app.post('/users/reset_password',recoverNewPassword);
+
 /**
  * LINKS
  */
@@ -63,7 +78,7 @@ app.put('/users/:id/password',thisIsUser,newPsw)
 
 
 //POST - '/links/:id/votes' -Votar publicaiones de otros enlaces --Solo se podra votar un vez --Token obligatorio
-app.post('/links/:id',thisIsUser,linkExists,voteLink)
+app.post('/links/:id/votes',thisIsUser,linkExists,voteLink)
 
 //middleware httpStatus
 app.use((error, req, res, next) => {
