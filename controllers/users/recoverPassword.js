@@ -53,11 +53,9 @@ const recoverPassword=async(req,res,next)=>{
         WHERE email=?
         `,[recover_code,email])
 
-
-
         res.send({
             status: "Ok",
-            message: "Has been send a email verefication message, please check your e-mail"
+            message: "An email verification message has been sent, please check your e-mail"
         })
 
     }catch(error){

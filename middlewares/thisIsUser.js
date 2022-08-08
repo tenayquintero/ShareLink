@@ -17,7 +17,7 @@ const thisIsUser = async (req, res, next) => {
         if (!authorization) {
             generateError('The authorization is missing', 401)
         }
-        //Checkea que el token sea válido(virificar autorizacion y firma)
+        //Checkea que el token sea válido(virificar autorización y firma)
         let infoToken;
         try {
             infoToken = jwt.verify(authorization, process.env.JWT_SECRET)
@@ -25,20 +25,20 @@ const thisIsUser = async (req, res, next) => {
             generateError("The token is not valid", 401)
         }
 
+        const [checkDatePassword] = await connection.query(`
+   
+          SELECT last_up_ps
+          FROM users
+          WHERE id_user=?
+          `, [infoToken.id]);
+
+        //Se pasa la fechade la db a formato unix y se compara con la date del token
+        if (checkDatePassword[0].last_up_ps.getTime() > (req.Auth.iat * 1000)) {
+            generateError("Expired token", 401)
+        }
+
         //Añadimos en la req el tokeInfo 
         req.Auth = infoToken;
-
-//         const [checkDatePassword] = await connection.query(`
-   
-//    SELECT last_up_ps
-//    FROM users
-//    WHERE id_user=?
-//    `, [req.Auth.id]);
-        
-//       //Se pasa la fechade la db a formato unix y se compara con la date del token
-//         if (checkDatePassword[0].last_up_ps.getTime() > (req.Auth.iat * 1000) ) {
-//              generateError("Expired token", 401)
-//         }
 
         next();
 
