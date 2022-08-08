@@ -2,6 +2,12 @@ const { generateError, sendEmail, generateRandomString } = require('../../helper
 
 const getDB=require('../../db/db');
 
+const Hogan=require('hogan.js');
+const fs = require('fs/promises');
+const path= require('path');
+
+const filePath= path.join(__dirname,"..","..","views","emailRecoverPssword.hjs");
+
 const recoverPassword=async(req,res,next)=>{
     let connection;
     try{
@@ -13,7 +19,7 @@ const recoverPassword=async(req,res,next)=>{
         }
 
         const [emailExists]= await connection.query(`
-        SELECT email
+        SELECT email,name
         FROM users
         WHERE email=?
         `,[email]);
@@ -21,30 +27,23 @@ const recoverPassword=async(req,res,next)=>{
         if(emailExists.length === 0){
             generateError("The email is not exist",404);
         }
+        //Aprovechar la query emailExist para obtener el nombre del usuario.
+        const name= emailExists[0].name
+
+        const template= await  fs.readFile(filePath, "utf-8");
+        const compiledTemplate= Hogan.compile(template);
+
         const recover_code=generateRandomString(40);
         sendEmail({
             to:email,
             from: process.env.EMAIL_VERIFICATION,
             subject:"Recover password",
             text:"text",
-            html:
-                `
-           <html>
-            <head>
-              </head>
-              <body>
-                <section>
-                 <h1>verification email</h1>
-                 <p>
-                   Welcome to Share Link. You have requested a password recovery if it was you please
-                   confirm the following code :
-                   ${recover_code} 
-                </p>
-               </section>
-            </body>
-          </html>
-
-        `
+            html:compiledTemplate.render({
+                name:name,
+                recover_code:recover_code
+            })
+               
         });
 
         await connection.query(`
