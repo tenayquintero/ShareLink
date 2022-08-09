@@ -14,11 +14,11 @@ const registrationLink = Joi.object().keys({
     url: Joi.string().uri().required().error(
         new Error('The url must be valid')
     ),
-    title: Joi.string().required().min(5).max(100).error(
-        new Error("title is required and long max 100 ")
+    title: Joi.string().required().min(4).max(100).error(
+        new Error("Title length not correct, must be between 4-100 ")
     ),
-    description: Joi.string().required().min(5).max(200).error(
-        new Error("description is require and long max 200 characteres")
+    description: Joi.string().required().min(4).max(200).error(
+        new Error("Description length not correct, must be between 4-200")
     ),
 });
 
@@ -26,7 +26,7 @@ const newPasswordSchema= Joi.object().keys({
     oldPassword: Joi.string().required().error(
         new Error("The oldPassword is require")
 ),
-    newPassword: Joi.string().min(6).max(20).error(
+    newPassword: Joi.string().required().regex(/[^\s]$/).min(6).max(20).error(
         new Error("Password length not correct, must be between 6-20")
     )
 })

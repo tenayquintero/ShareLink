@@ -18,11 +18,25 @@ const newUser = async (req, res, next) => {
         //se realiza la conexión
         connection = await getDB();
 
+        //Se extrae el email y la password que envia el cliente por el body
+        const { email, password } = req.body;
+
+        //Campo email obligatorio
+        if (!email) {
+            generateError("The field 'email' is required", 400)
+        }
+
+        //Campo password obligatorio
+        if (!password) {
+            generateError("The field 'password' is required", 400)
+        }
+
         //Se valida el forma del email y la password
         await validate(registrationSchema, req.body);
 
-        //Se extrae el email y la password que envia el cliente por el body
-        const { email, password } = req.body;
+       
+
+       
 
         //Se realiza la búsqueda del email en la bd
         const [existingUser] = await connection.query(`

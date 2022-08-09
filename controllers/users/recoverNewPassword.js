@@ -10,8 +10,8 @@ const recoverNewPassword=async(req,res ,next)=>{
 
     const {recover_code, newPassword}=req.body;
 
-    if( !recover_code || newPassword){
-        generateError("The field  'recover_code' and 'email'  is required", 400)
+    if( !recover_code && newPassword){
+        generateError("The field  'recover_code' and 'newPassword'  is required", 400)
     }
 
     const [compareRC]= await connection.query(`
@@ -26,7 +26,7 @@ const recoverNewPassword=async(req,res ,next)=>{
 
     await connection.query(`
     UPDATE users
-    SET password=SHA2(?,512) recover_code=null
+    SET password=SHA2(?,512) ,recover_code=null
     WHERE recover_code=?
     `,[newPassword,recover_code])
 

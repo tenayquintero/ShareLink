@@ -12,12 +12,20 @@ const newPsw=async(req,res, next)=>{
    const{id}=req.params;
 
    //comprobación de propietario de cuenta
-     if (req.Auth.id !== Number(id)) {
+     if (req.Auth.id !== Number(id) && req.Auth.role!=="admin") {
         generateError("The user is unauthorized for this action", 401)
      }
      //Se extrae la oldPassword para compararla con la password de la bd
    //Se extrae la password que se envia por el body para actualizarla en la bd
    const {newPassword,oldPassword}=req.body  
+
+     //obligatorio los campos de oldPassword y newPassword
+     if (!oldPassword) {
+        generateError("The field 'OldPassword' is required", 400)
+     }
+     if (!newPassword) {
+        generateError("The field 'NewPassword' is required", 400)
+     } 
    
 
   const [comparePassword]= await connection.query(`
@@ -29,16 +37,9 @@ const newPsw=async(req,res, next)=>{
    if(comparePassword.length === 0){
       generateError("The password is not correct",404)
    }
-   //verificación formatos password;
-     validate(newPasswordSchema,req.body);
-
-    //obligatorio los campos de oldPassword y newPassword
-    if(!oldPassword){
-      generateError("The field 'OldPassword' is required", 400)
-    } 
-     if (!newPassword) {
-        generateError("The field 'NewPassword' is required", 400)
-     } 
+  
+      //verificación formatos password;
+    await validate(newPasswordSchema, req.body);
 
    await connection.query(`
    UPDATE users 
