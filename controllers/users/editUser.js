@@ -17,9 +17,10 @@ const editUser = async (req, res, next) => {
         const { id } = req.params;
 
         //Se genera un error si el id del token no coincide con el de params
-        if (Number(id) !== req.Auth.id && req.Auth.role!=="admin") {
+        if (Number(id) !== req.Auth.id && req.Auth.role !== "admin") {
             generateError("The user is unauthorized", 401)
         }
+       
 
         const { name,email } = req.body
         // console.log(name,email)
@@ -66,14 +67,14 @@ const editUser = async (req, res, next) => {
                 subject: "Change the email",
                 text: "hello",
                 html:compiledTemplate.render({
-                    host_verification
+                    host_verification :host_verification
                 })
               })
 
             await connection.query(`
-           UPDATE users SET name=?,email=?, active=0, registration_code=?
+           UPDATE users SET name=?,email=?, active=0, registration_code=?,last_up_ps=?
            WHERE id_user=?
-           `, [name, email, registration_code, id]
+           `, [name, email, registration_code,new Date(), id]
            );
             res.send({
                 message: "You has updated your email please confirm the validation code in your e-mail"

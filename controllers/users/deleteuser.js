@@ -14,6 +14,7 @@ const deleteUser = async (req, res, next) => {
     if (Number(id) === 1) {
       generateError('This user cannot delete', 403);
     }
+    
     if (Number(id) !== req.Auth.id && req.Auth.role !== 'admin') {
       generateError('User unauthorized', 401);
     }

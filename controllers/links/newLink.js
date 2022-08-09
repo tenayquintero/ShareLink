@@ -1,6 +1,6 @@
 "use strict"
 const getDB =require("../../db/db");
- const { validate} = require("../../helpers");
+ const { validate, generateError} = require("../../helpers");
  const { registrationLink } = require("../../schemas");
 
 
@@ -16,8 +16,16 @@ const newLink = async (req, res, next) =>{
         //se extrae url - title - description
         const {url, title, description} = req.body;
 
-        // console.log("Estoy en newLink",req.Auth)
-        // console.log(">>>>", url, title, description)
+        //Obligatorio campo url, title,descrition para auemntar posibilidades de búsqueda
+        if(!url){
+            generateError("The field 'url' is required",400)
+        }
+        if(!title){
+            generateError("The field 'title' is required", 400);
+        }
+        if (!description) {
+            generateError("The field 'description' is required", 400);
+        }
         
         //se realiza la busqueda de url - title -description en la bd
         await connection.query(`

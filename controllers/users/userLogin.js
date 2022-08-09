@@ -52,6 +52,7 @@ const userLogin = async (req, res, next) => {
     //Se firma el token
     const token = jwt.sign(info, process.env.JWT_SECRET, { expiresIn: '1d' });
 
+    //comprueba email y password 
     await validate(registrationSchema, req.body);
 
     res.send({

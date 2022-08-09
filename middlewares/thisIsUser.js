@@ -25,17 +25,20 @@ const thisIsUser = async (req, res, next) => {
             generateError("The token is not valid", 401)
         }
 
-        // const [checkDatePassword] = await connection.query(`
+        const [checkDatePassword] = await connection.query(`
    
-        //   SELECT last_up_ps
-        //   FROM users
-        //   WHERE id_user=?
-        //   `, [infoToken.id]);
+          SELECT last_up_ps
+          FROM users
+          WHERE id_user=?
+          `, [infoToken.id]);
 
-        // //Se pasa la fechade la db a formato unix y se compara con la date del token
-        // if (checkDatePassword[0].last_up_ps.getTime() > (req.Auth.iat * 1000)) {
-        //     generateError("Expired token", 401)
-        // }
+       
+        const last_up_ps = new Date(checkDatePassword[0].last_up_ps)
+        const dateToken = new Date(infoToken.iat*1000)
+
+        if (dateToken < last_up_ps) {
+            generateError("Expired token", 401)
+        }
 
         //Añadimos en la req el tokeInfo 
         req.Auth = infoToken;

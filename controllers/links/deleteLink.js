@@ -10,7 +10,8 @@ let connection;
      const {id}=req.params;
 
       await connection.query(`
-      DELETE FROM links 
+      DELETE 
+      FROM links 
       WHERE id_link=?
       `,[id]);
        
