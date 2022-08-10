@@ -1,7 +1,8 @@
 "use strict"
 
 const getDB=require('../../db/db');
-const { generateError } = require('../../helpers');
+const { generateError, validate } = require('../../helpers');
+const { newPasswordSchema } = require('../../schemas');
 
 const recoverNewPassword=async(req,res ,next)=>{
    let connection;
@@ -10,9 +11,10 @@ const recoverNewPassword=async(req,res ,next)=>{
 
     const {recover_code, newPassword}=req.body;
 
-    if( !recover_code && newPassword){
+    if( !recover_code || !newPassword){
         generateError("The field  'recover_code' and 'newPassword'  is required", 400)
     }
+     await validate(newPasswordSchema, newPassword);
 
     const [compareRC]= await connection.query(`
     SELECT recover_code

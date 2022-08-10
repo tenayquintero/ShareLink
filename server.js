@@ -18,7 +18,7 @@ const {
    recoverNewPassword
 } = require('./controllers/users');
 const thisIsUser = require('./middlewares/thisIsUser');
-const {newLink, listLink, getLink, deleteLink, voteLink} = require('./controllers/links');
+const {newLink, listLink, getLink, deleteLink, voteLink, editLink} = require('./controllers/links');
 
 //middelwares locales
 const userExist = require('./middlewares/userExist');
@@ -60,6 +60,8 @@ app.post('/users/recover_password',recoverPassword);
 // POST - '/users/recoverPassword' - Que el usuario pueda editar su contraseña --Token obligatorio.
 app.post('/users/reset_password',recoverNewPassword);
 
+
+
 /**
  * LINKS
  */
@@ -78,8 +80,8 @@ app.post('/users/reset_password',recoverNewPassword);
 //POST - '/links/:id/votes' -Votar publicaiones de otros enlaces --Solo se podra votar un vez --Token obligatorio
 app.post('/links/:id/votes',thisIsUser,linkExists,voteLink);
 
-//vista de email html
-app.get('/preview')
+//- PUT - /links/:id  -- Editar título, o descripción del enlace. -Token obligatorio.
+app.put('/links/:id',editLink);
 
 //middleware httpStatus
 app.use((error, req, res, next) => {
