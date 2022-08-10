@@ -6,11 +6,10 @@ const getDB = require("../../db/db");
 const fs=require('fs/promises');
 const path=require('path');
 const Hogan=require('hogan.js');
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 
 const filePath= path.join(__dirname,"..","..","views","emailNewUser.hjs");
-console.log(filePath);
+
 
 const newUser = async (req, res, next) => {
     let connection;
@@ -32,13 +31,9 @@ const newUser = async (req, res, next) => {
         }
 
         //Se valida el forma del email y la password
-        await validate(registrationSchema, req.body);
+         await validate(registrationSchema, req.body);
 
-       
-
-       
-
-        //Se realiza la búsqueda del email en la bd
+       //Se realiza la búsqueda del email en la bd
         const [existingUser] = await connection.query(`
         SELECT id_user
         FROM users
@@ -63,14 +58,15 @@ const newUser = async (req, res, next) => {
         //compilar la plantilla
         const compiledTemplate = Hogan.compile(template)
              
-       sendEmail({
+      await sendEmail({
             to: email,
             from: process.env.EMAIL_VERIFICATION,
             subject: "Verification code",
             text: "all easy",
-           html: compiledTemplate.render({ verificationLink:verificationLink})
-           }
-        )
+           html: compiledTemplate.render({ 
+            verificationLink:verificationLink
+        })
+           });
        
         //Se añaden los datos en la db
         await connection.query(`
@@ -87,7 +83,6 @@ const newUser = async (req, res, next) => {
 
     } catch (error) {
         next(error);
-         console.log(error)
 
     } finally {
         //Se suelta la conexión

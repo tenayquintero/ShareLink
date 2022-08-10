@@ -39,7 +39,7 @@ const newPsw=async(req,res, next)=>{
    }
   
       //verificación formatos password;
-    await validate(newPasswordSchema, req.body);
+    await validate(newPasswordSchema, newPassword);
 
    await connection.query(`
    UPDATE users 
