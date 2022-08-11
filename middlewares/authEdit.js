@@ -12,7 +12,7 @@ const authEdit=async(req,res,next)=>{
 
         const [result] = await connection.query(`
         
-        SELECT id_user,
+        SELECT id_user
         FROM links
         WHERE id_link=?
         `,[id]);

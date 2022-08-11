@@ -10,8 +10,7 @@ const newLink = async (req, res, next) =>{
         //se realiza la conexión
         connection = await getDB();
 
-        //se valida url - title -description
-        await validate(registrationLink, req.body);
+        
 
         //se extrae url - title - description
         const {url, title, description} = req.body;
@@ -26,6 +25,9 @@ const newLink = async (req, res, next) =>{
         if (!description) {
             generateError("The field 'description' is required", 400);
         }
+        
+        //se valida url - title -description
+        await validate(registrationLink, req.body);
         
         //se realiza la busqueda de url - title -description en la bd
         await connection.query(`

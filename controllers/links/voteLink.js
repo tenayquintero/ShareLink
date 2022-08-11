@@ -18,19 +18,20 @@ const voteLink = async(req,res, next)=>{
             generateError('Please vote between 1 and 5', 400);
             
         }
+        
 
         //Compruebo si el usuario es quien ha compartido el enlace
         const [current]=await connection.query(`
         SELECT id_user
         FROM links
-        WHERE id=?
-        `[id]);
-
+        WHERE id_link=?
+        `,[id]);
+        
         if(current[0].id_user === req.Auth.id){
             generateError('Is your link, you cannot vote', 403);
            
-        }
-
+       }
+      
         //Compruebo si el usuario ha votado con anterioridad
         const[existingVote]= await connection.query(`
         SELECT id_votes
@@ -38,24 +39,24 @@ const voteLink = async(req,res, next)=>{
         WHERE id_user=? AND id_link=?
         `,[req.Auth.id, id]);
 
-        if(existingVote.lenght > 0){
+        if(existingVote.length > 0){
             generateError('Already Vote', 403);
            
         }
-
+       
         //Añadir voto a la tabla
         await connection.query(`
-        INSERT INTO votes_links(create_date,vote, id_user, id_link)
-        VALUES (?,?,?,?)
-        `[voto,id,req.Auth.id]);
+        INSERT INTO votes_links(vote, id_user, id_link)
+        VALUES (?,?,?)
+        `,[voto,req.Auth.id,id]);
 
         //Media de votos
         const[newVotes] = await connection.query(`
-        SELECT AVG(vote_links.vote) AS votes
-        FROM links
-        LEFT JOIN votes_links ON(link.id_link = votes_link.id_votes)
-        WHERE links.id
-        `[id]);
+        SELECT vote, AVG(IFNULL(votes_links.vote,0)) AS votes
+        FROM votes_links
+        LEFT JOIN links ON(links.id_link = votes_links.id_link)
+        WHERE links.id_link=?
+        `,[id]);
      
         
         

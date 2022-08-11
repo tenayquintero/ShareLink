@@ -10,7 +10,7 @@ let connection;
      const {id}=req.params;
 
       await connection.query(`
-      DELETE 
+      DELETE
       FROM links 
       WHERE id_link=?
       `,[id]);
@@ -22,6 +22,8 @@ let connection;
 
    }catch(error){
     next(error);
+    console.error(error);
+   
    }finally{
      if(connection) connection.release();
    }

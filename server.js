@@ -81,7 +81,7 @@ app.post('/users/reset_password',recoverNewPassword);
 app.post('/links/:id/votes',thisIsUser,linkExists,voteLink);
 
 //- PUT - /links/:id  -- Editar título, o descripción del enlace. -Token obligatorio.
-app.put('/links/:id',editLink);
+app.put('/links/:id',linkExists,editLink);
 
 //middleware httpStatus
 app.use((error, req, res, next) => {
