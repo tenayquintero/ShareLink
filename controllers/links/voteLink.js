@@ -12,6 +12,7 @@ const voteLink = async(req,res, next)=>{
         //Recojo parámetros
         const {id}=req.params;
         const {voto}=req.body;
+        console.log(id)
 
         //compruebo que el valor de votos es entre 1 y 5
         if(voto <1 || voto>5){
@@ -23,8 +24,8 @@ const voteLink = async(req,res, next)=>{
         const [current]=await connection.query(`
         SELECT id_user
         FROM links
-        WHERE id=?
-        `[id]);
+        WHERE id_link=?
+        `,[id]);
 
         if(current[0].id_user === req.Auth.id){
             generateError('Is your link, you cannot vote', 403);
@@ -35,7 +36,7 @@ const voteLink = async(req,res, next)=>{
         const[existingVote]= await connection.query(`
         SELECT id_votes
         FROM votes_links
-        WHERE id_user=? AND id_link=?
+        WHERE id_user =? AND id_link=?
         `,[req.Auth.id, id]);
 
         if(existingVote.lenght > 0){

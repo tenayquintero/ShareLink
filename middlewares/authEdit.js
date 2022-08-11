@@ -8,11 +8,10 @@ const authEdit=async(req,res,next)=>{
     try{
         connection= await getDB();
         const{id} = req.params;
-        console.log("soy id:",id)
-
+     
         const [result] = await connection.query(`
         
-        SELECT id_user,
+        SELECT id_user
         FROM links
         WHERE id_link=?
         `,[id]);

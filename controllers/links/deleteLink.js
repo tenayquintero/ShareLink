@@ -12,8 +12,8 @@ let connection;
       await connection.query(`
       DELETE 
       FROM links 
-      WHERE id_link=?
-      `,[id]);
+      WHERE id_link = ?
+      ` ,[id]);
        
    res.send({
          status: "ok",
@@ -22,6 +22,7 @@ let connection;
 
    }catch(error){
     next(error);
+    console.log(error)
    }finally{
      if(connection) connection.release();
    }
