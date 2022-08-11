@@ -49,10 +49,10 @@ const main = async () => {
    id_votes INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
    create_date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
    vote TINYINT,
-   CONSTRAINT votes_link CHECK (vote IN (1,2,3,4,5)),
    id_user INT NOT NULL,
-   FOREIGN KEY (id_user) REFERENCES users(id_user),
    id_link INT NOT NULL,
+   CONSTRAINT votes_link CHECK (vote IN (1,2,3,4,5)),
+   FOREIGN KEY (id_user) REFERENCES users(id_user),
    FOREIGN KEY (id_link) REFERENCES links(id_link)
 )
  `);
