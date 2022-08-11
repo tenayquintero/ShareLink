@@ -19,6 +19,9 @@ const voteLink = async(req,res, next)=>{
             generateError('Please vote between 1 and 5', 400);
             
         }
+        if(!voto){
+            generateError('Cannot vote null, please vote between 1 and 5',400)
+        }
         
 
         //Compruebo si el usuario es quien ha compartido el enlace

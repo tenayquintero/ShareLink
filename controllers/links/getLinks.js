@@ -8,17 +8,30 @@ const getLink = async (req, res, next)=>{
         //se abre conexión
         connection=await getDB();
 
-        //Comprobar :id
+        //Sacar :id
         const{id} = req.params;
+
         const [link] = await connection.query(`
-        SELECT url,title,description
+        SELECT title, url,description
         FROM links
-        WHERE id_link =?
+        WHERE id_link=? 
+       
+        `,[id,]);
+
+        const [vote] = await connection.query(`
+        SELECT vote, AVG(IFNULL(vote,0)) AS vote
+        FROM votes_links
+        WHERE id_link=? 
+       
+
         `,[id]);
+        
+
         res.send({
             status:"ok",
             message: "Link",
-            data: link
+            data: { ...link[0],
+                      ... vote[0]} 
         })
         
     } catch (error) {
