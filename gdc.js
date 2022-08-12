@@ -6,7 +6,7 @@ function generate_password($length, $include_alpha_l, $include_alpha_u, $include
     return show_error($error);
     }
     //crear contraseña
-    var $password = keygen($length, $include_alpha_l, $include_alpha_u, $include_num, $include_symbols);
+    let $password = keygen($length, $include_alpha_l, $include_alpha_u, $include_num, $include_symbols);
     //password break lines variable
     $password = break_lines($password);
     
@@ -14,13 +14,13 @@ function generate_password($length, $include_alpha_l, $include_alpha_u, $include
     return $password;
     }
     function keygen($length, $include_alpha_l, $include_alpha_u, $include_num, $include_symbols){
-    var $alpha_l = new Array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o',`p`,'q','r','s','t','u','v','w','x','y','z');
-    var $alpha_u = new Array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
-    var $num = new Array(0,1,2,3,4,5,6,7,8,9);
-    var $symbols = new Array('-','_','!','?','$','@','#','%','&');
+    let $alpha_l = new Array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o',`p`,'q','r','s','t','u','v','w','x','y','z');
+    let $alpha_u = new Array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
+    let $num = new Array(0,1,2,3,4,5,6,7,8,9);
+    let $symbols = new Array('-','_','!','?','$','@','#','%','&');
     
-    var $password = "";
-    var $charset = new Array();
+    let $password = "";
+    let $charset = new Array();
     
     //including--alpha
     if ($include_alpha_l){
@@ -49,7 +49,7 @@ function generate_password($length, $include_alpha_l, $include_alpha_u, $include
     $charset_maxindex = $charset.length - 1;
     $indexes = new Array();
     for (var $i=0; $i < $length; $i++){
-    var $rand_num = Math.ceil(Math.random() * 100);
+    let $rand_num = Math.ceil(Math.random() * 100);
     while ($rand_num > $charset_maxindex){
     $rand_num = Math.ceil(Math.random() * 100);
     }
@@ -64,7 +64,7 @@ function generate_password($length, $include_alpha_l, $include_alpha_u, $include
     return $password;
     }
     function validation($length, $include_alpha_l, $include_alpha_u, $include_num, $include_symbols){
-    var $error = new Array();
+    let $error = new Array();
     
     //validacion1
     if ($length < 1 || $length > 200){
@@ -79,11 +79,11 @@ function generate_password($length, $include_alpha_l, $include_alpha_u, $include
     return $error;
     }
     function break_lines($password){
-    var $output = "";
+    let $output = "";
     
     //valores para index
-    var $password_length = $password.length;
-    var $c = 0;
+    let $password_length = $password.length;
+    let $c = 0;
     for (var $i=0; $i < $password_length; $i++){
     $output += $password.charAt($i);
     $c++;
@@ -96,7 +96,7 @@ function generate_password($length, $include_alpha_l, $include_alpha_u, $include
     return $output;
     }
     function show_error($errors){
-    var $output = "<ul>";
+    let $output = "<ul>";
     $errors.each(function($value,$key){
     $output += "<li>"+$value+"</li>";
     });
