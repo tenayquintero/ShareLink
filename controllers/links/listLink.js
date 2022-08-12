@@ -34,9 +34,9 @@ const listLink = async (req, res, next) => {
         } else {
 
             [result] = await connection.query(`
-        SELECT title, url,vote,AVG(IFNULL(votes_links.vote,0)) AS vote
+        SELECT title, url
         FROM links
-        LEFT JOIN votes_links ON(links.id_link = votes_links.id_link)
+       
         GROUP BY links.id_link
         ORDER BY ${orderByfield} ${orderByDirection}
          `);
