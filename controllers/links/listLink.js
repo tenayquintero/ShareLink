@@ -34,12 +34,12 @@ const listLink = async (req, res, next) => {
         } else {
 
             [result] = await connection.query(`
-        SELECT title, url
-        FROM links
-       
-        GROUP BY links.id_link
-        ORDER BY ${orderByfield} ${orderByDirection}
-         `);
+                SELECT title, url,vote,AVG(vote) AS vote
+                FROM links
+                LEFT JOIN votes_links ON(links.id_link = votes_links.id_link)
+                GROUP BY links.id_link
+                ORDER BY ${orderByfield} ${orderByDirection}
+                `);
         }
 
         res.send({

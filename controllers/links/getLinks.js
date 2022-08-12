@@ -19,7 +19,7 @@ const getLink = async (req, res, next)=>{
         `,[id]);
 
         const [vote] = await connection.query(`
-        SELECT vote, AVG(IFNULL(vote,0)) AS vote
+        SELECT vote
         FROM votes_links
         WHERE id_link=? 
        
