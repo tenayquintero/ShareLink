@@ -1,3 +1,4 @@
+//se crea la funcion y se asignan los caracteres a usar
 function generatePasswordRand(length,type) {
     switch(type){
         case 'num':
@@ -7,7 +8,7 @@ function generatePasswordRand(length,type) {
             characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
             break;
         case 'rand':
-            //FOR ↓
+            //bucle
             break;
         default:
             characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
