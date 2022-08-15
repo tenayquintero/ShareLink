@@ -56,7 +56,7 @@ const voteLink = async(req,res, next)=>{
 
         //Media de votos
         const[newVotes] = await connection.query(`
-        SELECT vote, AVG(IFNULL(votes_links.vote,0)) AS votes
+        SELECT AVG(votes_links.vote) AS votes
         FROM votes_links
         LEFT JOIN links ON(links.id_link = votes_links.id_link)
         WHERE links.id_link=?

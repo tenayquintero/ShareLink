@@ -1,66 +1,113 @@
 
-# APP PARA COMPARTIR ENLACES 
- -- usa este icono cuando tengas la tarea realizada ✅
- -- usa este icono cuando tengas la tarea incompleta ❗️
- -- usa este icono para que quede asignada la tarea a un miembro del equipo 🧔🏻G    👨🏻‍🦱L   👱🏻‍♀️Y
+# SHARE LINK 🪢
 
-## DESCRIPCIÓN:
-Implementar una API que permita a los usuarios registrarse y compartir enlaces web que consideren interesantes. 
-Otros usuarios podrán votarlos si les gustan.
+_API que permite a los usuarios compartir enlaces web que consideran interesantes, después de realizar su registro en la aplicación, podrán compartir, ver y votar enlaces._
 
-## USUARIOS ANÓNIMOS:
-Los usuarios anónimos sólo podrán registrarse y acceder.
+## Vamos ayá 🚀
 
-## USUARIOS REGISTRADOS:
-● Ver los enlaces publicados en el día de hoy y en días anteriores
-● Publicar nuevo enlace
-○ URL
-○ Título
-○ Descripción
-● Borrar un enlace publicado por el usuario
-● Votar un enlace de otro usuario.
-● Opcional:
-○ Editar perfil de usuario (Nombre, Email, Biografía, Foto, …)
+_Las siguientes instrucciones te van a permitir obtener una copia del proyecto en tu máquina local para fines de desarollo y pruebas._
 
-## TITULO
--- Crear un título a nuestra Api✅
-SHARE LINK
 
-## BASE DE DATOS.
--- Diseñar modelo relacional de la BD de nuestra api ✅
+### Requisitos 🚦
 
-## ENDPOINTS:
+* Api multiplataforma soportada en Os Linux,windows y mac.
+* Api diseñada para conectarse a un base de datos mysql.
+* Tener node previamente instalado
+* Para comprobar si está instalado ejecutar el siguiente comando_
 
-### USERS:
+```
+Node --version
+```
+_Para comprobar su versión ejecutar el siguiente comando_
 
-- POST - '/users' - Creación de usuario sin activar - obligatorio email y password. ✅
+```
+npm --version
+```
+_En el caso de no tener node instalado o en su versión compatible con la api te dejamos un enlace para realizar su instalación según tu sistema operativo_.
+https://nodejs.org/es/download/
 
-- GET - '/users/validate/:registrationCode' - Validaremos al usuario que se ha registrado. -Envio de mail para verificació de mail.✅
 
-- POST - '/users/login' - Comprobar que el usuario existe -mail y password obligatoria - Devolverá el token.✅
+## Pre-instalación 🪛
 
-- GET - '/users/:id' -Devolvemos información del usuario teniendo en cuenta si es el propio usuario o admin se le dará más información y si no lo es se le dará menos información. - Token obligatorio.✅
+_Crear una base de datos en tu mysql_
 
-- PUT - '/users/:id/password' - Que el usuario pueda editar su contraseña - Sólo el usuario propio no el admin -Token obligatorio. ✅
+```
+CREATE DATABSE nameDataBaseSql;
+```
+* Crear una carpeta raiz .env para conectar tus datos personales con la api, recuarda que en la carpeta .env.example estan todos los datos correspondientes para utilizar en tu nueva carpeta .env
 
-- DELETE - '/users/:id' - Sólo el admin podrá realizar un eliminación de usuario y el usuario solo podra anularse (Borrado lógico)✅
+* Actuliza los datos del usuario admin en el documento initDb.js
 
-### LINKS:
+* Crear una carperta de raiz llamada static.js dónde se guardarán las fotos de perfil actulizadas por cada usuario.
 
-- GET - '/links' - Ver enlaces publicados por orden de publicación de más actual a anterior. ✅
+* Para la interacción con el envio de email deberas tener una api key de algún gestor de email, en este caso hemos configurado la api con 'sengrid'
+https://docs.sendgrid.com/for-developers/sending-email/quickstart-nodejs
 
-- GET - '/links/:id' - Ver información de una publicación específica. ✅
+## Instalación 🛠
 
-- POST - '/links/:id' - Compartir un enlace -URL -Título -Descrpción --Token obligatorio. ✅
+_Realiza los siguientes pasos:_
 
-- DELETE - '/links/:id' -Borrar un enlace creado por el mismo usuario, tambien lo podrá elimina el admin si así lo require --Token obligatorio✅
+```
+npm install
+```
+```
+node .db./initDB.js
+```
+```
+npm run dev
+```
 
-- POST - '/links/:id/votes' -Votar publicaiones de otros enlaces --Solo se podra votar un vez --Token obligatorio✅ 
+_Ahora deberás ver en tu consola un aviso del puerto en el cual se está realizando la escucha._
 
-### EXTRA:
-- DELETE - /links/:id/votes -Token obligatorio
-- PUT - /links/:id  -- Editar título, o descripción del enlace. -Token obligatorio. ✅ 
-- PUT - '/users/:id' -- Editar perfil del usuario (Nombre, Email, Biografía, Foto, …) Token obligatorio✅
+# EJECUCIÓN DE PRUEBAS 📝
+
+_Puedes utilzar la plataforma cliente que más te guste, en esta api hemos incluido en el documento post-man las solicitudes necesarias para realizar las pruebas en esta api_
+
+## Post-man 👨🏼‍🚀
+* Deberas instalar la plataforma de postman en tu máquina local.
+https://www.postman.com/downloads/
+* Importar la colección a post-man desde la api.
+* Configurar el puerto y el token en el apartado 'envoirement' de post-man (parte superior derecha).
+* El token se obtiene por cada usuario que ejecute un login en la api.
+
+## Herramientas. ⚙️
+* [Node](https://nodejs.org/es/docs/) - El run time usado.
+* [Express](http://expressjs.com/es/) - El entornode trabajon usado.
+* [Morgan](https://www.npmjs.com/package/morgan) - Middleware.
+* [Express-json](https://www.npmjs.com/package/express-json) - Middleware.
+* [Hogan.js](https://www.npmjs.com/package/hogan.js/v/3.0.2) - Compilador.
+* [Mysql2](https://www.npmjs.com/package/mysql2) - Cliente para node.
+* [Sharp](https://www.npmjs.com/package/sharp) - Convertidor formato imágenes.
+* [Crypto-js](https://www.npmjs.com/package/crypto-js) - Encapsulamiento.
+* [Sengrid](https://www.npmjs.com/package/@sendgrid/mail) - Interacción con email.
+
+### Nota 🗒
+_Las herramientas utilizadas se instalaran previamente al ejecutar el comando anteriormente mencionado_
+```
+npm install
+```
+_No hará falta realizar ninguna otra instalación de paquetes_
+
+## Autores ✒️
+* **Gregorio**  [🧔🏽Goyo](https://github.com/gvisiedo).
+* **Leonardo** [👨🏽‍🦱Leo](https://github.com/Lenard743).
+* **Yaneth Quintero** [👱🏽‍♀️Yaneth](https://github.com/tenayquintero).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
