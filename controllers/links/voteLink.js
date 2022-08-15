@@ -62,8 +62,6 @@ const voteLink = async(req,res, next)=>{
         WHERE links.id_link=?
         `,[id]);
      
-        
-        
         res.send({
             status:"ok",
             data:{
