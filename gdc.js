@@ -1,5 +1,6 @@
 //se crea la funcion y se asignan los caracteres a usar
 function generatePasswordRand(length,type) {
+    let characters;
     switch(type){
         case 'num':
             characters = "0123456789";
@@ -15,8 +16,8 @@ function generatePasswordRand(length,type) {
             break;
     }
     let pass = "";
-    for (i=0; i < length; i++){
-        if(type == 'rand'){
+    for (let i=0; i < length; i++){
+        if(type === 'rand'){
             pass += String.fromCharCode((Math.floor((Math.random() * 100)) % 94) + 33);
         }else{
             pass += characters.charAt(Math.floor(Math.random()*characters.length));   
@@ -24,3 +25,5 @@ function generatePasswordRand(length,type) {
     }
     return pass;
 }
+
+
