@@ -19,7 +19,7 @@ const listLink = async (req, res, next) => {
         //ASC || DESC
         const orderCheck = ["ASC", "DESC"];
         const orderByDirection = orderCheck.includes(direction) ? direction : "ASC";
-        console.log(search)
+       
         //preferencia de búsqueda
         if (search) {
             [result] = await connection.query(`
