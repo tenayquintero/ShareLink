@@ -10,10 +10,11 @@ _Las siguientes instrucciones te van a permitir obtener una copia del proyecto e
 
 ### Requisitos 🚦
 
-* Api multiplataforma soportada en Os Linux,windows y mac.
-* Api diseñada para conectarse a un base de datos mysql.
-* Tener node previamente instalado
-* Para comprobar si está instalado ejecutar el siguiente comando_
+* Api multiplataforma soportada en Os Linux,windows 8,9,19,11 y mac.
+* Api diseñada para conectarse a un base de datos SQL.
+* Tener node previamente instalado.
+* Compatible a partir de la version 7.0.2 node.
+* Para comprobar si está instalado ejecutar el siguiente comando.
 
 ```
 Node --version
@@ -32,7 +33,7 @@ https://nodejs.org/es/download/
 _Crear una base de datos en tu mysql_
 
 ```
-CREATE DATABSE nameDataBaseSql;
+CREATE DATABASE nameDataBaseSql;
 ```
 * Crear una carpeta raiz .env para conectar tus datos personales con la api, recuarda que en la carpeta .env.example estan todos los datos correspondientes para utilizar en tu nueva carpeta .env
 
@@ -92,6 +93,9 @@ _No hará falta realizar ninguna otra instalación de paquetes_
 * **Gregorio**  [🧔🏽Goyo](https://github.com/gvisiedo).
 * **Leonardo** [👨🏽‍🦱Leo](https://github.com/Lenard743).
 * **Yaneth Quintero** [👱🏽‍♀️Yaneth](https://github.com/tenayquintero).
+
+
+## Agradecimientos 🎁
 
 
 

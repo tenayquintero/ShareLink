@@ -17,7 +17,7 @@ let connection;
        
    res.send({
          status: "ok",
-         message: "The link has been deleted succesful!!!"
+         message: "The link has been removed succesfully!!!"
       })
 
    }catch(error){

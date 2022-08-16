@@ -18,6 +18,10 @@ try{
     `
         ,[id]);
        
+    if (user[0].name===null)   {
+        user[0].name
+    }
+    
         //Información que se le da a un usuario ajeno a su perfil
         const info={
         name:user[0].name,
