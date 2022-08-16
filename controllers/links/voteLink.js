@@ -11,30 +11,30 @@ const voteLink = async(req,res, next)=>{
 
         //Recojo parámetros
         const {id}=req.params;
-        const {voto}=req.body;
+        const {vote}=req.body;
         console.log(id)
 
         //compruebo que el valor de votos es entre 1 y 5
-        if(voto <1 || voto>5){
+        if(vote <1 || vote>5){
             generateError('Please vote between 1 and 5', 400);
             
         }
-        if(!voto){
+        if(!vote){
             generateError('Cannot vote null, please vote between 1 and 5',400)
         }
         
 
         //Compruebo si el usuario es quien ha compartido el enlace
-        const [current]=await connection.query(`
-        SELECT id_user
-        FROM links
-        WHERE id_link=?
-        `,[id]);
+    //     const [current]=await connection.query(`
+    //     SELECT id_user
+    //     FROM links
+    //     WHERE id_link=?
+    //     `,[id]);
 
-        if(current[0].id_user === req.Auth.id){
-            generateError('Is your link, you cannot vote', 403);
+    //     if(current[0].id_user === req.Auth.id){
+    //         generateError('Is your link, you cannot vote', 403);
            
-       }
+    //    }
       
         //Compruebo si el usuario ha votado con anterioridad
         const[existingVote]= await connection.query(`
@@ -52,7 +52,7 @@ const voteLink = async(req,res, next)=>{
         await connection.query(`
         INSERT INTO votes_links(vote, id_user, id_link)
         VALUES (?,?,?)
-        `,[voto,req.Auth.id,id]);
+        `,[vote,req.Auth.id,id]);
 
         //Media de votos
         const[newVotes] = await connection.query(`

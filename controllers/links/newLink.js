@@ -34,9 +34,9 @@ const newLink = async (req, res, next) =>{
        `,[url,title,description,req.Auth.id]);
         
         
-        res.send({
+        res.status(201).send({
             status:"ok",
-            message: "Your link has been successful!!!!",
+            message: "Your link has been successfully created!!!!",
             
         });
         

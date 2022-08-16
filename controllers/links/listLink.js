@@ -22,7 +22,8 @@ const listLink = async (req, res, next) => {
        
         //preferencia de búsqueda
         if (search) {
-            [result] = await connection.query(`
+            
+        [result] = await connection.query(`
             SELECT title,url,vote,AVG(IFNULL(votes_links.vote,0)) AS vote
             FROM links
             LEFT JOIN votes_links ON(links.id_link = votes_links.id_link)
@@ -33,12 +34,12 @@ const listLink = async (req, res, next) => {
             `, [`%${search}%`, `%${search}%`, `%${search}%`])
         } else {
 
-            [result] = await connection.query(`
-        SELECT title, url,vote,AVG(IFNULL(votes_links.vote,0)) AS vote
-        FROM links
-        LEFT JOIN votes_links ON(links.id_link = votes_links.id_link)
-        GROUP BY links.id_link
-        ORDER BY ${orderByfield} ${orderByDirection}
+        [result] = await connection.query(`
+            SELECT title, url,vote,AVG(IFNULL(votes_links.vote,0)) AS vote
+            FROM links
+            LEFT JOIN votes_links ON(links.id_link = votes_links.id_link)
+            GROUP BY links.id_link
+            ORDER BY ${orderByfield} ${orderByDirection}
          `);
         }
 

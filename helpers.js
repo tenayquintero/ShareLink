@@ -38,6 +38,8 @@ const sendEmail = async (msg) => {
 
 }
 
+//Guardar perfil en dir static
+
 const cryptoPhoto=generateRandomString(40)
 
 const staticDir = path.join(__dirname, process.env.STATIC_FILE);
@@ -45,7 +47,7 @@ const staticDir = path.join(__dirname, process.env.STATIC_FILE);
 const savePhoto=async(dataPhoto)=>{
       await fs.access(staticDir);
 
-      //sharp lee la imágen
+      //sharp lee la imagen
      const img= sharp(dataPhoto.data);
 
      const photoName=(`upload_${cryptoPhoto}_${dataPhoto.name}`);
