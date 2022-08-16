@@ -99,10 +99,6 @@ app.use((req,res)=>{
    })
 });
 
-
-
-
-
 app.listen(PORT,()=>{
-    console.log("Heyyyy I'm here")
+   console.log(`Heyyyy I'm here!!! Listening in port ${PORT}`)
 });

@@ -31,7 +31,7 @@ let connection;
 
       res.send({
           status: "OK",
-          message: "The link has been modificated succesful!!!"
+          message: "The link has been modified succesfully!!!"
 
       })
 
