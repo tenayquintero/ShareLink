@@ -9,11 +9,26 @@ let connection;
 
      const {id}=req.params;
 
+     const [idVote] = await connection.query(`
+
+     SELECT id_votes
+     FROM votes_links
+     WHERE id_user=? AND id_link=?
+     `,[req.Auth.id,id]);
+
+     console.log(idVote[0].id_votes);
+
       await connection.query(`
       DELETE
-      FROM links 
-      WHERE id_link = ?
-      ` ,[id]);
+      FROM votes_links 
+      WHERE id_votes = ?
+      ` , [idVote[0].id_votes]);
+
+      // await connection.query(`
+      // DELETE
+      // FROM links 
+      // WHERE id_link = ?
+      // ` ,[id]);
        
    res.send({
          status: "ok",
