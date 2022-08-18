@@ -39,7 +39,7 @@ CREATE DATABASE nameDataBaseSql;
 
 * Actuliza los datos del usuario admin en el documento initDb.js
 
-* Crear una carperta de raiz llamada static.js dónde se guardarán las fotos de perfil actulizadas por cada usuario.
+* Crear una carperta de raiz llamada static.js dónde se guardarán las fotos de perfil actulizadas por cada usuario,recuerda guardar el nombre de la carpeta en el campo STATIC_FILE del documento .env.
 
 * Para la interacción con el envio de email deberas tener una api key de algún gestor de email, en este caso hemos configurado la api con 'sengrid'
 https://docs.sendgrid.com/for-developers/sending-email/quickstart-nodejs

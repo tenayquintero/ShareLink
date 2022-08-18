@@ -17,7 +17,7 @@ const authEdit=async(req,res,next)=>{
         `,[id]);
 
         if (result[0].id_user !== req.Auth.id && req.Auth.role!=="admin"){
-            generateError("The user is unauthorizade")
+            generateError("The user is unauthorizade",401)
         }
 
         next()

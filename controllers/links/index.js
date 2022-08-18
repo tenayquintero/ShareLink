@@ -4,6 +4,7 @@ const getLink = require("./getLinks");
 const deleteLink=require('./deleteLink')
 const voteLink =require('./voteLink');
 const editLink=require('./editLink');
+const editVote=require('./editVote');
 
 
 
@@ -12,4 +13,4 @@ const editLink=require('./editLink');
 
 
 
-module.exports ={newLink, listLink, getLink,deleteLink, voteLink,editLink}
+module.exports ={newLink, listLink, getLink,deleteLink, voteLink,editLink,editVote}

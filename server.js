@@ -18,12 +18,14 @@ const {
    recoverNewPassword
 } = require('./controllers/users');
 const thisIsUser = require('./middlewares/thisIsUser');
-const {newLink, listLink, getLink, deleteLink, voteLink, editLink} = require('./controllers/links');
+const {newLink, listLink, getLink, deleteLink, voteLink, editLink, editVote} = require('./controllers/links');
 
 //middelwares locales
 const userExist = require('./middlewares/userExist');
 const linkExists = require('./middlewares/linkExist');
 const authEdit = require('./middlewares/authEdit');
+const voteExist= require('./middlewares/voteExist');
+const authEditVote = require('./middlewares/authEditVote');
 
 const app= express();
 
@@ -80,6 +82,9 @@ app.post('/users/reset_password',recoverNewPassword);
 //POST - '/links/:id/votes' -Votar publicaiones de otros enlaces --Solo se podra votar un vez --Token obligatorio
 app.post('/links/:id/votes',thisIsUser,linkExists,voteLink);
 
+//PUT - '/links/:id/votes' -Cambiar tu voto en un enlace--Token obligatorio;
+app.put('/links/:id/votes',thisIsUser,voteExist,authEditVote,editVote)
+
 //- PUT - /links/:id  -- Editar título, o descripción del enlace. -Token obligatorio.
 app.put('/links/:id',thisIsUser,linkExists,authEdit,editLink);
 
@@ -100,5 +105,5 @@ app.use((req,res)=>{
 });
 
 app.listen(PORT,()=>{
-   console.log(`Heyyyy I'm here!!! Listening in port ${PORT}`)
+   console.log(`Heyyyy I'm here!!! Listening from the port ${PORT}`)
 });

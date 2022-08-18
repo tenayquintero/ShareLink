@@ -12,25 +12,24 @@ const getLink = async (req, res, next)=>{
         const{id} = req.params;
 
         const [link] = await connection.query(`
-        SELECT title, url,description
-        FROM links
-        WHERE id_link=? 
+          SELECT title, url,description
+          FROM links
+          WHERE id_link=? 
        
         `,[id]);
 
         const [vote] = await connection.query(`
-        SELECT vote
-        FROM votes_links
-        WHERE id_link=? 
-       
 
-        `,[id]);
+          SELECT vote, AVG(IFNULL(vote,0)) AS vote
+          FROM votes_links
+          WHERE id_link=? 
+       `,[id]);
+
         
-
-        res.send({
-            status:"ok",
-            message: "Link",
-            data: { ...link[0],
+       res.send({
+          status:"ok",
+          message: "Link",
+          data: { ...link[0],
                       ... vote[0]} 
         })
         
