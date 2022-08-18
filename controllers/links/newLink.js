@@ -36,7 +36,7 @@ const newLink = async (req, res, next) =>{
         
         res.status(201).send({
             status:"ok",
-            message: "Your link has been successfully created!!!!",
+            message: "Your link has been  created successfully!!!!",
             
         });
         

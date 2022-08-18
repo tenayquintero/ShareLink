@@ -18,7 +18,7 @@ const {
    recoverNewPassword
 } = require('./controllers/users');
 const thisIsUser = require('./middlewares/thisIsUser');
-const {newLink, listLink, getLink, deleteLink, voteLink, editLink, editVote} = require('./controllers/links');
+const {newLink, listLink, getLink, deleteLink, voteLink, editLink, editVote, deleteVote} = require('./controllers/links');
 
 //middelwares locales
 const userExist = require('./middlewares/userExist');
@@ -88,6 +88,8 @@ app.put('/links/:id/votes',thisIsUser,voteExist,authEditVote,editVote)
 //- PUT - /links/:id  -- Editar título, o descripción del enlace. -Token obligatorio.
 app.put('/links/:id',thisIsUser,linkExists,authEdit,editLink);
 
+//- DELETE - '/links/:id/votes' -Borrar un vot creado por el mismo usuario, --Token obligatorio.
+app.delete('/links/:id/votes',thisIsUser, voteExist, authEditVote,deleteVote);
 //middleware httpStatus
 app.use((error, req, res, next) => {
    res.status(error.httpStatus || 500).send({

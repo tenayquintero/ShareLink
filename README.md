@@ -5,12 +5,12 @@ _API que permite a los usuarios compartir enlaces web que consideran interesante
 
 ## Vamos ayá 🚀
 
-_Las siguientes instrucciones te van a permitir obtener una copia del proyecto en tu máquina local para fines de desarollo y pruebas._
+_Las siguientes instrucciones te van a permitir obtener una copia del proyecto en tu máquina local para fines de desarrollo y pruebas._
 
 
 ### Requisitos 🚦
 
-* Api multiplataforma soportada en Os Linux,windows 8,9,19,11 y mac.
+* Api multiplataforma soportada en Os Linux,windows 8,9,10,11 y mac.
 * Api diseñada para conectarse a un base de datos SQL.
 * Tener node previamente instalado.
 * Compatible a partir de la version 7.0.2 node.
@@ -19,7 +19,7 @@ _Las siguientes instrucciones te van a permitir obtener una copia del proyecto e
 ```
 Node --version
 ```
-_Para comprobar su versión ejecutar el siguiente comando_
+_Para comprobar su versión, ejecutar el siguiente comando_
 
 ```
 npm --version
@@ -62,7 +62,7 @@ _Ahora deberás ver en tu consola un aviso del puerto en el cual se está realiz
 
 # EJECUCIÓN DE PRUEBAS 📝
 
-_Puedes utilzar la plataforma cliente que más te guste, en esta api hemos incluido en el documento post-man las solicitudes necesarias para realizar las pruebas en esta api_
+_Puedes utilzar la plataforma cliente que más te guste, en esta api hemos incluido en la carpeta doc, las solicitudes necesarias para realizar las pruebas en esta api, puedes importarlas desdede post-man y realizar tus pruebas._
 
 ## Post-man 👨🏼‍🚀
 * Deberas instalar la plataforma de postman en tu máquina local.
@@ -72,15 +72,16 @@ https://www.postman.com/downloads/
 * El token se obtiene por cada usuario que ejecute un login en la api.
 
 ## Herramientas. ⚙️
-* [Node](https://nodejs.org/es/docs/) - El run time usado.
-* [Express](http://expressjs.com/es/) - El entornode trabajon usado.
+* [Node](https://nodejs.org/es/docs/) - Run time usado.
+* [Express](http://expressjs.com/es/) - Entorno de trabajon usado.
 * [Morgan](https://www.npmjs.com/package/morgan) - Middleware.
 * [Express-json](https://www.npmjs.com/package/express-json) - Middleware.
 * [Hogan.js](https://www.npmjs.com/package/hogan.js/v/3.0.2) - Compilador.
-* [Mysql2](https://www.npmjs.com/package/mysql2) - Cliente para node.
+* [Mysql2](https://www.npmjs.com/package/mysql2) - Base de datos.
 * [Sharp](https://www.npmjs.com/package/sharp) - Convertidor formato imágenes.
 * [Crypto-js](https://www.npmjs.com/package/crypto-js) - Encapsulamiento.
 * [Sengrid](https://www.npmjs.com/package/@sendgrid/mail) - Interacción con email.
+* [joi](https://www.npmjs.com/package/joi) - data validator.
 
 ### Nota 🗒
 _Las herramientas utilizadas se instalaran previamente al ejecutar el comando anteriormente mencionado_
@@ -90,12 +91,13 @@ npm install
 _No hará falta realizar ninguna otra instalación de paquetes_
 
 ## Autores ✒️
-* **Gregorio**  [🧔🏽Goyo](https://github.com/gvisiedo).
+* **Gregorio Visiedo**  [🧔🏽Goyo](https://github.com/gvisiedo).
 * **Leonardo** [👨🏽‍🦱Leo](https://github.com/Lenard743).
 * **Yaneth Quintero** [👱🏽‍♀️Yaneth](https://github.com/tenayquintero).
 
 
 ## Agradecimientos 🎁
+_En especial a Stefano💗 que nos guio para sacar adelante la api_
 
 
 
