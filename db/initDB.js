@@ -9,11 +9,14 @@ const main = async () => {
     //Crear la conexión
     connection = await getDB();
 
+
+    console.log("Creating table...")
     //Eliminar tablas si existen
     await connection.query(`DROP TABLE IF EXISTS votes_links`);
     await connection.query(`DROP TABLE IF EXISTS links`);
     await connection.query(`DROP TABLE IF EXISTS users`);
 
+    console.log("The tables has been created successfully!!!")
     //Crear las tablas
     await connection.query(`
  
@@ -56,13 +59,12 @@ const main = async () => {
    FOREIGN KEY (id_link) REFERENCES links(id_link)
 )
  `);
-
-    //Creación de usuario admin
-    //Chicos la base de datos tiene por default current_timestamp por lo tanto se genera sola.
+  console.log("Creating user admin...")
     await connection.query(`
    INSERT INTO users(name,email,password,role,active)
    VALUES("Gregorio","gregorio@mail.com",SHA2("${process.env.PASSWORD_USER_ADMIN}",512),"admin",true)
  `);
+    console.log("The user admin has been created successfully!!!")
   } catch (error) {
     console.log(error);
     throw new error('Conection is not possible');
