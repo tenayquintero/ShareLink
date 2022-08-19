@@ -10,9 +10,9 @@ const deleteVote = async (req, res, next) => {
         const { id } = req.params;
 
         await connection.query(`
-      DELETE
-      FROM votes_links 
-      WHERE id_votes = ?
+          DELETE
+          FROM votes_links 
+          WHERE id_votes = ?
       ` , [id]);
 
         res.send({

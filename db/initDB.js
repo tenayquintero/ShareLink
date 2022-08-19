@@ -55,8 +55,10 @@ const main = async () => {
    id_user INT NOT NULL,
    id_link INT NOT NULL,
    CONSTRAINT votes_link CHECK (vote IN (1,2,3,4,5)),
-   FOREIGN KEY (id_user) REFERENCES users(id_user),
+   FOREIGN KEY (id_user) REFERENCES users(id_user)
+   ON DELETE CASCADE,
    FOREIGN KEY (id_link) REFERENCES links(id_link)
+   ON DELETE CASCADE
 )
  `);
   console.log("Creating user admin...")

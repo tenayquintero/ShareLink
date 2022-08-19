@@ -21,7 +21,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"email\": \"ikerd@yopmail.com\",\r\n   \"password\":\"123567\"\r\n \r\n   \r\n}",
+							"raw": "{\r\n   \"email\":\"yaneth2@yopmail.com\",\r\n   \"password\":\"1234567\"\r\n  \r\n   \r\n \r\n   \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -73,17 +73,10 @@
 					"name": "loginUser",
 					"request": {
 						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "",
-								"type": "default",
-								"disabled": true
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"iker@yopmail.com\",\r\n    \"password\":\"1234567\"\r\n    \r\n}",
+							"raw": "{\r\n  \"email\":\"yaneth2@yopmail.com\",\r\n   \"password\":\"12345678\"\r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -118,8 +111,20 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "{{token1}}",
 								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -167,8 +172,20 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "{{token1}}",
 								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -186,13 +203,13 @@
 								},
 								{
 									"key": "email",
-									"value": "ikerd@yopmail.com",
+									"value": "yaneth2@yopmail.com",
 									"type": "default"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:{{port}}/users/2",
+							"raw": "http://127.0.0.1:{{port}}/users/3",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -203,7 +220,7 @@
 							"port": "{{port}}",
 							"path": [
 								"users",
-								"2"
+								"3"
 							]
 						}
 					},
@@ -216,8 +233,20 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "{{token1}}",
 								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -230,7 +259,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:{{port}}/users/2/password",
+							"raw": "http://127.0.0.1:{{port}}/users/3/password",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -241,7 +270,7 @@
 							"port": "{{port}}",
 							"path": [
 								"users",
-								"2",
+								"3",
 								"password"
 							]
 						}
@@ -255,7 +284,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"iker@yopmail.com\"\r\n}",
+							"raw": "{\r\n    \"email\":\"yaneth2@yopmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -285,6 +314,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"recover_code\":\"d220dbe4ee37ba63833d8dfa6b76fe2c8bf6c64d2e0ab6e68db2d30d750f668e5b57f7c0317e33bb\",\r\n    \"newPassword\":\"1234567\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://127.0.0.1:{{port}}/users/reset_password",
 							"protocol": "http",
@@ -302,6 +340,47 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token1}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/users/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -309,19 +388,31 @@
 			"name": "links",
 			"item": [
 				{
-					"name": "NewLink",
+					"name": "newLink",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "{{token1}}",
 								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"url\":\"https://www.google.com/\",\r\n    \"title\":\"cuida tu mascota\",\r\n    \"description\":\"animales, mascotas ,perros\"\r\n    \r\n    \r\n}",
+							"raw": "{\r\n    \"url\":\"https://www.google.com/nios\",\r\n    \"title\":\"cuida tu mascota\",\r\n    \"description\":\"mi mejor amigo\"\r\n    \r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -429,12 +520,24 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "{{token1}}",
 								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:{{port}}/links/4",
+							"raw": "http://127.0.0.1:{{port}}/links/8",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -445,25 +548,46 @@
 							"port": "{{port}}",
 							"path": [
 								"links",
-								"4"
+								"8"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "linkVote",
+					"name": "newVote",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "{{token1}}",
 								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vote\":\"4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:{{port}}/links/2/votes",
+							"raw": "http://localhost:{{port}}/links/8/votes",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -471,7 +595,7 @@
 							"port": "{{port}}",
 							"path": [
 								"links",
-								"2",
+								"8",
 								"votes"
 							]
 						}
@@ -485,12 +609,33 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "{{token1}}",
 								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
 							}
 						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [],
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://127.0.0.1:{{port}}/links/3",
+							"raw": "http://127.0.0.1:{{port}}/links/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -501,7 +646,109 @@
 							"port": "{{port}}",
 							"path": [
 								"links",
-								"3"
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editVote",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token1}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vote\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/links/1/votes",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"links",
+								"1",
+								"votes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteVote",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token1}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/links/3/votes",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"links",
+								"3",
+								"votes"
 							]
 						}
 					},

@@ -7,9 +7,7 @@ const { generateError, savePhoto, sendEmail, generateRandomString, validate } = 
 const Hogan = require('hogan.js');
 const fs = require('fs/promises');
 const path = require('path');
-
-const { newEmailSchema } = require('../../schemas');
-
+const { editUserSchema } = require('../../schemas');
 
 const filePath = path.join(__dirname, "..", "..", "views", "emailNewEmail.hjs");
 
@@ -25,7 +23,10 @@ const editUser = async (req, res, next) => {
             generateError("The user is unauthorized", 401)
         }
 
-        const { name, email } = req.body
+        //Validación de los atos enviados para actualizar el usuario
+       await validate(editUserSchema, req.body);
+
+        const { name, email } = req.body;
 
         const photoName = await savePhoto(req.files.perfil);
 
@@ -55,8 +56,7 @@ const editUser = async (req, res, next) => {
             if (existEmail.length > 0) {
                 generateError("The email is exists already", 409)
             }
-            await validate(newEmailSchema, email);
-
+           
             //Se genera un código de registro
             const registration_code = generateRandomString(40);
 
@@ -68,8 +68,7 @@ const editUser = async (req, res, next) => {
 
             //Compilación plantilla
             const compiledTemplate = Hogan.compile(template)
-            console.log(">>>>", verificationLink);
-
+           
             await sendEmail({
                 to: email,
                 from: process.env.EMAIL_VERIFICATION,

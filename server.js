@@ -15,7 +15,8 @@ const {
    editUser, 
    newPsw,
    recoverPassword,
-   recoverNewPassword
+   recoverNewPassword,
+   deleteUser
 } = require('./controllers/users');
 const thisIsUser = require('./middlewares/thisIsUser');
 const {newLink, listLink, getLink, deleteLink, voteLink, editLink, editVote, deleteVote} = require('./controllers/links');
@@ -61,6 +62,9 @@ app.post('/users/recover_password',recoverPassword);
 
 // POST - '/users/recoverPassword' - Que el usuario pueda editar su contraseña --Token obligatorio.
 app.post('/users/reset_password',recoverNewPassword);
+
+// DELETE- '/users/recoverPassword' - Borrado lógico. Solo dueño y admin --Token obligatorio.
+app.delete('/users/:id',userExist,thisIsUser,deleteUser);
 
 
 

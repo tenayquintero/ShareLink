@@ -5,10 +5,9 @@ const getDB = require('../../db/db');
 const getUser = async (req, res, next) => {
     let connection;
     try {
-        //Se abre la conexión
+
         connection = await getDB();
 
-        //Comprobación de usuario :id url y id authoritation
         const { id } = req.params;
 
         //Se extrae de la base de datos la info del usuario
@@ -16,8 +15,7 @@ const getUser = async (req, res, next) => {
           SELECT discharge_date,name,email,perfil,role
           FROM users
           WHERE id_user = ?
-    `
-            , [id]);
+    `, [id]);
 
         //Información que se le da a un usuario ajeno a su perfil
         const info = {
@@ -30,16 +28,15 @@ const getUser = async (req, res, next) => {
             //Información que se le da a un usuario dueño de su perfil o admin
             info.date = user[0].date
             info.email = user[0].email,
-            info.role = user[0].role
+                info.role = user[0].role
         }
 
         res.send({
             status: "ok",
             message: "User",
             data: info
-
-
         })
+        
     } catch (error) {
         next(error);
 

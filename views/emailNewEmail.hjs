@@ -50,9 +50,9 @@
             valign='top'
           ><section>
               <p style='color: #000000; font-family: arial; text-align: center'>
-                <strong>Welcome to Share Link!!!</strong></p>
+                <strong>Hello {{name}}!!!</strong></p>
               <p style='font-family: inherit; text-align: center'>Let's confirm
-                your email adress</p>
+                your email adress to update it</p>
               <div style='font-family: inherit; text-align: center'>By clicking
                 in the following link, you are confirm your email adress</div><div
               ></div></section></td>
