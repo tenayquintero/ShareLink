@@ -7,16 +7,16 @@ const jwt = require('jsonwebtoken');
 const thisIsUser = async (req, res, next) => {
     let connection;
     try {
-        //Se realiza la conexión a la base de datos
+
         connection = await getDB();
 
-        //Se extrae el token de la cabecera
         const { authorization } = req.headers;
 
         //Si el token no se encuentra en la cabecera este middleware pasa a error 401(Unauthorized)
         if (!authorization) {
             generateError('The authorization is missing', 401)
         }
+
         //Checkea que el token sea válido(virificar autorización y firma)
         let infoToken;
         try {
@@ -32,9 +32,8 @@ const thisIsUser = async (req, res, next) => {
           WHERE id_user=?
           `, [infoToken.id]);
 
-       
         const last_up_ps = new Date(checkDatePassword[0].last_up_ps)
-        const dateToken = new Date(infoToken.iat*1000)
+        const dateToken = new Date(infoToken.iat * 1000)
 
         if (dateToken < last_up_ps) {
             generateError("Expired token", 401)

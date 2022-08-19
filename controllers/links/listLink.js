@@ -12,7 +12,7 @@ const listLink = async (req, res, next) => {
 
         let result;
 
-        //ordenar por orden
+        //Dar por orden de :title, creation_date or vote
         const fieldCkeck = ["title", "creation_date", "vote"];
         const orderByfield = fieldCkeck.includes(order) ? order : "creation_date";
 

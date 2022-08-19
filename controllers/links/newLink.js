@@ -7,13 +7,13 @@ const getDB =require("../../db/db");
 const newLink = async (req, res, next) =>{
     let connection;
     try {
-        //se realiza la conexión
+       
         connection = await getDB();
 
-        //se extrae url - title - description
+       
         const {url, title, description} = req.body;
 
-        //Obligatorio campo url, title,descrition para auemntar posibilidades de búsqueda
+        //Obligatorio campo url, title,descrition para incremerntar posibilidades de búsqueda
         if(!url){
             generateError("The field 'url' is required",400)
         }
@@ -27,16 +27,26 @@ const newLink = async (req, res, next) =>{
         //se valida url - title -description
         await validate(registrationLink, req.body);
         
-        //se realiza la busqueda de url - title -description en la bd
+        //se introduce la información del nuevo lin en la bd
         await connection.query(`
         INSERT INTO links( url, title, description, id_user)
         VALUES(?,?,?,?)
        `,[url,title,description,req.Auth.id]);
+
+         //Extraer información del link creado para enviarlo como respuest-
+
+        const[linkCreated] = await connection.query(`
+         SELECT url, title, description
+         FROM links
+         WHERE id_user=?
+         ORDER BY creation_date DESC
+         `,[req.Auth.id]);
         
         
         res.status(201).send({
             status:"ok",
-            message: "Your link has been  created successfully!!!!",
+            message: "Your link has been created successfully!!!!",
+            data:linkCreated
             
         });
         

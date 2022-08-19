@@ -18,11 +18,10 @@ const userLogin = async (req, res, next) => {
     const { email, password } = req.body;
 
     //comparamos el email y la password con los datos de la bd
-    const [existUser] = await connection.query(
-      `
-    SELECT id_user, role 
-    FROM users
-    WHERE email=? AND password=SHA2(?, 512)
+    const [existUser] = await connection.query(`
+      SELECT id_user, role 
+      FROM users
+      WHERE email=? AND password=SHA2(?, 512)
      `,
       [email, password]
     );
@@ -34,9 +33,9 @@ const userLogin = async (req, res, next) => {
 
     //Comprobar que el cliente esta activo
     const [userAcive] = await connection.query(`
-    SELECT active
-    FROM users
-    WHERE email=? AND password=SHA2(?, 512) AND active=true 
+       SELECT active
+       FROM users
+       WHERE email=? AND password=SHA2(?, 512) AND active=true 
     `,[email,password])
 
     if(userAcive.length===0){
@@ -57,7 +56,7 @@ const userLogin = async (req, res, next) => {
 
     res.send({
       status: 'ok',
-      message: 'Welcome',
+      message: 'Welcome!!!',
       data: token,
     });
 

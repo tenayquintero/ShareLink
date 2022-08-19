@@ -25,6 +25,6 @@ function generatePasswordRand(length,type) {
     }
     return pass;
 }
- console.log(generatePasswordRand(9))
+//  console.log(generatePasswordRand(9))
 
 

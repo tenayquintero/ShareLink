@@ -15,7 +15,8 @@ const newPsw=async(req,res, next)=>{
      if (req.Auth.id !== Number(id) && req.Auth.role!=="admin") {
         generateError("The user is unauthorized for this action", 401)
      }
-     //Se extrae la oldPassword para compararla con la password de la bd
+     
+   //Se extrae la oldPassword para compararla con la password de la bd
    //Se extrae la password que se envia por el body para actualizarla en la bd
    const {newPassword,oldPassword}=req.body  
 
@@ -27,28 +28,27 @@ const newPsw=async(req,res, next)=>{
         generateError("The field 'NewPassword' is required", 400)
      } 
    
-
-  const [comparePassword]= await connection.query(`
-   SELECT id_user 
-   FROM users
-   WHERE password = SHA2(?,512) && id_user=?
+const [comparePassword]= await connection.query(`
+     SELECT id_user 
+     FROM users
+     WHERE password = SHA2(?,512) && id_user=?
    `, [oldPassword, req.Auth.id]);
 
    if(comparePassword.length === 0){
       generateError("The password is not correct",404)
    }
   
-      //verificación formatos password;
+   //verificación formato de la nueva contraseña.
     await validate(newPasswordSchema, newPassword);
 
    await connection.query(`
-   UPDATE users 
-   SET password = SHA2(?,512), last_up_ps = ?
-   WHERE id_user=?
+      UPDATE users 
+      SET password = SHA2(?,512), last_up_ps = ?
+      WHERE id_user=?
 
    `,[newPassword, new Date(), req.Auth.id]);
 
-   //anular el token depués de cambio de password lo hago en thisIsUser
+   //anular el token depués de cambio de password se realiza en thisIsUser
 
    res.send({
         status: "OK",
