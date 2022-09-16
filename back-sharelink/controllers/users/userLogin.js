@@ -55,9 +55,10 @@ const userLogin = async (req, res, next) => {
     await validate(registrationSchema, req.body);
 
     res.send({
-      status: 'ok',
-      message: 'Welcome!!!',
-      data: token,
+      status:'ok',
+      message:'Welcome!!!',
+      data:token,
+      email:email
     });
 
   } catch (error) {

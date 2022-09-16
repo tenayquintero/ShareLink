@@ -1,8 +1,9 @@
 "use strict"
 require('dotenv').config();
+const cors=require('cors');
 const express=require('express');
 const morgan = require('morgan');
-const fileupload=require('express-fileupload')
+const fileupload=require('express-fileupload');
 
 
 //Importaciones Locales
@@ -31,6 +32,7 @@ const authEditVote = require('./middlewares/authEditVote');
 const app= express();
 
 //middlewares
+app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(fileupload());
@@ -97,15 +99,15 @@ app.delete('/links/:id/votes',thisIsUser, voteExist, authEditVote,deleteVote);
 //middleware httpStatus
 app.use((error, req, res, next) => {
    res.status(error.httpStatus || 500).send({
-      status: 'Error',
-      message: error.message,
+      status:'error',
+      message:error.message,
       
    })
 });
 //middleware Not Found-404
 app.use((req,res)=>{
    res.status(404).send({
-    status:'Error',
+    status:'error',
     message:'Not Found'
    })
 });
