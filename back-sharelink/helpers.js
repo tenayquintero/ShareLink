@@ -10,6 +10,7 @@ const path = require("path");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 //Generador de errores
+
 const generateError=(message, code)=>{
     const error= new Error(message);
     error.httpStatus=code
