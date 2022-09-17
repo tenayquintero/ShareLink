@@ -1,6 +1,11 @@
+
+
 const Home = () =>{
     return(
-        <section>Home</section>
+        
+        <section>
+        soy home
+        </section>
     )
 }
 

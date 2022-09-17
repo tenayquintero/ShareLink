@@ -1,15 +1,39 @@
 import { useState } from "react";
 
+
 const SignUp = () => {
 
     const [email,setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [status, setStatus] = useState()
+    const [message, setMessage] = useState()   
+    
+    
+    
 
-     const handle = (e) =>{
-        e.preventDefault();
-
+     const handle = async (e) =>{
+        e.preventDefault()
+        const res = await fetch('http://127.0.0.1:3000/users', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                email,
+                password
+            })
+        })
+        const resData = await res.json()
+        if(resData.status === 'ok'){
+            setStatus('ok')
+            setMessage(resData.message)
+        }else{
+            setStatus('error')
+            setMessage(resData.message)
+          
+           console.log(resData)
+        }
         
      }
+     
 
     return (
         <section>
@@ -33,6 +57,8 @@ const SignUp = () => {
                 </label>
                 <button>Registrarse</button>
             </form>
+            {status === 'error' && <p>{message}</p>}
+            {status === 'ok' && <p>{message}</p>}
         </section>
     )
 }

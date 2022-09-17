@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
+import Links from './Pages/Links'
 import './App.css';
 
 function App() {
@@ -12,8 +13,10 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='login' element={<Login />} />
-        <Route path='signUp' element={<SignUp />} />
+        <Route path='signup' element={<SignUp />} />
+        <Route path='links' element={<Links />} />
       </Routes>
+
     </main>
   );
 }
