@@ -1,0 +1,38 @@
+.pages-auth {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.pages-auth a{
+    text-decoration: none;
+    color: white;
+ 
+}
+
+.pages-auth form {
+    color: aliceblue;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    box-shadow: 2px 0px 4px 6px rgba(0, 203, 244, 0.616);
+    background-color: black;
+    height: 300px;
+    width: 300px;
+}
+
+.pages-auth form button {
+    width: 40px;
+
+}
