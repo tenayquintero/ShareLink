@@ -5,6 +5,8 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+
 .App {
   text-align: center;
   background-image: url(./img/linkBackground.jpg);
@@ -24,6 +26,5 @@
   width: 100%;
   display: inline-flex;
 }
-
 
 
