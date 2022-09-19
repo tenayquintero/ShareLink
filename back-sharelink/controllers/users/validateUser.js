@@ -38,6 +38,7 @@ const {registration_code}=req.params;
         res.send({
             status:"OK",
             message:"User validated successfully!!!"
+           
         })
     
     } catch (error) {

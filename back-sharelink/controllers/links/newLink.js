@@ -36,12 +36,13 @@ const newLink = async (req, res, next) =>{
          //Extraer información del link creado para enviarlo como respuest-
 
         const[linkCreated] = await connection.query(`
-         SELECT url, title, description
+         SELECT links.id_link,url, title, description,email
          FROM links
-         WHERE id_user=?
+         INNER JOIN users ON(links.id_user = users.id_user)
+         WHERE links.id_user=?
          ORDER BY creation_date DESC
          `,[req.Auth.id]);
-        
+
         
         res.status(201).send({
             status:"ok",

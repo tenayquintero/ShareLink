@@ -20,15 +20,18 @@ const SignUp = () => {
             })
         })
         const resData = await res.json()
-        if (resData.status === 'ok') {
-            setStatus('ok')
-            setMessage(resData.message)
-        } else {
+
+        if (resData.status === 'error') {
             setStatus('error')
             setMessage(resData.message)
-
+        } else {
+            setStatus('ok')
+            setMessage(resData.message)
             console.log(resData)
         }
+
+
+
 
     }
 
@@ -55,8 +58,9 @@ const SignUp = () => {
                 </label>
                 <button>Registrarse</button>
             </form>
-            {status === 'error' && <p>{message}</p>}
-            {status === 'ok' && <p>{message}</p>}
+           
+            <p className={status === 'error' && 'error'}>{message}</p>
+
         </section>
     )
 }

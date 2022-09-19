@@ -35,8 +35,9 @@ const listLink = async (req, res, next) => {
         } else {
 
         [result] = await connection.query(`
-            SELECT title, url,vote,AVG(IFNULL(votes_links.vote,0)) AS vote
+            SELECT links.id_link,title, url,vote,AVG(IFNULL(votes_links.vote,0)) AS vote,email
             FROM links
+            INNER JOIN users ON(links.id_user = users.id_user)
             LEFT JOIN votes_links ON(links.id_link = votes_links.id_link)
             GROUP BY links.id_link
             ORDER BY ${orderByfield} ${orderByDirection}
@@ -46,7 +47,7 @@ const listLink = async (req, res, next) => {
         res.send({
             status: "ok",
             message: `List link`,
-            data: result,
+            data: result
         })
 
     } catch (error) {
