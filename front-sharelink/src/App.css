@@ -19,12 +19,11 @@
   
 }
 .App Header{
-  margin: 50px 500px 50px 50px;
+  margin: 50px 500px 50px 50px; 
   font-family: 'Roboto', sans-serif;
-  font-size: 25px;
-
-  width: 100%;
-  display: inline-flex;
+  font-size: 25px; 
+   width: 100%; 
+   display: inline-flex;
 }
 
 

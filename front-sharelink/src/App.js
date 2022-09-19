@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
-import Links from './Pages/Links'
+import LinksPage from './Pages/LinksPage'
 import './App.css';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='login' element={<Login />} />
         <Route path='signup' element={<SignUp />} />
-        <Route path='links' element={<Links />} />
+        <Route path='links' element={<LinksPage />} />
         </Routes>
       </div>
       

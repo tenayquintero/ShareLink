@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useSetUser, useUser } from "../context/UserContext";
-import backgroundLink from '../images/linkBackground.jpg'
+
 
 import './Login.css'
 
@@ -40,12 +40,12 @@ const Login = () => {
         return <Navigate to='/links' />
     }
 
-
     return (
 
         <section className='pages-auth' >
             <h2><Link to='/'>X</Link></h2>
-            <form onSubmit={handle} style={{ backgroundImage: `url(${backgroundLink})` }}>
+            <section className='shadow'>
+            <form onSubmit={handle}>
                 <h2>Login</h2>
                 <label >
                     <input
@@ -65,7 +65,8 @@ const Login = () => {
                 </label>
                 <button>entrar</button>
             </form>
-            {status === 'error' && <p>{error}</p>}
+            {status === 'error' && <p className="error">{error}</p>}
+            </section>
         </section>
     )
 }

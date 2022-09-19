@@ -1,7 +1,9 @@
+import ListLinks from "../components/ListLinks"
+
 const Links = ()=>{
     return(
         <section>
-            Soy Links
+           <ListLinks />
         </section>
     )
 }
