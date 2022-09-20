@@ -34,17 +34,11 @@ const voteLink = async (req, res, next) => {
 
         }
 
-
-
         //Añadir voto a la tabla
         await connection.query(`
         INSERT INTO votes_links(vote, id_user, id_link)
         VALUES (?,?,?)
         `, [vote, req.Auth.id, id]);
-
-
-
-
 
         //Media de votos
         const [newVotes] = await connection.query(`
