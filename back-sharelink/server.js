@@ -20,7 +20,7 @@ const {
    deleteUser
 } = require('./controllers/users');
 const thisIsUser = require('./middlewares/thisIsUser');
-const {newLink, listLink, getLink, deleteLink, voteLink, editLink, editVote, deleteVote} = require('./controllers/links');
+const {newLink, listLink, getLink, deleteLink, voteLink, editLink, editVote, deleteVote, ownerLink} = require('./controllers/links');
 
 //middelwares locales
 const userExist = require('./middlewares/userExist');
@@ -78,6 +78,9 @@ app.delete('/users/:id',userExist,thisIsUser,deleteUser);
 
  //GET - '/links/:id' - Ver información de una publicación específica.
  app.get('/links/:id', linkExists, getLink);
+
+ //GET - /links/mylinks - Ver todos los links compartidos del usuario
+ app.get('/mylinks', thisIsUser,ownerLink);
  
  // POST - '/links/:id' - Compartir un enlace -URL -Título -Descrpción --Token obligatorio.
  app.post('/links',thisIsUser, newLink);
