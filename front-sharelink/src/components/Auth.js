@@ -7,19 +7,20 @@ const Auth = () => {
     const setUser = useSetUser()
 
     if (user) {
-        return <ul>
-            <li>
-                {user.email}
-            </li>
-            <li onClick={() => setUser(null)}>
-                X
-            </li>
-            <li>
-               < NavLink to= "/links"Links >Links</NavLink>
-               </li>
+        return <nav>
+            <ul>
+                <li>
+                    {user.email}
+                </li>
+                <li onClick={() => setUser(null)}>
+                    X
+                </li>
+                <li>
+                    < NavLink to="/links" Links >Links</NavLink>
+                </li>
 
-
-        </ul>
+            </ul>
+        </nav>
     } else {
         return (
             <nav>

@@ -1,6 +1,7 @@
+import './OneLink.css'
 const OneLink = ({ link }) =>{
     return(
-        <section>
+        <section className='link'>
         <h2>{link.title}</h2>
         <a href={link.url}>{link.url}</a>
         <p>vote: {link.vote}</p>
