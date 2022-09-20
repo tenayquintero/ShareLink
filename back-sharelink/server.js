@@ -53,6 +53,9 @@ app.post('/users/login', userLogin);
 //- GET - '/users/:id'
 app.get('/users/:id',userExist ,thisIsUser,getUser);
 
+//GET - '/mylinks'
+app.get('/mylinks',thisIsUser,ownerLink)
+
 //- PUT - '/users/:id' -- Editar perfil del usuario(Nombre, Email, Biografía, Foto, …) Token obligatorio
 app.put('/users/:id',userExist,thisIsUser,editUser);
 
