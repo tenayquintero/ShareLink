@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useUser } from "../context/UserContext";
 import OneLink from "./OneLink";
+import './ListLinks.css'
 
 const ListLinks = () =>{
 
@@ -12,14 +13,14 @@ const ListLinks = () =>{
     useEffect(()=>{
         (async()=>{
             const res = await fetch('http://127.0.0.1:3000/links',{
-                headers: user ? { 'Athorization' : user.token} :{}
+                headers: user ? { 'Athorization' : user.token} : {}
             })
             const resData = await res.json();
             setData(resData)
           
 
         })()
-    },[])
+    },[user])
     console.log(data)
 
     if (!user) {
@@ -27,7 +28,7 @@ const ListLinks = () =>{
     }
 
     return(
-        <ul>
+        <ul className="listLinks">
             {data?.data.map(link=>
                 <li key={link.id_link}> <OneLink link={link}/></li>
                 )}

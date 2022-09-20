@@ -1,7 +1,6 @@
 import { createContext, useContext } from 'react'
 import useLocalStorage from '../hooks/useLocalStorage'
 
-
 const UserContext = createContext()
 
 export const UserProvider = ({ children }) => {
