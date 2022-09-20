@@ -1,6 +1,6 @@
 import ListLinks from "../components/ListLinks"
 
-const Links = ()=>{
+const LinksPage = ()=>{
     return(
         <section>
            <ListLinks />
@@ -8,4 +8,4 @@ const Links = ()=>{
     )
 }
 
-export default Links
+export default LinksPage;

@@ -16,8 +16,9 @@ const Auth = () => {
                     X
                 </li>
                 <li>
-                    < NavLink to="/links" Links >Links</NavLink>
+                    < NavLink to="/links" >Links</NavLink>
                 </li>
+                <li>  < NavLink to="/mylinks" >My Links</NavLink></li>
 
             </ul>
         </nav>

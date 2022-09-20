@@ -6,6 +6,7 @@ const voteLink =require('./voteLink');
 const editLink=require('./editLink');
 const editVote=require('./editVote');
 const deleteVote=require('./deleteVote');
+const ownerLink = require('./OwnerLinks')
 
 
 
@@ -14,4 +15,4 @@ const deleteVote=require('./deleteVote');
 
 
 
-module.exports ={newLink, listLink, getLink,deleteLink, voteLink,editLink,editVote,deleteVote};
+module.exports ={newLink, listLink, getLink,deleteLink, voteLink,editLink,editVote,deleteVote,ownerLink};

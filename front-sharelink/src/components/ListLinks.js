@@ -13,7 +13,7 @@ const ListLinks = () =>{
     useEffect(()=>{
         (async()=>{
             const res = await fetch('http://127.0.0.1:3000/links',{
-                headers: user ? { 'Athorization' : user.token} : {}
+                headers: user ? { 'Authorization' : user.token} : {}
             })
             const resData = await res.json();
             setData(resData)
