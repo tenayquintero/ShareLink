@@ -6,7 +6,8 @@ const voteLink =require('./voteLink');
 const editLink=require('./editLink');
 const editVote=require('./editVote');
 const deleteVote=require('./deleteVote');
-const ownerLink = require('./OwnerLinks')
+const ownerLink=require('./ownerLink')
+
 
 
 

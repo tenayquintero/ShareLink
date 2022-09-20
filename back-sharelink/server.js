@@ -81,6 +81,9 @@ app.delete('/users/:id',userExist,thisIsUser,deleteUser);
 
  //GET - '/links/:id' - Ver información de una publicación específica.
  app.get('/links/:id', linkExists, getLink);
+
+ //GET - /links/mylinks - Ver todos los links compartidos del usuario
+ app.get('/mylinks', thisIsUser,ownerLink);
  
  // POST - '/links/:id' - Compartir un enlace -URL -Título -Descrpción --Token obligatorio.
  app.post('/links',thisIsUser, newLink);
