@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useSetUser, useUser } from "../context/UserContext";
+import iconOff from "../img/iconOffpng.png"
+import './Auth.css'
 
 const Auth = () => {
 
@@ -8,27 +10,40 @@ const Auth = () => {
 
     if (user) {
         return <nav>
-            <ul>
-                <li>
+            <section className="nav_section">
+                <h1>ShareLink</h1>
+                <div>
                     {user.email}
-                </li>
-                <li onClick={() => setUser(null)}>
-                    X
-                </li>
+                </div>
+            </section>
+           
+            <ul>
                 <li>
                     < NavLink to="/links" >Links</NavLink>
                 </li>
-                <li>  < NavLink to="/mylinks" >My Links</NavLink></li>
-                <li>  < NavLink to="/links/:id" >New Links</NavLink></li>
+                <li>  < NavLink to="/mylinks" >My Links</NavLink>
+                </li>
+
+                <li
+                    onClick={() => setUser(null)}
+                    style={{ backgroundImage: `url(${iconOff})` }}
+                    className='iconOff'
+                >
+                    X
+                </li>
 
             </ul>
         </nav>
     } else {
         return (
             <nav>
-                <div><NavLink to='/'>Home</NavLink></div>
-                <div><NavLink to='/login'>Login</NavLink></div>
-                <div><NavLink to='/signup'>SignUp</NavLink></div>
+                <h1>ShareLink</h1>
+                <ul>
+                    <li><NavLink to='/'>Home</NavLink></li>
+                    <li><NavLink to='/login'>Login</NavLink></li>
+                    <li><NavLink to='/signup'>SignUp</NavLink></li>
+                </ul>
+             
             </nav>
         )
     }
