@@ -19,6 +19,7 @@ const Auth = () => {
                     < NavLink to="/links" >Links</NavLink>
                 </li>
                 <li>  < NavLink to="/mylinks" >My Links</NavLink></li>
+                <li>  < NavLink to="/links/:id" >New Links</NavLink></li>
 
             </ul>
         </nav>

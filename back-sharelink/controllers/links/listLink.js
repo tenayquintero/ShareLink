@@ -24,7 +24,7 @@ const listLink = async (req, res, next) => {
         if (search) {
             
         [result] = await connection.query(`
-            SELECT title,url,vote,AVG(IFNULL(votes_links.vote,0)) AS vote
+            SELECT title,url,AVG(IFNULL(votes_links.vote,0)) AS voteAVG
             FROM links
             LEFT JOIN votes_links ON(links.id_link = votes_links.id_link)
             WHERE url like ? or title like ? or description like ?
@@ -35,7 +35,7 @@ const listLink = async (req, res, next) => {
         } else {
 
         [result] = await connection.query(`
-            SELECT links.id_link,title, url,vote,AVG(IFNULL(votes_links.vote,0)) AS vote,email
+            SELECT links.id_link,title, url,AVG(IFNULL(votes_links.vote,0)) AS voteAVG,email
             FROM links
             INNER JOIN users ON(links.id_user = users.id_user)
             LEFT JOIN votes_links ON(links.id_link = votes_links.id_link)

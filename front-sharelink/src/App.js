@@ -7,6 +7,7 @@ import LinksPage from './Pages/LinksPage'
 import ValidateEmail from './components/ValidateEmail';
 import MyLinks from './Pages/MyLinks';
 import './App.css';
+import NewLink from './components/NewLink';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='links' element={<LinksPage />} />
           <Route path='users/validate/:registration_code' element={<ValidateEmail />} />
           <Route path='mylinks' element={<MyLinks />} />
+          <Route path='/links/:id' element={<NewLink />} />
         </Routes>
       </div>
    

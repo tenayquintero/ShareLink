@@ -19,9 +19,10 @@ const getLink = async (req, res, next) => {
 
     const [vote] = await connection.query(`
 
-          SELECT vote, AVG(IFNULL(vote,0)) AS vote
+          SELECT AVG(IFNULL(vote,0)) AS voteAVG
           FROM votes_links
           WHERE id_link=? 
+          GROUP BY id_link
        `, [id]);
 
 
