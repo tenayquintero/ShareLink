@@ -1,13 +1,27 @@
-.home-main header{
-    font-size:50px;
+.home{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+   
+}
+.home h2{
+    font-size:40px;
     
 }
-.home-main body{
+.home p{
     font-size: 25px;
-    width: 75%;
-}
-
-@media (max-width = 800px ){
-
+    width: 350px;
+    height: 300px;
+    margin-top: 2rem;
+    padding:3rem ;
+    justify-content: center;
     
 }
+@media (max-width: 500px) {
+    .home p {
+        align-self: center;
+        padding: 2rem;
+    }
+}
+    

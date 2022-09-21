@@ -1,27 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 .header-sharelink{
-    display: flex;
     flex-wrap: wrap;
+  
 }
+
 
 .App Header {
-    font-family: 'Roboto', sans-serif;
     font-size: 25px;
-    display: inline-flex;
+    padding: 1rem;
+    box-shadow: 7px 1px 15px 9px rgb(5, 67, 106) ;
 }
-.header-sharelink h1{
-    margin: 0px 250px 0px 0px;
-    
-}
+
 .header-sharelink nav{
-    display: inline-flex;
+    display: flex;
+    justify-content: space-around;
     padding: 25px;
    flex-wrap: wrap;
-    gap: 50px;
+    gap: 2rem;
     
 }
 
-.header-sharelink nav div a{
+.header-sharelink nav div a, nav ul li a{
     text-decoration: none;
     color: black;
     font-family: 'Roboto', sans-serif;
@@ -29,10 +28,11 @@
     background-color: white;
     border-radius: 5px;
     padding: 10px 25px;
- 
    box-shadow: 5px 5px 5px 3px lightblue
 }
-@media (max-width = 800px ){
+@media (max-width: 500px) {
+        .header-sharelink, .header-sharelink nav  {
+      flex-direction: column;
+    }
 
-    
 }
