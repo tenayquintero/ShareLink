@@ -4,7 +4,7 @@ const OneLink = ({ link }) =>{
         <section className='link'>
         <h2>{link.title}</h2>
         <a href={link.url}>{link.url}</a>
-        <p>vote: {link.vote}</p>
+        <p>vote: {link.voteAVG}</p>
         <p>create by {link.email}</p>
         </section>
     )
