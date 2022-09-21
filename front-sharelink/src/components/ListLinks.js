@@ -4,35 +4,34 @@ import { useUser } from "../context/UserContext";
 import OneLink from "./OneLink";
 import './ListLinks.css'
 
-const ListLinks = () =>{
+const ListLinks = () => {
 
-    const user =useUser()
-   
-    const [data,setData] = useState();
+    const user = useUser()
 
-    useEffect(()=>{
-        (async()=>{
-            const res = await fetch('http://127.0.0.1:3000/links',{
-                headers: user ? { 'Authorization' : user.token} : {}
+    const [data, setData] = useState();
+
+    useEffect(() => {
+        (async () => {
+            const res = await fetch('http://127.0.0.1:3000/links', {
+                headers: user ? { 'Authorization': user.token } : {}
             })
             const resData = await res.json();
             setData(resData)
-          
+            console.log('resData ', resData)
 
         })()
-    },[user])
-    console.log(data)
+    }, [user])
 
     if (!user) {
         return <Navigate to="/" />
     }
 
-    return(
+    return (
         <ul className="listLinks">
-            {data?.data.map(link=>
-                <li key={link.id_link}> <OneLink link={link}/></li>
-                )}
-           
+            {data?.data.map(link =>
+                <li key={link.id_link}> <OneLink link={link} /></li>
+            )}
+
         </ul>
     )
 }

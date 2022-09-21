@@ -44,8 +44,8 @@ app.use(fileupload());
 //POST - '/users' - Creación de usuario sin activar - obligatorio email y password.
 app.post('/users', newUser);
 
-//- GET - '/users/validate/:registration_code' - Validaremos al usuario que se ha registrado.
-app.get('/users/validate/:registration_code',validateUser);
+//- PUT - '/users/validate' - Validaremos al usuario que se ha registrado.
+app.put('/users/validate',validateUser);
 
 //POST - '/users/login' - Comprobar que el usuario existe -mail y password obligatoria - Devolverá el token.
 app.post('/users/login', userLogin);
