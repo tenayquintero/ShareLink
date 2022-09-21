@@ -17,7 +17,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='login' element={<Login />} />
           <Route path='signup' element={<SignUp />} />
-          <Route path='links' element={<LinksPage />} />
+          <Route path='links' eLement={<LinksPage />} />
           <Route path='users/validate/:registration_code' element={<ValidateEmail />} />
           <Route path='mylinks' element={<MyLinks />} />
         </Routes>
