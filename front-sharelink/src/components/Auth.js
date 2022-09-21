@@ -23,6 +23,8 @@ const Auth = () => {
                 </li>
                 <li>  < NavLink to="/mylinks" >My Links</NavLink>
                 </li>
+                <li>  < NavLink to="/links/:id" >New Link</NavLink>
+                </li>
 
                 <li
                     onClick={() => setUser(null)}
