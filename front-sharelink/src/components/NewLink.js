@@ -5,23 +5,22 @@ import './NewLink.css';
 
 const NewLink = () =>{
 
-const [title, setTitle] = useState([]);
-const [newTitle,setNewTitle]=useState('');
-const [url,setUrl] = useState([]);
-const [newUrl,setNewUrl] = useState('');
-const [description, setDescription] = useState([]);
-const [newDescription, setNewDescription] = useState('');
+const [title, setTitle] = useState('');
+const [url,setUrl] = useState('');
+const [description, setDescription] = useState('');
+const [data,setData] = useState();
 
-const user = useUser()
+
+const user = useUser();
+    const newLink = [...data, { title, url, description }]
 
     const handleSubmit = e =>{
-        e.preventDefault()
-        setTitle([...title, newTitle])
-        setNewTitle('')
-        setUrl([...url, newUrl])
-        setNewUrl('')
-        setDescription([...description, newDescription])
-        setNewDescription('')
+        e.preventDefault(newLink)
+
+        setData()
+       
+
+       
 
     }
     if (!user) {
@@ -31,9 +30,9 @@ const user = useUser()
          <div className="todo">
               <form onSubmit={handleSubmit}>
             
-            <input placeholder='title....' value={newTitle} onChange={e=>setNewTitle(e.target.value)} />
-            <input placeholder='url.....' value={newUrl} onChange={e=>setNewUrl(e.target.value)} />
-            <input placeholder='description.....' value={newDescription} onChange={e=>setNewDescription(e.target.value)} />
+            <input placeholder='title....' value={title} onChange={e=>setTitle(e.target.value)} />
+            <input placeholder='url.....' value={url} onChange={e=>setUrl(e.target.value)} />
+            <input placeholder='description.....' value={description} onChange={e=>setDescription(e.target.value)} />
             <button>Compartir</button>
           
             </form>
