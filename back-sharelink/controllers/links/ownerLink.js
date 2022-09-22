@@ -7,7 +7,7 @@ const ownerLink = async (req, res, next) => {
 
         const [yourLinks] = await connection.query(
             `
-            SELECT title,url,description,vote,AVG(IFNULL(votes_links.vote,0)) AS vote
+            SELECT links.id_link,title,url,description,vote,AVG(IFNULL(votes_links.vote,0)) AS vote
             FROM links
             LEFT JOIN votes_links ON(links.id_link = votes_links.id_link)
             WHERE links.id_user = ?

@@ -5,9 +5,10 @@ import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
 import LinksPage from './Pages/LinksPage'
 import ValidateEmail from './components/ValidateEmail';
-import MyLinks from './Pages/MyLinks';
 import './App.css';
-import NewLink from './components/NewLink';
+// import NewLink from './components/NewLink';
+import MyLinksPage from './Pages/MyLinksPage';
+import DeleteLink from './components/DeleteLink';
 
 function App() {
   return (
@@ -20,8 +21,9 @@ function App() {
           <Route path='signup' element={<SignUp />} />
           <Route path='links' element={<LinksPage />} />
           <Route path='users/validate/:registration_code' element={<ValidateEmail />} />
-          <Route path='mylinks' element={<MyLinks />} />
-          <Route path='/links/:id' element={<NewLink />} />
+          <Route path='mylinks' element={<MyLinksPage />} />
+          <Route path='mylinks/delete/:id' element={<DeleteLink />} />
+        
         </Routes>
       </div>
    
