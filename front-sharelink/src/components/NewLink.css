@@ -1,0 +1,33 @@
+.newLink {
+    margin: 2rem;
+}
+
+.form_newLink {
+    height: 200px;
+    width: 300px;
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    margin: 2rem auto;
+    box-shadow: var(--boxShadow);
+    border-radius: 15px;
+    padding: 0.5rem;
+
+}
+
+.form_newLink input,textarea {
+    height: 30px;
+    border-radius: 15px;
+    padding: 0.5rem 2rem;
+    border: none;
+    background-color: transparent;
+    color: aliceblue;
+}
+
+.form_newLink textarea {
+    height: 60px;
+}
+
+.form_newLink button {
+    align-self: center;
+}

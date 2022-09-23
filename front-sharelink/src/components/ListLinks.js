@@ -4,11 +4,12 @@ import { useUser } from "../context/UserContext";
 import OneLink from "./OneLink";
 import './ListLinks.css'
 
-const ListLinks = () => {
+const ListLinks = ( {response} ) => {
 
     const user = useUser()
 
     const [data, setData] = useState();
+    console.log('soy response',response)
 
     useEffect(() => {
         (async () => {
@@ -17,7 +18,6 @@ const ListLinks = () => {
             })
             const resData = await res.json();
             setData(resData)
-            console.log('resData ', resData)
 
         })()
     }, [user])
