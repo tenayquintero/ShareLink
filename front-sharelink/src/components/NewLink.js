@@ -12,12 +12,18 @@ const [data,setData] = useState();
 
 
 const user = useUser();
+
     const newLink = [...data, { title, url, description }]
 
-    const handleSubmit = e =>{
+    const handleSubmit = async e =>{
         e.preventDefault(newLink)
-
-        setData()
+        const res = await fetch(`http://127.0.0.1:3000/links/`,{
+            method:'POST',
+            headers: user ? { 'Authorization': user.data } : {},
+            body:{ title, url, description }
+        })
+        const resData = await res.json();
+        setData(resData)
        
 
        
