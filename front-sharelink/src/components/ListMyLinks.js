@@ -7,7 +7,7 @@ const ListMyLinks = () => {
 
     const user = useUser()
     const [data, setData] = useState();
-    const [error, setError] = useState()
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -15,26 +15,29 @@ const ListMyLinks = () => {
                 headers: user ? { 'Authorization': user.data } : {}
             })
             const resData = await res.json();
-            console.log(resData)
-            console.log(user)
             setData(resData)
 
         })()
     }, [user])
+
     console.log(data)
     if (data?.message === 'error') {
-        setError('error')
+        setError(true)
 
     }
-    if(!user){
-        return <Navigate to  ='/' />
+
+    if (!user) {
+        return <Navigate to='/' />
     }
 
     return (
         <>
             {
-                error === 'error' ? <p>Ha surgido un error</p>
-                    : <ul>
+                error
+                    ? <p>Ha surgido un error</p>
+                    : <ul className="listLinks">
+                        {(data?.result.length === 0) && <p>Aún no tienes enlaces compartidos</p>}
+                     
                         {data?.result.map(item =>
                             <li>
                                 <OneMyLink myLink={item} />
@@ -42,6 +45,7 @@ const ListMyLinks = () => {
                         )}
                     </ul>
             }
+           
 
         </>
     )

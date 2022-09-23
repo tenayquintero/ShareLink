@@ -2,6 +2,7 @@
 const getDB =require("../../db/db");
  const { validate, generateError} = require("../../helpers");
  const { registrationLink } = require("../../schemas");
+const { MetadataExtractor2 } = require("metadata-extractor");
 
 
 const newLink = async (req, res, next) =>{
@@ -26,17 +27,23 @@ const newLink = async (req, res, next) =>{
         
         //se valida url - title -description
         await validate(registrationLink, req.body);
+
+        const imageurl = await MetadataExtractor2(url)
+        const image = imageurl.og.image.url
+        console.log(image)
         
         //se introduce la información del nuevo lin en la bd
         await connection.query(`
-        INSERT INTO links( url, title, description, id_user)
-        VALUES(?,?,?,?)
-       `,[url,title,description,req.Auth.id]);
+        INSERT INTO links( url, title, image, description, id_user)
+        VALUES(?,?,?,?,?)
+       `,[url,title,image,description,req.Auth.id]);
 
-         //Extraer información del link creado para enviarlo como respuest-
+      
+
+         //Extraer información del link creado para enviarlo como respuests
 
         const[linkCreated] = await connection.query(`
-         SELECT links.id_link,url, title, description,email
+         SELECT links.id_link,url, title,image, description,email
          FROM links
          INNER JOIN users ON(links.id_user = users.id_user)
          WHERE links.id_user=?
@@ -47,8 +54,7 @@ const newLink = async (req, res, next) =>{
         res.status(201).send({
             status:"ok",
             message: "Your link has been created successfully!!!!",
-            data:linkCreated
-            
+            data: linkCreated,
         });
         
     } catch (error) {

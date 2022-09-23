@@ -56,7 +56,7 @@ const SignUp = () => {
                         type='password'
                     />
                 </label>
-                <button>Registrarse</button>
+                <button>Let's go</button>
             </form>
            
             <p className={status === 'error' && 'error'}>{message}</p>

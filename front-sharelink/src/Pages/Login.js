@@ -63,7 +63,7 @@ const Login = () => {
                         type='password'
                     />
                 </label>
-                <button>entrar</button>
+                <button>Let's go</button>
             </form>
             {status === 'error' && <p className="error">{error}</p>}
             </section>

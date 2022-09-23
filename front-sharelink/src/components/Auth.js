@@ -12,11 +12,9 @@ const Auth = () => {
         return <nav>
             <section className="nav_section">
                 <h1>ShareLink</h1>
-                <div>
-                    {user.email}
-                </div>
+
             </section>
-           
+
             <ul>
                 <li>
                     < NavLink to="/links" >Links</NavLink>
@@ -25,16 +23,23 @@ const Auth = () => {
                 </li>
                 <li>  < NavLink to="/links/:id" >New Link</NavLink>
                 </li>
+                
 
-                <li
+
+            </ul>
+            <section className="logeado">
+                <div>
+                    {user.email}
+                </div>
+
+                <div
                     onClick={() => setUser(null)}
                     style={{ backgroundImage: `url(${iconOff})` }}
                     className='iconOff'
                 >
                     X
-                </li>
-
-            </ul>
+                </div>
+            </section>
         </nav>
     } else {
         return (
@@ -43,9 +48,9 @@ const Auth = () => {
                 <ul>
                     <li><NavLink to='/'>Home</NavLink></li>
                     <li><NavLink to='/login'>Login</NavLink></li>
-                    <li><NavLink to='/signup'>SignUp</NavLink></li>
+                    <li><NavLink to='/signup'>Sign Up</NavLink></li>
                 </ul>
-             
+
             </nav>
         )
     }

@@ -9,6 +9,7 @@ import './App.css';
 // import NewLink from './components/NewLink';
 import MyLinksPage from './Pages/MyLinksPage';
 import DeleteLink from './components/DeleteLink';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         
         </Routes>
       </div>
+      <Footer />
    
 
     </main>

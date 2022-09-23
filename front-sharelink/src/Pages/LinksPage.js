@@ -1,10 +1,11 @@
 import ListLinks from "../components/ListLinks"
+import './LinksPage.css'
 // import NewLink from "../components/NewLink";
 
 
 const LinksPage = ()=>{
     return(
-        <section>
+        <section className="linksPage">
             {/* <NewLink /> */}
            <ListLinks />
         </section>
