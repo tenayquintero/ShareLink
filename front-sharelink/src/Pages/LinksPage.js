@@ -1,13 +1,13 @@
 import ListLinks from "../components/ListLinks"
 import './LinksPage.css'
-// import NewLink from "../components/NewLink";
+import NewLink from "../components/NewLink";
 
 
-const LinksPage = ()=>{
+const LinksPage = ({ response, setResponse })=>{
     return(
         <section className="linksPage">
-            {/* <NewLink /> */}
-           <ListLinks />
+            <NewLink setResponse={setResponse} response={response} />
+           <ListLinks response={response}/>
         </section>
     )
 }

@@ -5,13 +5,14 @@ import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
 import LinksPage from './Pages/LinksPage'
 import ValidateEmail from './components/ValidateEmail';
-import './App.css';
-// import NewLink from './components/NewLink';
 import MyLinksPage from './Pages/MyLinksPage';
 import DeleteLink from './components/DeleteLink';
 import Footer from './components/Footer';
+import { useState } from 'react';
+import './App.css';
 
 function App() {
+  const [response, setResponse] = useState([]);
   return (
     <main className="App" >
       <Header />
@@ -20,7 +21,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='login' element={<Login />} />
           <Route path='signup' element={<SignUp />} />
-          <Route path='links' element={<LinksPage />} />
+          <Route path='links' element={<LinksPage response={response} setResponse={setResponse}/>} />
           <Route path='users/validate/:registration_code' element={<ValidateEmail />} />
           <Route path='mylinks' element={<MyLinksPage />} />
           <Route path='mylinks/delete/:id' element={<DeleteLink />} />

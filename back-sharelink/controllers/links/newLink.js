@@ -2,7 +2,7 @@
 const getDB =require("../../db/db");
  const { validate, generateError} = require("../../helpers");
  const { registrationLink } = require("../../schemas");
-const { MetadataExtractor2 } = require("metadata-extractor");
+ const { MetadataExtractor2 } = require("metadata-extractor");
 
 
 const newLink = async (req, res, next) =>{
@@ -27,18 +27,21 @@ const newLink = async (req, res, next) =>{
         
         //se valida url - title -description
         await validate(registrationLink, req.body);
-
+       
         const imageurl = await MetadataExtractor2(url)
-        const image = imageurl.og.image.url
-        console.log(image)
-        
+        let image;
+
+        if (imageurl.og === undefined){
+            image = 'imageDefault'
+        }else{
+            image = imageurl.og.image.url
+        }
+     
         //se introduce la información del nuevo lin en la bd
         await connection.query(`
-        INSERT INTO links( url, title, image, description, id_user)
+        INSERT INTO links( url, title,image,description, id_user)
         VALUES(?,?,?,?,?)
        `,[url,title,image,description,req.Auth.id]);
-
-      
 
          //Extraer información del link creado para enviarlo como respuests
 
