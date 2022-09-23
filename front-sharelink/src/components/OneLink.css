@@ -1,13 +1,26 @@
 .listLinks {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
     align-items: center;
 }
 .listLinks li{
-    border: red solid 2px;
-    height: 200px;
-    width: 200px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 6px 8px rgb(110, 231, 255);
+    height: 350px;
+    width: 300px;
     list-style: none;
+    padding: 1rem;
+   
 }
+.link img{
+    width: 200px;
+    height: 200px;
+}
+
+/* .link{
+    display: flex;
+    flex-direction: clumn;
+} */
+
 

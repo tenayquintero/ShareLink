@@ -18,7 +18,7 @@ const listLink = async (req, res, next) => {
 
         //ASC || DESC
         const orderCheck = ["ASC", "DESC"];
-        const orderByDirection = orderCheck.includes(direction) ? direction : "ASC";
+        const orderByDirection = orderCheck.includes(direction) ? direction : "DESC";
        
         //preferencia de búsqueda
         if (search) {
@@ -35,7 +35,7 @@ const listLink = async (req, res, next) => {
         } else {
 
         [result] = await connection.query(`
-            SELECT links.id_link,title, url,AVG(IFNULL(votes_links.vote,0)) AS voteAVG,email
+            SELECT links.id_link,title,image,url,AVG(IFNULL(votes_links.vote,0)) AS voteAVG,description,email
             FROM links
             INNER JOIN users ON(links.id_user = users.id_user)
             LEFT JOIN votes_links ON(links.id_link = votes_links.id_link)

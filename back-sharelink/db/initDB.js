@@ -40,6 +40,7 @@ const main = async () => {
     id_link INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     creation_date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL, 
     url VARCHAR(250) NOT NULL,
+    image VARCHAR(250),
     title VARCHAR(100) NOT NULL,
     description VARCHAR(200),
     id_user INT NOT NULL,

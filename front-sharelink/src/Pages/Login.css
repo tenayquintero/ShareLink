@@ -40,11 +40,11 @@
     width: 300px;
 }
 
-.pages-auth form button {
+/* .pages-auth form button {
     width: 50px;
     border-radius: 5px;
 
-}
+} */
 .error{
     color:red;
 }

@@ -1,38 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
-.header-sharelink{
+
+.header-sharelink {
     flex-wrap: wrap;
-  
+
 }
 
+/* .nav_section{
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    
+} */
 
 .App Header {
     font-size: 25px;
     padding: 1rem;
-    box-shadow: 7px 1px 15px 9px rgb(5, 67, 106) ;
+    box-shadow: 7px 1px 15px 9px rgb(5, 67, 106);
 }
 
-.header-sharelink nav{
+.header-sharelink nav {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     padding: 25px;
-   flex-wrap: wrap;
+    flex-wrap: wrap;
     gap: 2rem;
-    
+
+}
+.header-sharelink nav ul{
+    gap: 1rem;
 }
 
-.header-sharelink nav div a, nav ul li a{
+.header-sharelink nav div a,
+nav ul li a,
+button {
     text-decoration: none;
     color: black;
     font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    background-color: white;
-    border-radius: 5px;
-    padding: 10px 25px;
-   box-shadow: 5px 5px 5px 3px lightblue
+    font-size: 16px;
+  
 }
-@media (max-width: 500px) {
-        .header-sharelink, .header-sharelink nav  {
-      flex-direction: column;
-    }
+nav ul li ,button{
+    height: 2rem;
+    width: 5rem;
+    background-color: white;
+    box-shadow: 0px 1px 2px 3px lightblue;
+    border-radius: 5px;
+    border: none;
 
 }
+
+/* @media (max-width: 500px) {
+    .header-sharelink nav ul {
+        flex-direction: column;
+    }
+
+} */
