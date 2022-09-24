@@ -12,6 +12,7 @@ const ownerLink = async (req, res, next) => {
             LEFT JOIN votes_links ON(links.id_link = votes_links.id_link)
             WHERE links.id_user = ?
             GROUP BY links.id_link
+            ORDER BY creation_date DESC
             `
             , [req.Auth.id])
         console.log(req.Auth.id)

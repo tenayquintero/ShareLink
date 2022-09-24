@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
-import { useSetUser, useUser } from "../context/UserContext";
-
-
-import './Login.css'
+import { useSetUser, useUser } from "../../context/UserContext";
+import './LoginPage.css'
 
 const Login = () => {
 
@@ -42,7 +40,7 @@ const Login = () => {
 
     return (
 
-        <section className='pages-auth' >
+        <section className='bg' >
             <h2><Link to='/'>X</Link></h2>
             <section className='shadow'>
             <form onSubmit={handle}>

@@ -1,7 +1,6 @@
-import ListLinks from "../components/ListLinks"
+import ListLinks from "../../components/ListLinks/ListLinks"
+import NewLink from "../../components/NewLink/NewLink"
 import './LinksPage.css'
-import NewLink from "../components/NewLink";
-
 
 const LinksPage = ({ response, setResponse })=>{
     return(

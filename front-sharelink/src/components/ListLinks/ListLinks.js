@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import { useUser } from "../context/UserContext";
-import OneLink from "./OneLink";
+import { useUser } from "../../context/UserContext";
+import OneLink from "../OneLink/OneLink";
 import './ListLinks.css'
 
 const ListLinks = ( {response} ) => {

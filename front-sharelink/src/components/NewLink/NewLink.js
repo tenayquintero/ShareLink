@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
-import { useUser } from "../context/UserContext";
+import { useUser } from "../../context/UserContext";
 import './NewLink.css';
 
 const NewLink = ({ setResponse, response }) => {
@@ -24,7 +24,6 @@ const NewLink = ({ setResponse, response }) => {
         })
         const resData = await res.json();
         setResponse([...response, resData])
-
     }
 
     if (!user) {
@@ -35,7 +34,6 @@ const NewLink = ({ setResponse, response }) => {
             <p>No dejes de compartir tus enlaces aquí y ayudar
                 a otras personas en su día a día </p>
             <form onSubmit={handleSubmit} className='form_newLink'>
-
                 <input placeholder='title....' value={title} onChange={e => setTitle(e.target.value)} />
                 <input placeholder='url.....' value={url} onChange={e => setUrl(e.target.value)} />
                 <textarea placeholder='description.....' value={description} onChange={e => setDescription(e.target.value)} />

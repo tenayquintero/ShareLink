@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useUser } from "../context/UserContext"
+import { useUser } from "../../context/UserContext"
 import './DeleteLink.css'
 const DeleteLink = () => {
     const user = useUser();
@@ -17,27 +17,24 @@ const DeleteLink = () => {
         const resData = await res.json();
         console.log(resData);
         setResult(resData);
-
     }
-
     return (
-        <section className="deleteLink">
+        <section className="bg">
             {!result &&
-                <>
-                    <p>¿desea borrar su publicacion</p>
-                    <button onClick={() => deleteLink()}>si</button>
-                    <Link to='/mylinks' > <button>No</button></Link>
-                </>
-
+                <section className="deleteLink_confirmation">
+                    <p>¿Quieres borrar tu publicación?</p>
+                    <div>
+                        <button onClick={() => deleteLink()}>si</button>
+                        <Link to='/mylinks'> <button>No</button></Link>
+                    </div>
+                </section>
             }
-
             {result?.status === 'ok' &&
                 <>
-                    <p>Tu publicación se ha borrado correctamente</p>
-                    <Link to='/mylinks' >volver</Link>
+                    <p className="resultConfirmation">Tu publicación se ha borrado correctamente</p>
+                <Link to='/mylinks' ><button>volver</button></Link>
                 </>
             }
-
         </section>
     )
 }

@@ -14,7 +14,11 @@ const OneMyLink = ({ myLink }) => {
                     delete
                 </Link>
             </button>
-            <button>edit</button>
+            <button>
+                <Link to={`/mylinks/edit/${myLink.id_link}`} >
+                    edit
+                </Link>
+            </button>
         </section>
     )
 }

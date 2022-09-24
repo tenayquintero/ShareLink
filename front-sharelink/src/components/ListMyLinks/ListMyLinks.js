@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import { useUser } from "../context/UserContext";
-import OneMyLink from "./OneMyLink";
+import { useUser } from "../../context/UserContext";
+import OneMyLink from "../OneMyLink/OneMyLink";
 
 const ListMyLinks = () => {
 

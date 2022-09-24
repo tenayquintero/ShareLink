@@ -2,7 +2,8 @@
     margin: 2rem;
 }
 
-.form_newLink {
+.form_newLink, 
+.form_editLink {
     height: 200px;
     width: 300px;
     display: flex;
@@ -15,7 +16,8 @@
 
 }
 
-.form_newLink input,textarea {
+.form_newLink input,textarea,
+.form_editLink input, textarea {
     height: 30px;
     border-radius: 15px;
     padding: 0.5rem 2rem;
@@ -24,10 +26,12 @@
     color: aliceblue;
 }
 
-.form_newLink textarea {
+.form_newLink textarea,
+.form_editLink textarea {
     height: 60px;
 }
 
-.form_newLink button {
+.form_newLink button, 
+.form_editLink button {
     align-self: center;
 }
