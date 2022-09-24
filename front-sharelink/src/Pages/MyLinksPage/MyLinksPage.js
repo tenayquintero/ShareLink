@@ -1,4 +1,4 @@
-import ListMyLinks from "../components/ListMyLinks";
+import ListMyLinks from "../../components/ListMyLinks/ListMyLinks";
 
 //Aquí van los los links compartidos del usuario logeado.
 const MyLinksPage = () =>{

@@ -1,17 +1,4 @@
-.pages-auth {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.pages-auth a{
+.bg a{
     text-decoration: none;
     color: white;
  
@@ -27,7 +14,7 @@
     
 }
 
-.pages-auth form {
+.bg form {
     color: aliceblue;
     display: flex;
     justify-content: center;
@@ -45,6 +32,3 @@
     border-radius: 5px;
 
 } */
-.error{
-    color:red;
-}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import './SignUp.css'
+import './SignUpPage.css'
 
 const SignUp = () => {
 
@@ -29,14 +29,10 @@ const SignUp = () => {
             setMessage(resData.message)
             console.log(resData)
         }
-
-
-
-
     }
 
     return (
-        <section className='pages-auth'>
+        <section className='bg'>
             <h2><Link to='/'>X</Link></h2>
             <form onSubmit={handle}>
                 <h2>SignUp</h2>

@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { useSetUser, useUser } from "../context/UserContext";
-import iconOff from "../img/iconOffpng.png"
+import { useSetUser, useUser } from "../../context/UserContext";
+import iconOff from "../../img/iconOffpng.png"
 import './Auth.css'
 
 const Auth = () => {

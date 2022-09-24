@@ -1,4 +1,4 @@
-import Auth from "./Auth"
+import Auth from '../Auth/Auth'
 import './Header.css'
 
 const Header = () =>{
