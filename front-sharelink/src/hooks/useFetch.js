@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useUser } from "../context/UserContext";
 
-const useFetch = ( url) =>{
+const useFetch = ( url, key) =>{
     const user = useUser()
 
     const [data, setData] = useState();
@@ -15,7 +15,7 @@ const useFetch = ( url) =>{
             const resData = await res.json();
             setData(resData);
         })()
-    },[url,user])
+    },[url,user,key])
 
     return data
     

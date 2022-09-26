@@ -35,11 +35,11 @@ _Crear una base de datos en tu mysql_
 ```
 CREATE DATABASE nameDataBaseSql;
 ```
-* Crear una carpeta raiz .env para conectar tus datos personales con la api, recuarda que en la carpeta .env.example estan todos los datos correspondientes para utilizar en tu nueva carpeta .env
+* Crear un documento raiz .env para conectar tus datos personales con la api, recuarda que en el documento .env.example estan todos los datos correspondientes para utilizar en tu nuevo documento .env
 
 * Actuliza los datos del usuario admin en el documento initDb.js
 
-* Crear una carperta de raiz llamada static.js dónde se guardarán las fotos de perfil actulizadas por cada usuario,recuerda guardar el nombre de la carpeta en el campo STATIC_FILE del documento .env.
+* Crear una carperta de raiz llamada static dónde se guardarán las fotos de perfil actulizadas por cada usuario,recuerda guardar el nombre de la carpeta en el campo STATIC_FILE del documento .env.
 
 * Para la interacción con el envio de email deberas tener una api key de algún gestor de email, en este caso hemos configurado la api con 'sengrid'
 https://docs.sendgrid.com/for-developers/sending-email/quickstart-nodejs
@@ -57,6 +57,12 @@ node .db./initDB.js
 ```
 npm run dev
 ```
+Este ultimo comando lo debereas ejecutar en caso de estar probando la api en modo desarrollo, en caso contrario un simple...
+
+```
+npm start
+```
+será sufciente para poner en marcha nuestro puerto de escucha.
 
 _Ahora deberás ver en tu consola un aviso del puerto en el cual se está realizando la escucha._
 

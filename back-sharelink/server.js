@@ -3,11 +3,13 @@ require('dotenv').config();
 const cors=require('cors');
 const express=require('express');
 const morgan = require('morgan');
+const path = require('path')
 const fileupload=require('express-fileupload');
 
 
 //Importaciones Locales
-const { PORT } = process.env;
+
+const { PORT, STATIC_FILE } = process.env;
 const {
    newUser, 
    validateUser, 
@@ -36,6 +38,7 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(fileupload());
+app.use(express.static(path.join(__dirname, STATIC_FILE)));
 
 /**
  * USERS

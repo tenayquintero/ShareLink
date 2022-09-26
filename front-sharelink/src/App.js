@@ -14,7 +14,8 @@ import Loading from './components/Loading/Loading';
 import './App.css';
 
 function App() {
-  const [response, setResponse] = useState([]);
+  const [key, setKey] = useState(0);
+  const reload = () => setKey(k => k + 1)
   return (
     <main className="App" >
       <Header />
@@ -24,7 +25,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='login' element={<Login />} />
             <Route path='signup' element={<SignUp />} />
-            <Route path='links' element={<LinksPage response={response} setResponse={setResponse} />} />
+            <Route path='links' element={<LinksPage fetchKey={key} reload={reload} />} />
             <Route path='users/validate/:registration_code' element={<ValidateEmail />} />
             <Route path='mylinks' element={<MyLinksPage />} />
             <Route path='mylinks/delete/:id' element={<DeleteLink />} />
