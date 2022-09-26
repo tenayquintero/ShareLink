@@ -1,4 +1,6 @@
+import { NavLink } from 'react-router-dom';
 import noImage from '../../img/photo-no-image-available.jpg'
+import NewVotes from '../Votes/NewVotes';
 import './OneLink.css'
 const OneLink = ({ link }) => {
     return (
@@ -13,10 +15,11 @@ const OneLink = ({ link }) => {
                 </a>
                 <h2>{link.title}</h2>
                 <p>{link.description}</p>
-                <p>vote: {link.voteAVG}</p>
+                {/* <p>vote: {link.voteAVG}</p> */}
+                <NewVotes value={link.voteAVG} />
             </main>
             <footer>
-                <p className='author'>create by {link.email}</p>
+                <p className='author'>create by <NavLink to={'/users/'+link.id_user } >{link.email}</NavLink></p>
             </footer>
         </section>
     )

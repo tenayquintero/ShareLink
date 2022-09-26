@@ -12,9 +12,12 @@ import { Suspense, useState } from 'react';
 import EditLink from './components/EditLink/EditLink';
 import Loading from './components/Loading/Loading';
 import './App.css';
+import GetUser from './components/User/GetUser';
+import EditUser from './components/EditUser/EditUser';
 
 function App() {
   const [key, setKey] = useState(0);
+
   const reload = () => setKey(k => k + 1)
   return (
     <main className="App" >
@@ -30,6 +33,8 @@ function App() {
             <Route path='mylinks' element={<MyLinksPage />} />
             <Route path='mylinks/delete/:id' element={<DeleteLink />} />
             <Route path='mylinks/edit/:id' element={<EditLink />} />
+            <Route path='users/:id' element={<GetUser />} />
+            <Route path='users/edit/:id' element={<EditUser />} />
           </Routes>
         </Suspense>
       </div>

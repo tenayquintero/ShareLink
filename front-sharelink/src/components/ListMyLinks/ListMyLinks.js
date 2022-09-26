@@ -16,7 +16,7 @@ const ListMyLinks = () => {
             })
             const resData = await res.json();
             setData(resData)
-
+            console.log(resData)
         })()
     }, [user])
 

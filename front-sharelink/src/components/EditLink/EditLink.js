@@ -9,6 +9,7 @@ const EditLink = () => {
     const { id } = useParams();
 
     const link = useFetch(`http://127.0.0.1:3000/links/${id}`)
+    console.log('soy link de editUser', link)
 
     const [title, setTitle] = useState(link.data.title);
     const [url, setUrl] = useState(link.data.url);
