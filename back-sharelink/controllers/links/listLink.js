@@ -35,7 +35,7 @@ const listLink = async (req, res, next) => {
         } else {
 
         [result] = await connection.query(`
-            SELECT links.id_link,title,image,url,AVG(IFNULL(votes_links.vote,0)) AS voteAVG,description,email
+            SELECT links.id_link,title,image,url,AVG(IFNULL(votes_links.vote,0)) AS voteAVG,description,email,users.id_user
             FROM links
             INNER JOIN users ON(links.id_user = users.id_user)
             LEFT JOIN votes_links ON(links.id_link = votes_links.id_link)

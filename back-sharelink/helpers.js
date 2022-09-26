@@ -40,7 +40,6 @@ const sendEmail = async (msg) => {
 }
 
 //Guardar perfil en dir static
-
 const cryptoPhoto=generateRandomString(40)
 
 const staticDir = path.join(__dirname, process.env.STATIC_FILE);

@@ -26,7 +26,7 @@ const main = async () => {
      name VARCHAR(50),
      email VARCHAR(100) UNIQUE NOT NULL,
      password VARCHAR(150) NOT NULL,
-     perfil VARCHAR(150),
+     perfil VARCHAR(250),
      role ENUM("admin", "normal") DEFAULT "normal",
      active BOOLEAN DEFAULT false,
      registration_code VARCHAR(150),
