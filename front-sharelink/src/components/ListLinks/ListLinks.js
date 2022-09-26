@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import OneLink from "../OneLink/OneLink";
+import NewVotes from "../Votes/newVotes";
 import './ListLinks.css'
 
 const ListLinks = ( {response} ) => {
@@ -31,6 +32,7 @@ const ListLinks = ( {response} ) => {
             {data?.data.map(link =>
                 <li key={link.id_link}> <OneLink link={link} /></li>
             )}
+            <NewVotes value={vote} />
 
         </ul>
     )
