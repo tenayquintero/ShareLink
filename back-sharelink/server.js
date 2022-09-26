@@ -6,7 +6,6 @@ const morgan = require('morgan');
 const path = require('path')
 const fileupload=require('express-fileupload');
 
-
 //Importaciones Locales
 
 const { PORT, STATIC_FILE } = process.env;
