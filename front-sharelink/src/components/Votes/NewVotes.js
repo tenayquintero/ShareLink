@@ -20,23 +20,24 @@ function NewVotes() {
 
     const [vote, setVote]= useState()
     const [response, setResponse] = useState();
-
     const handleClick = async (e) => {
-        e.preventDefault();
+      e.preventDefault();
 
-        const res = await fetch(`http://127.0.0.1:3000/links/${id}/votes`, {
-            method: 'POST',
-            headers: user ? {
-                'Authorization': user.data,
-                "Content-type": "application/json",
-            } : {},
-            body: JSON.stringify({ vote })
-        })
-        const resData = await res.json();
-        console.log(resData,'soy resdata')
-        setResponse(resData)
-      
-    }
+      const res = await fetch(`http://127.0.0.1:3000/links/${id}/votes`, {
+          method: 'POST',
+          headers: user ? {
+              'Authorization': user.data,
+              "Content-type": "application/json",
+          } : {},
+          body: JSON.stringify({ vote })
+      })
+      const resData = await res.json();
+      console.log(resData,'soy resdata')
+      setResponse(resData)
+    
+  }
+
+  
 
     
     if (!user) {

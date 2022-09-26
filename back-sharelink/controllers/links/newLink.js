@@ -36,6 +36,7 @@ const newLink = async (req, res, next) => {
         } else {
             image = imageurl.og.image.url
         }
+        console.log(imageurl.og)
 
         //se introduce la información del nuevo lin en la bd
         await connection.query(`
