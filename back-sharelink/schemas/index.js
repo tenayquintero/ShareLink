@@ -41,8 +41,8 @@ const editUserSchema = Joi.object().keys({
         "any.required": "The email is required"
     }
     ),
-    perfil: Joi.string().max(150).error(
-        new Error("The length name is not correct it must be less 150 characters long")
+    perfil: Joi.string().error(
+        new Error("perfil error")
     )
 })
 module.exports = { registrationSchema, registrationLink, newPasswordSchema, editUserSchema };

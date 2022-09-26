@@ -7,9 +7,7 @@ const fs = require('fs/promises');
 const path = require('path');
 const Hogan = require('hogan.js');
 
-
 const filePath = path.join(__dirname, "..", "..", "views", "emailNewUser.hjs");
-
 
 const newUser = async (req, res, next) => {
     let connection;

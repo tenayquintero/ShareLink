@@ -23,7 +23,7 @@ const editUser = async (req, res, next) => {
             generateError("The user is unauthorized", 401)
         }
 
-        //Validación de los atos enviados para actualizar el usuario
+        //Validación de los datos enviados para actualizar el usuario
        await validate(editUserSchema, req.body);
 
         const { name, email } = req.body;
