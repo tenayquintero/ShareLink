@@ -1,27 +1,15 @@
-import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
+import useFetch from "../../hooks/useFetch";
 import OneLink from "../OneLink/OneLink";
 import NewVotes from "../Votes/newVotes";
 import './ListLinks.css'
 
-const ListLinks = ( {response} ) => {
+const ListLinks = ({ fetchKey }) => {
 
     const user = useUser()
 
-    const [data, setData] = useState();
-    console.log('soy response',response)
-
-    useEffect(() => {
-        (async () => {
-            const res = await fetch('http://127.0.0.1:3000/links', {
-                headers: user ? { 'Authorization': user.token } : {}
-            })
-            const resData = await res.json();
-            setData(resData)
-
-        })()
-    }, [user])
+    const links = useFetch('http://127.0.0.1:3000/links',fetchKey)
 
     if (!user) {
         return <Navigate to="/" />
@@ -29,7 +17,7 @@ const ListLinks = ( {response} ) => {
 
     return (
         <ul className="listLinks">
-            {data?.data.map(link =>
+            {links?.data.map(link =>
                 <li key={link.id_link}> <OneLink link={link} /></li>
             )}
             <NewVotes value={vote} />

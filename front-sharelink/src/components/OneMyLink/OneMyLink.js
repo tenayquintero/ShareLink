@@ -1,14 +1,27 @@
 // import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
+import noImage from '../../img/photo-no-image-available.jpg'
 import './OneMyLink.css'
 
 const OneMyLink = ({ myLink }) => {
 
     return (
-        <section className='link'>
+        <section className='myLink'>
+            <main>
+            <a href={myLink.url}>
+                {
+                    myLink.image === 'photoDefault'
+                        ? <img src={noImage} alt={myLink.title} />
+                        : <img src={myLink.image} alt={myLink.title} />
+                }
+            </a>
             <h2>{myLink.title}</h2>
-            <a href={myLink.url} > <img src={myLink.image} alt={myLink.title} /></a>
             <p>{myLink.description}</p>
+            <p>vote: {myLink.voteAVG}</p>
+            </main>
+            <footer>
+            <p>create by me</p>
+           
             <button>
                 <Link to={`/mylinks/delete/${myLink.id_link}`} >
                     delete
@@ -19,6 +32,7 @@ const OneMyLink = ({ myLink }) => {
                     edit
                 </Link>
             </button>
+            </footer>
         </section>
     )
 }

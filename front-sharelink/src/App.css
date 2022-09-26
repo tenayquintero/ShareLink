@@ -3,7 +3,8 @@
   padding: 0;
   box-sizing: border-box;
 }
-html{
+
+html {
   --boxShadow: 2px 2px 6px 8px rgb(110, 231, 255);
 }
 
@@ -16,29 +17,31 @@ html{
   display: flex;
   flex-direction: column;
   color: white;
+  font-size: 20px;
 
 }
-.App-menu{
+
+.App-menu {
   flex-grow: 2;
 }
 
 /* backGround formularios */
-.bg{
+.bg {
   position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 /* Mensajes de proceso correcto*/
-.resultConfirmation{
-  font-size: 25px;
+.resultConfirmation {
+  /* font-size: 25px; */
   margin-bottom: 1rem;
 }
 
@@ -47,15 +50,20 @@ html{
   color: red;
 }
 
-footer{
+h1{
+  font-size: 40px;
+}
+
+footer {
   margin-top: 2rem;
 }
+
 @media (max-width: 500px) {
-  .App{
+  .App {
     background-color: rgb(5, 3, 29);
     background-size: contain;
-  
 
-    
+
+
   }
 }

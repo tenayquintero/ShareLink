@@ -3,11 +3,12 @@ import { Navigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import './NewLink.css';
 
-const NewLink = ({ setResponse, response }) => {
+const NewLink = ({ reload }) => {
 
     const [title, setTitle] = useState('');
     const [url, setUrl] = useState('');
     const [description, setDescription] = useState('');
+    const [response, setResponse] = useState();
 
     const user = useUser();
 
@@ -23,7 +24,9 @@ const NewLink = ({ setResponse, response }) => {
             body: JSON.stringify({ title, url, description })
         })
         const resData = await res.json();
-        setResponse([...response, resData])
+        console.log(resData,'soy resdata')
+        setResponse(resData)
+        reload()
     }
 
     if (!user) {
@@ -38,11 +41,9 @@ const NewLink = ({ setResponse, response }) => {
                 <input placeholder='url.....' value={url} onChange={e => setUrl(e.target.value)} />
                 <textarea placeholder='description.....' value={description} onChange={e => setDescription(e.target.value)} />
                 <button>Compartir</button>
-
             </form>
-            <ul>
-
-            </ul>
+            {response?.status === 'ok' &&
+            <p>!Felicidades¡ Se ha creado tu publicación correctamente</p>}
         </div>
     )
 }
