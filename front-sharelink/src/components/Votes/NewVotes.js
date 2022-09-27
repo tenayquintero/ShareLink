@@ -7,15 +7,9 @@ import { useUser } from "../../context/UserContext";
 
 
 
-function NewVotes() {
+const NewVotes = ({reload})=> {
   const user = useUser();
-
-
- 
- 
-
-
-    const {id} =useParams();
+  const {id} =useParams();
    
 
     const [vote, setVote]= useState()
@@ -34,6 +28,7 @@ function NewVotes() {
       const resData = await res.json();
       console.log(resData,'soy resdata')
       setResponse(resData)
+      reload()
     
   }
 
