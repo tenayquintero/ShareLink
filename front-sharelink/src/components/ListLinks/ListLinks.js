@@ -3,6 +3,7 @@ import { useUser } from "../../context/UserContext";
 import useFetch from "../../hooks/useFetch";
 import OneLink from "../OneLink/OneLink";
 import NewVotes from "../Votes/NewVotes";
+import './ListLinks.css'
 
 
 
@@ -11,6 +12,7 @@ import './ListLinks.css'
 const ListLinks = ({ fetchKey }) => {
 
     const user = useUser()
+    console.log(user)
 
     const links = useFetch('http://127.0.0.1:3000/links',fetchKey)
     console.log(links)
