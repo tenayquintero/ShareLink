@@ -1,10 +1,10 @@
 // import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
 import noImage from '../../img/photo-no-image-available.jpg'
+import NewVotes from "../Votes/NewVotes";
 import './OneMyLink.css'
 
 const OneMyLink = ({ myLink }) => {
-
     return (
         <section className='myLink'>
             <main>
@@ -17,11 +17,10 @@ const OneMyLink = ({ myLink }) => {
             </a>
             <h2>{myLink.title}</h2>
             <p>{myLink.description}</p>
-            <p>vote: {myLink.voteAVG}</p>
+            <NewVotes />
             </main>
             <footer>
             <p>create by me</p>
-           
             <button>
                 <Link to={`/mylinks/delete/${myLink.id_link}`} >
                     delete

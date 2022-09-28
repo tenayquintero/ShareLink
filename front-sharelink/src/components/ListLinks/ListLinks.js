@@ -2,14 +2,11 @@ import { Navigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import useFetch from "../../hooks/useFetch";
 import OneLink from "../OneLink/OneLink";
-import NewVotes from "../Votes/NewVotes";
 import './ListLinks.css'
-
-
 
 import './ListLinks.css'
 
-const ListLinks = ({ fetchKey }) => {
+const ListLinks = ({ fetchKey, reload }) => {
 
     const user = useUser()
     console.log(user)
@@ -24,18 +21,11 @@ const ListLinks = ({ fetchKey }) => {
     return (
         <ul className="listLinks">
             {links?.data.map(link =>
-            <li key={link.id_link}> <OneLink link={link} />
-                 
+            <li key={link.id_link}> <OneLink link={link} reload={reload} />
+                  
                 </li>
             )}
-          <NewVotes />
-
-            
-                
-          
          
-         
-
 
         </ul>
     )

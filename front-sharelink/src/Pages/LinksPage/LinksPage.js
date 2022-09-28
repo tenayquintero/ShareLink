@@ -13,7 +13,7 @@ const LinksPage = ({ fetchKey, reload }) => {
             </Modal>
             <div>
                 <NewLink reload={reload} />
-                <ListLinks fetchKey={fetchKey} />
+                <ListLinks fetchKey={fetchKey} reload={reload} />
             </div>
 
         </section>
