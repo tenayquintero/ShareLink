@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate, useParams } from "react-router-dom"
+import { Navigate } from "react-router-dom"
 import { useUser } from "../../context/UserContext";
 
 
@@ -7,15 +7,15 @@ import { useUser } from "../../context/UserContext";
 
 
 
-const NewVotes = ({reload})=> {
+const NewVotes = ({ id })=> {
   const user = useUser();
-  const {id} =useParams();
+  // const {id} =useParams();
    
 
     const [vote, setVote]= useState()
     const [response, setResponse] = useState();
-    const handleClick = async (e) => {
-      e.preventDefault();
+    const handleClick = async () => {
+      // e.preventDefault();
 
       const res = await fetch(`http://127.0.0.1:3000/links/${id}/votes`, {
           method: 'POST',
@@ -28,26 +28,45 @@ const NewVotes = ({reload})=> {
       const resData = await res.json();
       console.log(resData,'soy resdata')
       setResponse(resData)
-      reload()
+    
     
   }
+  const onclick1 = () =>{
+    setVote(1)
+    handleClick()
+  }
+  const onclick2 = () => {
+    setVote(2)
+    handleClick()
+  }
+  const onclick3 = () => {
+    setVote(2)
+    handleClick()
+  }
+  const onclick4 = () => {
+    setVote(2)
+    handleClick()
+  }
+  const onclick5 = () => {
+    setVote(2)
+    handleClick()
+  }
 
-  
-
-    
     if (!user) {
         return <Navigate to="/" />
     }
     return (
-      <div className="votes" onClick={handleClick}>
-        <span onClick={()=>setVote(1)}> {vote >= 1 ? '★' : '☆'}</span>
-        <span onClick={()=>setVote(2)}> {vote >= 2 ? '★' : '☆'}</span>
-        <span onClick={()=>setVote(3)}>{vote >= 3 ? '★' : '☆'}</span>
-        <span onClick={()=>setVote(4)}>{vote >= 4 ? '★' : '☆'}</span>
-        <span onClick={()=>setVote(5)}>{vote >= 5 ? '★' : '☆'}</span>   
+      <div className="votes">
+        <span onClick={onclick1}>{vote >= 1 ? '★' : '☆'}</span>
+        <span onClick={onclick2}>{vote >= 2 ? '★' : '☆'}</span>
+        <span onClick={onclick3}>{vote >= 3 ? '★' : '☆'}</span>
+        <span onClick={onclick4}>{vote >= 4 ? '★' : '☆'}</span>
+        <span onClick={onclick5}>{vote >= 5 ? '★' : '☆'}</span>   
     
        {response?.status === 'ok' &&
        <p>Gracias por tu Voto</p>}
+        {response?.status === 'error' &&
+          <p>{response?.message}</p>}
       </div>
     )
 

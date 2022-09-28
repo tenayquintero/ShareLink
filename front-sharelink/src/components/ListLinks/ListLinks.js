@@ -2,9 +2,9 @@ import { Navigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import useFetch from "../../hooks/useFetch";
 import OneLink from "../OneLink/OneLink";
-import DeleteVotes from "../Votes/DeleteVotes";
-import EditVotes from "../Votes/EditVotes";
-import NewVotes from "../Votes/NewVotes";
+// import DeleteVotes from "../Votes/DeleteVotes";
+// import EditVotes from "../Votes/EditVotes";
+// import NewVotes from "../Votes/NewVotes";
 
 
 
@@ -28,9 +28,9 @@ const ListLinks = ({ fetchKey }) => {
                  
                 </li>
             )}
-          <NewVotes />
+          {/* <NewVotes />
           <EditVotes />
-          <DeleteVotes />
+          <DeleteVotes /> */}
 
             
                 

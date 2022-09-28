@@ -26,7 +26,10 @@ const NewLink = ({ reload }) => {
         const resData = await res.json();
         console.log(resData,'soy resdata')
         setResponse(resData)
-        reload()
+        reload();
+        setTitle('');
+        setUrl('');
+        setDescription('')
     }
 
     if (!user) {
@@ -44,6 +47,8 @@ const NewLink = ({ reload }) => {
             </form>
             {response?.status === 'ok' &&
             <p>!Felicidades¡ Se ha creado tu publicación correctamente</p>}
+            {response?.status === 'error' &&
+                <p className="error">!Ups¡ No se ha relaizado tu publicación recuerda rellenar todos los campos</p>}
         </div>
     )
 }
