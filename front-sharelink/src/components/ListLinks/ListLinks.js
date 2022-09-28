@@ -2,17 +2,14 @@ import { Navigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import useFetch from "../../hooks/useFetch";
 import OneLink from "../OneLink/OneLink";
-// import DeleteVotes from "../Votes/DeleteVotes";
-// import EditVotes from "../Votes/EditVotes";
-// import NewVotes from "../Votes/NewVotes";
-
-
+import './ListLinks.css'
 
 import './ListLinks.css'
 
-const ListLinks = ({ fetchKey }) => {
+const ListLinks = ({ fetchKey, reload }) => {
 
     const user = useUser()
+    console.log(user)
 
     const links = useFetch('http://127.0.0.1:3000/links',fetchKey)
     console.log(links)
@@ -24,20 +21,11 @@ const ListLinks = ({ fetchKey }) => {
     return (
         <ul className="listLinks">
             {links?.data.map(link =>
-            <li key={link.id_link}> <OneLink link={link} />
-                 
+            <li key={link.id_link}> <OneLink link={link} reload={reload} />
+                  
                 </li>
             )}
-          {/* <NewVotes />
-          <EditVotes />
-          <DeleteVotes /> */}
-
-            
-                
-          
          
-         
-
 
         </ul>
     )

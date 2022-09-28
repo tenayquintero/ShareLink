@@ -1,3 +1,25 @@
-.linksPage{
-    margin-top: 3rem;
+.linksPage {
+  
+    padding-top: 3rem;
+    display: grid;
+    grid-template-columns: 15rem 1fr;
+}
+
+.modal {
+    display: none;
+}
+
+@media (max-width: 500px) {
+    .linksPage {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal {
+        display: inline-block;
+    }
+
+    .submenuWeb {
+        display: none;
+    }
 }

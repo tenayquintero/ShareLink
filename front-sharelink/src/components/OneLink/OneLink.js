@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import noImage from '../../img/photo-no-image-available.jpg'
 import NewVotes from '../Votes/NewVotes';
 import './OneLink.css'
-const OneLink = ({ link }) => {
+const OneLink = ({ link, reload }) => {
     return (
         <section className='link'>
             <main>
@@ -15,10 +15,9 @@ const OneLink = ({ link }) => {
                 </a>
                 <h2>{link.title}</h2>
                 <p>{link.description}</p>
-                <p>vote: {link.voteAVG}</p>
-                <NewVotes value={link.voteAVG} id={link.id_link} />
             </main>
             <footer>
+                <NewVotes value={link.voteAVG} id={link.id_link} reload={reload} />
                 <p className='author'>create by <NavLink to={'/users/'+link.id_user } >{link.email}</NavLink></p>
             </footer>
         </section>

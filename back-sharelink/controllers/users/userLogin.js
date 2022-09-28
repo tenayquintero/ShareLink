@@ -58,7 +58,8 @@ const userLogin = async (req, res, next) => {
       status:'ok',
       message:'Welcome!!!',
       data:token,
-      email:email
+      email:email,
+      id:existUser[0].id_user
     });
 
   } catch (error) {
