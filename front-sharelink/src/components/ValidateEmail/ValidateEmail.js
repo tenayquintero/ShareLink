@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { Link, Navigate, useParams } from "react-router-dom"
+import './ValidateEmail.css'
 const ValidateEmail = () => {
 
     const { registration_code } = useParams();
@@ -10,7 +11,7 @@ const ValidateEmail = () => {
             const res = await fetch(`http://127.0.0.1:3000/users/validate`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({registration_code})
+                body: JSON.stringify({ registration_code })
             });
 
             const resData = await res.json();
@@ -26,15 +27,20 @@ const ValidateEmail = () => {
 
     return (
 
-        <section>
-            {message === 'error' &&
-                <p>Tú código no es válido :(</p>}
+        <section className="bg">
+            <Link to='home' >
+                {message === 'error' &&
+                    <p className="fg" >Tú código no es válido</p>
+                }
+            </Link>
 
-            {message === 'OK' &&
-                <p>Genial estás validado. Ya te puedes logear</p>
+            {message === 'succes' &&
+                <>
+                    <p>Genial estás validado. Ya te puedes logear</p>
+                    <Navigate to='/login' />
+                </>
 
             }
-
         </section>
 
 

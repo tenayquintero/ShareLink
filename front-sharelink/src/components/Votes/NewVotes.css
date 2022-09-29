@@ -1,7 +1,12 @@
-.votes :nth-child(1){
+.votes :nth-child(1) {
     margin-right: 0.5rem;
-   
+
 }
-.votes span:not(.value){
+
+.votes span:not(.value) {
     color: rgb(228, 228, 53)
+}
+
+.votes span {
+    cursor: pointer;
 }

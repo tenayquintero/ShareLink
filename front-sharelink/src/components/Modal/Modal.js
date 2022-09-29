@@ -16,7 +16,7 @@ function Modal() {
             </div>
             {show &&
                 <div className="bg" onClick={() => setShow(false)}>
-                    <div className="modal-fg" onClick={e => e.stopPropagation()}>
+                    <div className="fg" onClick={e => e.stopPropagation()}>
                         <menu className='submenuMobile'>
                             <h2>Tools</h2>
                             <ul>

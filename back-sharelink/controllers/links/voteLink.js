@@ -12,7 +12,7 @@ const voteLink = async (req, res, next) => {
         //Recojo parámetros
         const { id } = req.params;
         const { vote } = req.body;
-      
+
         //compruebo que el valor de votos es entre 1 y 5
         if (vote < 1 || vote > 5) {
             generateError('Please vote between 1 and 5', 400);
@@ -30,19 +30,30 @@ const voteLink = async (req, res, next) => {
         `, [req.Auth.id, id]);
 
         if (existingVote.length > 0) {
-            generateError('Already Vote', 403);
+         
+            await connection.query(`
+         UPDATE votes_links
+         SET vote = ?
+         WHERE id_votes=?
+         `, [vote, existingVote[0].id_votes]);
 
-        }
 
-        //Añadir voto a la tabla
-        await connection.query(`
+        } else {
+            //Añadir voto a la tabla
+            await connection.query(`
         INSERT INTO votes_links(vote, id_user, id_link)
         VALUES (?,?,?)
         `, [vote, req.Auth.id, id]);
+        }
+
+
+
+
+
 
         //Media de votos
         const [newVotes] = await connection.query(`
-        SELECT AVG(votes_links.vote) AS votes
+        SELECT AVG(votes_links.vote) AS votes, id_votes
         FROM votes_links
         LEFT JOIN links ON(links.id_link = votes_links.id_link)
         WHERE links.id_link=?
@@ -52,6 +63,7 @@ const voteLink = async (req, res, next) => {
             status: "ok",
             data: {
                 votes: newVotes[0].votes,
+                id_vote: newVotes[0].id_votes
             },
 
         });
