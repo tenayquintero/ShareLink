@@ -1,16 +1,15 @@
 // POST - '/users/recoverPassword
 
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import useFetch from 'fetch-suspense'
 
 
 const EditPass = () => {
     const user = useUser()
-    const { id } = useParams();
+    
 
-    const link = useFetch(`http://127.0.0.1:3000/users/recoverdPassword`)
+    const recoPass = useFetch(`http://127.0.0.1:3000/users/recoverdPassword`)
     
 
     const [pass, setPass] = useState();
@@ -31,7 +30,7 @@ const EditPass = () => {
    
     return (
         <div className="bg">
-            <form onSubmit={handleSubmit} className='form_editLink'>
+            <form onSubmit={handleSubmit} className=''>
                 
                  
             </form>
