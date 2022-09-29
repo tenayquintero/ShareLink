@@ -33,10 +33,11 @@ const newLink = async (req, res, next) => {
 
         if (imageurl.og === undefined) {
             image = 'photoDefault'
-        } else {
+        } else if (!imageurl.og.image.url) {
+            image = imageurl.og.image 
+        }else{
             image = imageurl.og.image.url
         }
-        console.log(imageurl.og)
 
         //se introduce la información del nuevo lin en la bd
         await connection.query(`
