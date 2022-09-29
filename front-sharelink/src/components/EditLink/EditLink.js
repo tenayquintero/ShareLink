@@ -6,7 +6,9 @@ import './EditLink.css'
 
 const EditLink = () => {
     const user = useUser()
+    console.log('soy user', user)
     const { id } = useParams();
+   
 
     const link = useFetch(`http://127.0.0.1:3000/links/${id}`)
     console.log('soy link de editUser', link)

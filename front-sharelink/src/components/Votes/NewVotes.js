@@ -6,7 +6,7 @@ import "./NewVotes.css"
 const NewVotes = ({ id, value, reload }) => {
   const user = useUser();
 
-  const [vote, setVote] = useState(value)
+  const [vote, setVote] = useState(value);
   const [response, setResponse] = useState();
 
   const handleClick = async () => {
@@ -23,7 +23,7 @@ const NewVotes = ({ id, value, reload }) => {
     const resData = await res.json();
     console.log(resData, 'soy resdata')
     setResponse(resData)
-    reload()
+    reload();
 
   }
 
