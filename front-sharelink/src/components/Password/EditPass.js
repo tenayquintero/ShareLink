@@ -1,19 +1,20 @@
 // PUT - '/users/:id/password'
 
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import useFetch from 'fetch-suspense'
 
 
 const EditPass = () => {
     const user = useUser()
-    const { id } = useParams();
+    // const { id } = useParams();
+    const id = user.id;
 
     const newPass = useFetch(`http://127.0.0.1:3000/users/${id}/password`)
     
 
-    const [pass, setPass] = useState(newPass.data.password || '');
+   const [pass, setPass] = useState(newPass.data.password || '');
    
     const [result, setResult] = useState();
 
