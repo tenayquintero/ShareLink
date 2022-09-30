@@ -24,7 +24,7 @@ const editUser = async (req, res, next) => {
         }
 
         //Validación de los datos enviados para actualizar el usuario
-       await validate(editUserSchema, req.body);
+        await validate(editUserSchema, req.body);
 
         const { name, email } = req.body;
 
@@ -32,7 +32,7 @@ const editUser = async (req, res, next) => {
 
         if (req.files.perfil) {
 
-        await connection.query(`
+            await connection.query(`
           UPDATE users SET perfil=?
           WHERE id_user=?
         `, [photoName, id]);
@@ -46,7 +46,7 @@ const editUser = async (req, res, next) => {
 
         if (compareEmail[0].email !== email) {
 
-        const [existEmail] = await connection.query(`
+            const [existEmail] = await connection.query(`
           SELECT id_user
           FROM users
           WHERE email=?
@@ -56,7 +56,7 @@ const editUser = async (req, res, next) => {
             if (existEmail.length > 0) {
                 generateError("The email is exists already", 409)
             }
-           
+
             //Se genera un código de registro
             const registration_code = generateRandomString(40);
 
@@ -68,7 +68,7 @@ const editUser = async (req, res, next) => {
 
             //Compilación plantilla
             const compiledTemplate = Hogan.compile(template)
-           
+
             await sendEmail({
                 to: email,
                 from: process.env.EMAIL_VERIFICATION,
@@ -90,18 +90,33 @@ const editUser = async (req, res, next) => {
             });
         } else {
 
-         await connection.query(`
+            await connection.query(`
             UPDATE users 
             SET name=?
             WHERE id_user=?
             `, [name, id]
             );
-
-            res.send({
-                status: "OK",
-                message: "The user has been updated"
-            });
         }
+        const [result] = await connection.query(`
+           SELECT id_user,name,email,perfil 
+            FROM USERS
+            WHERE id_user=?
+            `, [id]
+        );
+
+        res.send({
+            status: "OK",
+            message: "The user has been updated",
+            id_user: result[0].id_user,
+            name: result[0].name,
+            email: result[0].email,
+            avatar: result[0].perfil
+
+        });
+        console.log(result[0].id_user,
+            result[0].name,
+            result[0].email,
+            result[0].perfil)
 
     } catch (error) {
         next(error);

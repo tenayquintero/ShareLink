@@ -19,7 +19,7 @@ const userLogin = async (req, res, next) => {
 
     //comparamos el email y la password con los datos de la bd
     const [existUser] = await connection.query(`
-      SELECT id_user, role 
+      SELECT id_user, role, perfil
       FROM users
       WHERE email=? AND password=SHA2(?, 512)
      `,
@@ -59,7 +59,8 @@ const userLogin = async (req, res, next) => {
       message:'Welcome!!!',
       data:token,
       email:email,
-      id:existUser[0].id_user
+      id:existUser[0].id_user,
+      avatar:existUser[0].perfil
     });
 
   } catch (error) {
