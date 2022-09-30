@@ -1,0 +1,69 @@
+<html
+  data-editor-version='2'
+  class='sg-campaigns'
+  xmlns='http://www.w3.org/1999/xhtml'
+>
+  <head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <meta
+      name='viewport'
+      content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1'
+    />
+    <meta http-equiv='X-UA-Compatible' content='IE=Edge' />
+
+    <style>
+      @media screen and (max-width:480px) { table\0 { width: 480px !important; }
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <table border='0' width='100%' style='table-layout: fixed;'>
+      <tbody>
+        <tr>
+          <td
+            style='font-size:6px; line-height:10px; padding:0px 0px 0px 0px;'
+            valign='top'
+            align='center'
+          >
+            <img
+              class='max-width'
+              border='0'
+              style='display:block; color:#000000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px; max-width:30% !important; width:30%; height:auto !important;'
+              width='180'
+              alt='logo'
+              data-proportionally-constrained='true'
+              data-responsive='true'
+              src='http://cdn.mcauto-images-production.sendgrid.net/fe6fc93cece384d8/1cf276f7-3c4a-43af-93c2-f5d22d048848/174x101.png'
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table border='0' width='100%' style='table-layout: fixed;'>
+      <tbody>
+        <tr>
+          <td
+            style='padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;'
+            height='100%'
+            valign='top'
+          ><section>
+              <p style='color: #000000; font-family: arial; text-align: center'>
+                <strong>Hello {{name}}!!!</strong></p>
+              <p style='font-family: inherit; text-align: center'>You have
+                requested to reset your password, to do so, introduce the
+                following link:</p>
+              <p
+                style='font-family: inherit; text-align: center'
+              >{{recover_code}}</p><div></div></section></td>
+        </tr>
+      </tbody>
+    </table>
+    <table border='0' style='table-layout:fixed;' width='100%'>
+
+    </table>
+
+  </body>
+
+</html>

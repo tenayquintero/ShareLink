@@ -1,0 +1,760 @@
+{
+	"info": {
+		"_postman_id": "6cd5d079-129a-49f1-9cac-ca3ad99363f6",
+		"name": "shareLink",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "newUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY1OTY5MjAwMywiZXhwIjoxNjU5Nzc4NDAzfQ.Fg9T68F0OELWKZ5kQDt_UTl_B3wqOcW1Qgtg4Gw2g5o",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"email\":\"yaneth2@yopmail.com\",\r\n   \"password\":\"1234567\"\r\n  \r\n   \r\n \r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validateUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/users/validate/37e1876cb44dc52bb021fd2af4206e48c706579a8374914c411db16e0a6126a1a94810620b651102",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"users",
+								"validate",
+								"37e1876cb44dc52bb021fd2af4206e48c706579a8374914c411db16e0a6126a1a94810620b651102"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\":\"yaneth2@yopmail.com\",\r\n   \"password\":\"12345678\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/users/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUser",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token1}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Armoni Quintero",
+									"type": "text"
+								},
+								{
+									"key": "perfil",
+									"type": "file",
+									"src": "/C:/Users/quint/OneDrive/Imágenes/fotoPerfil.jpg"
+								},
+								{
+									"key": "email",
+									"value": "ikerd@yopmail.com",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/users/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token1}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Armoni Quintero",
+									"type": "text"
+								},
+								{
+									"key": "perfil",
+									"type": "file",
+									"src": "/C:/Users/quint/OneDrive/Imágenes/fotoPerfil.jpg"
+								},
+								{
+									"key": "email",
+									"value": "yaneth2@yopmail.com",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/users/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"users",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "newPsw",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token1}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \"oldPassword\":\"1234567\",\r\n    \"newPassword\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/users/3/password",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"users",
+								"3",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recoverPassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"yaneth2@yopmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/users/recover_password",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"users",
+								"recover_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resetPassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"recover_code\":\"d220dbe4ee37ba63833d8dfa6b76fe2c8bf6c64d2e0ab6e68db2d30d750f668e5b57f7c0317e33bb\",\r\n    \"newPassword\":\"1234567\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/users/reset_password",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"users",
+								"reset_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token1}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/users/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "links",
+			"item": [
+				{
+					"name": "newLink",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token1}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"url\":\"https://www.google.com/nios\",\r\n    \"title\":\"cuida tu mascota\",\r\n    \"description\":\"mi mejor amigo\"\r\n    \r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/links",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"links"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listLinks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/links",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"links"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listLinksParams",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/links?search=gratis&direction=DESC",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"links"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "gratis"
+								},
+								{
+									"key": "direction",
+									"value": "DESC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getLink",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/links/9",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"links",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteLink",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token1}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/links/8",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"links",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "newVote",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token1}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vote\":\"4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{port}}/links/8/votes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"links",
+								"8",
+								"votes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editLink",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token1}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [],
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/links/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"links",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editVote",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token1}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vote\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/links/1/votes",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"links",
+								"1",
+								"votes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteVote",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token1}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token2}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:{{port}}/links/3/votes",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "{{port}}",
+							"path": [
+								"links",
+								"3",
+								"votes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

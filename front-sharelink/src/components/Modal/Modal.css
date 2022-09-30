@@ -1,0 +1,28 @@
+.fg {
+    height: 300px;
+    width: 300px;
+    box-shadow: var(--boxShadow);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 22px;
+    background-color: black;
+}
+
+.buttonSubmenu {
+    height: 4rem;
+    width: 4rem;
+    padding: 0.3rem;
+    margin-left: 1rem;
+}
+
+.buttonSubmenu div {
+    height: 2px;
+    width: 3rem;
+    background-color: white;
+    margin-top: 15px;
+
+}
