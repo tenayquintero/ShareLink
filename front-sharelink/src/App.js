@@ -14,6 +14,7 @@ import Loading from './components/Loading/Loading';
 import './App.css';
 import GetUser from './components/User/GetUser';
 import EditUser from './components/EditUser/EditUser';
+import EditPass from './components/Password/EditPass';
 
 function App() {
   const [key, setKey] = useState(0);
@@ -35,6 +36,7 @@ function App() {
             <Route path='mylinks/edit/:id' element={<EditLink />} />
             <Route path='users/:id' element={<GetUser />} />
             <Route path='users/edit/:id' element={<EditUser />} />
+            <Route path='/users/:id/password' element={<EditPass/>}/>
           </Routes>
         </Suspense>
       </div>

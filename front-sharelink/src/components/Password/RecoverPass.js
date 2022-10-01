@@ -5,11 +5,13 @@ import { useUser } from "../../context/UserContext";
 import useFetch from 'fetch-suspense'
 
 
-const EditPass = () => {
+const RecoverPass = () => {
     const user = useUser()
     
 
-    const recoPass = useFetch(`http://127.0.0.1:3000/users/recoverdPassword`)
+    const recoPass = useFetch(`http://127.0.0.1:3000/users/recoverdPassword`,{
+        headers: user ? {'Authorization': user.data} :{}
+    })
     
 
     const [pass, setPass] = useState();
@@ -48,4 +50,4 @@ const EditPass = () => {
 
 }
 
-export default EditPass;
+export default RecoverPass;
