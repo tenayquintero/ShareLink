@@ -2,47 +2,52 @@
 
 import { useState } from "react";
 import { useUser } from "../../context/UserContext";
-import useFetch from 'fetch-suspense'
+import { Link } from "react-router-dom";
 
 
 const RecoverPass = () => {
     const user = useUser()
     
 
-    const recoPass = useFetch(`http://127.0.0.1:3000/users/recoverdPassword`,{
-        headers: user ? {'Authorization': user.data} :{}
-    })
+    const [email, setEmail] = useState("");
     
-
-    const [pass, setPass] = useState();
-   
     const [result, setResult] = useState();
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await fetch(`http://127.0.0.1:3000/users/recoverdPassword`, {
-            method: 'POST',
+        const res = await fetch('/users/recover_password', {
+            method: 'PUT',
             headers: user ? { 'Authorization': user.data, "Content-type": "application/json", } : {},
-            body: JSON.stringify({ })
+            body: JSON.stringify({ email})
 
         });
-        const data = await res.json()
-        setResult(data)
+        const data = await res.json();
+        console.log('soy data de editPassword', data);
+        setResult(data);
     }
-   
+
     return (
         <div className="bg">
             <form onSubmit={handleSubmit} className=''>
-                
-                 
+                <label> <p>Introduce tu mail para recuperar el Password</p>
+                    <input
+                        email='email'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    
+                </label>
+                <button>Enviar</button>
             </form>
+
             {result?.status === 'OK' &&
-                <>
-                
-                </>
+                <p>Tu Password se ha cambiado correctamente</p>
+               
             }
+             <Link to={'/'} >Volver </Link>
             {result?.status === 'error' &&
-                <p></p>
+                <p>Recuerda que todos los campos son obligatorios</p>
             }
 
         </div>

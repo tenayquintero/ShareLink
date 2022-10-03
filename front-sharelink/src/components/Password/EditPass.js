@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useUser } from "../../context/UserContext";
-
+import { Link } from "react-router-dom";
 
 const EditPass = () => {
     const user = useUser()
@@ -45,7 +45,9 @@ const EditPass = () => {
 
             {result?.status === 'OK' &&
                 <p>Tu Password se ha cambiado correctamente</p>
+               
             }
+             <Link to={'/'} >Volver </Link>
             {result?.status === 'error' &&
                 <p>Recuerda que todos los campos son obligatorios</p>
             }
