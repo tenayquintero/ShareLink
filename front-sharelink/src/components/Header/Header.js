@@ -1,11 +1,11 @@
 import Auth from '../Auth/Auth'
 import './Header.css'
 
-const Header = () =>{
+const Header = ({ editUser }) =>{
     return(
         <header className="header-sharelink">
            
-            <Auth />
+            <Auth editUser={editUser}/>
 
         </header>
     )
