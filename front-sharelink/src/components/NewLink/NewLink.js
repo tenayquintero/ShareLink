@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
+// import useSendData from "../../hooks/useSendData";
+import { useNewLink } from "../api";
 import './NewLink.css';
 
 const NewLink = ({ reload }) => {
@@ -8,24 +10,14 @@ const NewLink = ({ reload }) => {
     const [title, setTitle] = useState('');
     const [url, setUrl] = useState('');
     const [description, setDescription] = useState('');
-    const [response, setResponse] = useState();
 
     const user = useUser();
 
+    const [, response, sendData] = useNewLink();
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const res = await fetch(`http://127.0.0.1:3000/links/`, {
-            method: 'POST',
-            headers: user ? {
-                'Authorization': user.data,
-                "Content-type": "application/json",
-            } : {},
-            body: JSON.stringify({ title, url, description })
-        })
-        const resData = await res.json();
-        console.log(resData,'soy resdata')
-        setResponse(resData)
+        sendData({ title, url, description })
         reload();
         setTitle('');
         setUrl('');
@@ -46,7 +38,7 @@ const NewLink = ({ reload }) => {
                 <button>Compartir</button>
             </form>
             {response?.status === 'ok' &&
-            <p>!Felicidades¡ Se ha creado tu publicación correctamente</p>}
+                <p>!Felicidades¡ Se ha creado tu publicación correctamente</p>}
             {response?.status === 'error' &&
                 <p className="error">!Ups¡ No se ha relaizado tu publicación recuerda rellenar todos los campos</p>}
         </div>

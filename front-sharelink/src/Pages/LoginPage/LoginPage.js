@@ -43,27 +43,29 @@ const Login = () => {
         <section className='bg' >
             <h2><Link to='/'>X</Link></h2>
             <section className='shadow'>
-            <form onSubmit={handle}>
-                <h2>Login</h2>
-                <label >
-                    <input
-                        name='email'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        type='email'
-                    />
-                </label>
-                <label>
-                    <input
-                        name='password'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        type='password'
-                    />
-                </label>
-                <button>Let's go</button>
-            </form>
-            {status === 'error' && <p className="error">{error}</p>}
+                <form onSubmit={handle}>
+                    <h2>Login</h2>
+                    <label htmlFor="email">
+                        <input
+                            id="email"
+                            name='email'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            type='email'
+                        />
+                    </label>
+                    <label htmlFor="password">
+                        <input
+                            id="password"
+                            name='password'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            type='password'
+                        />
+                    </label>
+                    <button>Let's go</button>
+                </form>
+                {status === 'error' && <p className="error">{error}</p>}
             </section>
         </section>
     )

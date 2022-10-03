@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
-// import useFetch from "../../hooks/useFetch";
+//  import useFetch from "../../hooks/useFetch";
 import useFetch from 'fetch-suspense'
 import { useUser } from "../../context/UserContext";
+import './GetUser.css'
 
 const GetUser = () => {
 
@@ -14,16 +15,15 @@ const GetUser = () => {
     const { email, name, perfil } = userInformation.data
 
     return (
-        <section>
-            <ul>
-                <>
-                    <li>{email}</li>
-                    <li>{name}</li>
-                    <li><img src={perfil} alt='perfil'></img></li>
-                </>
-            </ul>
+        <section className="getUser">
+            <main>
+                <h2>{name}</h2>
+                <img src={perfil} alt='perfil' />
+            </main>
+            <footer>
+                <p>{email}</p>
+            </footer>
         </section>
     )
-
 }
 export default GetUser;

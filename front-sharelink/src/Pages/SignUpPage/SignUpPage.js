@@ -36,7 +36,7 @@ const SignUp = () => {
             <h2><Link to='/'>X</Link></h2>
             <form onSubmit={handle}>
                 <h2>SignUp</h2>
-                <label name='email'>
+                <label htmlFor="name">
                     <input
                         id="email"
                         value={email}
@@ -44,7 +44,7 @@ const SignUp = () => {
                         type='email'
                     />
                 </label>
-                <label name='password'>
+                <label name='password' htmlFor="password">
                     <input
                         id="password"
                         value={password}
@@ -56,10 +56,10 @@ const SignUp = () => {
             </form>
 
             {status === 'error' &&
-            <>
-                <p className='error'>{message}</p>
-              
-            </>
+                <>
+                    <p className='error'>{message}</p>
+
+                </>
             }
 
             {status === 'ok' &&

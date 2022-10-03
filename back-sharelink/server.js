@@ -104,6 +104,7 @@ app.put('/links/:id',thisIsUser,linkExists,authEdit,editLink);
 
 //- DELETE - '/links/:id/votes' -Borrar un vot creado por el mismo usuario, --Token obligatorio.
 app.delete('/links/:id/votes',thisIsUser, voteExist, authEditVote,deleteVote);
+
 //middleware httpStatus
 app.use((error, req, res, next) => {
    res.status(error.httpStatus || 500).send({

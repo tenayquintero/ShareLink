@@ -15,7 +15,6 @@ const DeleteLink = () => {
 
         })
         const resData = await res.json();
-        console.log(resData);
         setResult(resData);
     }
     return (

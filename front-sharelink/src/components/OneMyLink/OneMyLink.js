@@ -5,6 +5,7 @@ import NewVotes from "../Votes/NewVotes";
 import './OneMyLink.css'
 
 const OneMyLink = ({ myLink }) => {
+    console.log(myLink)
     return (
         <section className='myLink'>
             <main>
@@ -17,7 +18,8 @@ const OneMyLink = ({ myLink }) => {
             </a>
             <h2>{myLink.title}</h2>
             <p>{myLink.description}</p>
-            <NewVotes />
+                <NewVotes value={myLink.AVGvote} id={myLink.id_link}  />
+                {/* <p>{myLink.AVGvote}</p> */}
             </main>
             <footer>
             <p>create by me</p>
