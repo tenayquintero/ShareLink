@@ -1,0 +1,31 @@
+.formSearch {
+    display: flex;
+    justify-content: end;
+    margin: 1rem
+}
+
+.formSearch input {
+    background-color:rgba(53, 53, 53, 0.562);
+    color: aliceblue;
+    border: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: 30px;
+    width: 250px;
+    padding: 1rem;
+
+}
+
+.formSearch input:focus {
+outline: 2px solid rgb(28, 212, 249);
+background: transparent;
+
+} 
+
+.buttonSearch {
+    border: none;
+    background-color:white;
+    height: 30px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}

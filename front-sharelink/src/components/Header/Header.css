@@ -33,14 +33,15 @@
 
 .header-sharelink nav div a,
 nav ul li a,
-button {
+button:not(.buttonSearch) {
     text-decoration: none;
     color: black;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
   
 }
-nav ul li ,button{
+nav ul li,
+button:not(.buttonSearch){
     height: 2rem;
     width: 5rem;
     background-color: white;

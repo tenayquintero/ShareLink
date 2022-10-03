@@ -1,4 +1,5 @@
-.listLinks {
+.listLinks
+{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,7 +7,8 @@
    
 }
 
-.listLinks .link {
+.listLinks .link
+ {
     border-radius: 15px;
     box-shadow: 2px 2px 6px 8px rgb(110, 231, 255);
     height: 500px;

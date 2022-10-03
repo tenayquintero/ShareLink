@@ -16,20 +16,27 @@ import GetUser from './components/User/GetUser';
 import EditUser from './components/EditUser/EditUser';
 
 function App() {
+  //búsqueda de links
+  const [result, setResult] = useState();
+
   const [key, setKey] = useState(0);
 
-
   const reload = () => setKey(k => k + 1)
+  
   return (
     <main className="App" >
-      <Header  />
+      <Header />
       <div className="App-menu">
         <Suspense fallback={<Loading />}>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='login' element={<Login />} />
             <Route path='signup' element={<SignUp />} />
-            <Route path='links' element={<LinksPage fetchKey={key} reload={reload} />} />
+            <Route path='links' element={<LinksPage
+              fetchKey={key}
+              reload={reload}
+              setResult={setResult}
+              result={result} />} />
             <Route path='users/validate/:registration_code' element={<ValidateEmail />} />
             <Route path='mylinks' element={<MyLinksPage />} />
             <Route path='mylinks/delete/:id' element={<DeleteLink />} />
