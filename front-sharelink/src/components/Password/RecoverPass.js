@@ -19,7 +19,7 @@ const RecoverPass = () => {
         const res = await fetch('/users/recover_password', {
             method: 'PUT',
             headers: user ? { 'Authorization': user.data, "Content-type": "application/json", } : {},
-            body: JSON.stringify({ email})
+            body: JSON.stringify({email})
 
         });
         const data = await res.json();

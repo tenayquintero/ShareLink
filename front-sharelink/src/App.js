@@ -15,6 +15,7 @@ import './App.css';
 import GetUser from './components/User/GetUser';
 import EditUser from './components/EditUser/EditUser';
 import EditPass from './components/Password/EditPass';
+import RecoverPass from './components/Password/RecoverPass';
 
 function App() {
   //búsqueda de links
@@ -45,6 +46,7 @@ function App() {
             <Route path='users/:id' element={<GetUser />} />
             <Route path='users/edit/:id' element={<EditUser />} />
             <Route path='/users/:id/password' element={<EditPass/>}/>
+            <Route path='/users/recover_password' element={<RecoverPass/>}/>
           </Routes>
         </Suspense>
       </div>
