@@ -64,9 +64,12 @@ const Login = () => {
                         />
                     </label>
                     <button>Let's go</button>
+                    <Link to={`/users/recover_password`}>Recuperar Contraseña</Link>
                 </form>
                 {status === 'error' && <p className="error">{error}</p>}
+              
             </section>
+            
         </section>
     )
 }

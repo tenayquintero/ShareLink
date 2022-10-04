@@ -10,6 +10,7 @@ const RecoverPass = () => {
     
 
     const [email, setEmail] = useState("");
+    const [recover_code, setRecover_code]= useState("");
     
     const [result, setResult] = useState();
 
@@ -19,7 +20,7 @@ const RecoverPass = () => {
         const res = await fetch('/users/recover_password', {
             method: 'PUT',
             headers: user ? { 'Authorization': user.data, "Content-type": "application/json", } : {},
-            body: JSON.stringify({email})
+            body: JSON.stringify({recover_code, email})
 
         });
         const data = await res.json();
@@ -34,7 +35,9 @@ const RecoverPass = () => {
                     <input
                         email='email'
                         value={email}
+                        recover_code={recover_code}
                         onChange={(e) => setEmail(e.target.value)}
+                          //  setRecover_code(e.target.recover_code)}
                     />
                     
                 </label>
@@ -42,7 +45,7 @@ const RecoverPass = () => {
             </form>
 
             {result?.status === 'OK' &&
-                <p>Tu Password se ha cambiado correctamente</p>
+                <p>revisa tu mail</p>
                
             }
              <Link to={'/'} >Volver </Link>
