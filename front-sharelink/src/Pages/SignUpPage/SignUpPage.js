@@ -54,14 +54,12 @@ const SignUp = () => {
                 </label>
                 <button>Let's go</button>
             </form>
-
             {status === 'error' &&
                 <>
                     <p className='error'>{message}</p>
 
                 </>
             }
-
             {status === 'ok' &&
                 <p className='resultConfirmation'>Por favor revisa tu bandeja de email y
                     has click sobre el enlace que te acabamos de enviar</p>

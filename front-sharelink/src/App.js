@@ -11,11 +11,11 @@ import Footer from './components/Footer/Footer';
 import { Suspense, useState } from 'react';
 import EditLink from './components/EditLink/EditLink';
 import Loading from './components/Loading/Loading';
-import './App.css';
 import GetUser from './components/User/GetUser';
 import EditUser from './components/EditUser/EditUser';
 import EditPass from './components/Password/EditPass';
 import RecoverPass from './components/Password/RecoverPass';
+import './App.css';
 
 function App() {
   //búsqueda de links
