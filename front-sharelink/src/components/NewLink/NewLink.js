@@ -29,9 +29,10 @@ const NewLink = ({ reload }) => {
     }
     return (
         <div className="newLink">
-            <p>No dejes de compartir tus enlaces aquí y ayudar
-                a otras personas en su día a día </p>
+           
             <form onSubmit={handleSubmit} className='form_newLink'>
+                <p>Comparte tu enlaces aquí y ayuda
+                    a otras personas en su día a día </p>
                 <input placeholder='title....' value={title} onChange={e => setTitle(e.target.value)} />
                 <input placeholder='url.....' value={url} onChange={e => setUrl(e.target.value)} />
                 <textarea placeholder='description.....' value={description} onChange={e => setDescription(e.target.value)} />

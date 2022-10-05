@@ -2,18 +2,23 @@
     margin: 2rem;
 }
 
+
 .form_newLink, 
 .form_editLink {
-    height: 200px;
+    height: 320px;
     width: 300px;
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
     flex-direction: column;
     margin: 2rem auto;
     box-shadow: var(--boxShadow);
+    background-color: var(--background) ;
     border-radius: 15px;
     padding: 0.5rem;
 
+}
+.form_newLink p{
+    padding: 1rem;
 }
 
 .form_newLink input,textarea,

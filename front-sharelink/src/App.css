@@ -6,13 +6,15 @@
 
 html {
   --boxShadow: 2px 2px 6px 8px rgb(110, 231, 255);
+  --background: rgb(0, 14, 32);
 }
 
 .App {
   text-align: center;
   background-image: url(./img/linkBackground.jpg);
+  background-color: rgb(0, 14, 32);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,7 +27,7 @@ html {
   flex-grow: 2;
 }
 
-/* backGround formularios */
+/* backGround formularios , Messages*/
 .bg {
   position: fixed;
   top: 0;
@@ -39,17 +41,27 @@ html {
   flex-direction: column;
 }
 
-/* Mensajes de proceso correcto*/
-.resultConfirmation {
-  margin: 2rem 0 1rem 0;
+.fg {
+  height: 300px;
+  width: 300px;
+  box-shadow: var(--boxShadow);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 22px;
+  background-color: black;
 }
+
 
 /* errores */
 .error {
   color: red;
 }
 
-h1{
+h1 {
   font-size: 40px;
 }
 
@@ -63,7 +75,6 @@ footer {
     background-color: rgb(5, 3, 29);
     background-size: contain;
 
-
-
   }
+
 }

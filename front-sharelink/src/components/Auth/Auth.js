@@ -13,7 +13,7 @@ const Auth = () => {
     const setUser = useSetUser();
 
     if (user) {
-        return <nav>
+        return <nav className="nav_user">
             <section className="nav_section">
                 <h1>ShareLink</h1>
             </section>

@@ -1,20 +1,21 @@
 // import useFetch from "../../hooks/useFetch";
 import useFetch from 'fetch-suspense'
 import { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useUser } from '../../context/UserContext'
+import MessageStatus from '../MessageStatus/MessageStatus'
 import './EditUser.css'
 
-const EditUser = () =>{
+const EditUser = () => {
 
     const user = useUser()
     const { id } = useParams();
 
-    const userInformation = useFetch(`http://127.0.0.1:3000/users/${id}`,{
-        headers: user ? {'Authorization': user.data} :{}
+    const userInformation = useFetch(`http://127.0.0.1:3000/users/${id}`, {
+        headers: user ? { 'Authorization': user.data } : {}
     })
 
-    
+
     const [name, setName] = useState(userInformation.data.name || '');
     const [email, setEmail] = useState(userInformation.data.email);
     const [perfil, setPerfil] = useState();
@@ -38,16 +39,15 @@ const EditUser = () =>{
         });
         const data = await res.json()
         setResponse(data)
-        console.log(data)
     }
     const handleFile = (e) => {
         const file = e.target.files[0]
         setPerfil(file)
         setImagePreview(URL.createObjectURL(file))
-    
+
     }
-    
-    return(
+
+    return (
         <div className="bg">
             <form onSubmit={handleSubmit} className='form_editLink'>
                 <label>
@@ -64,14 +64,14 @@ const EditUser = () =>{
                         name='email'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                       
+
                     />
                 </label>
                 <label>
                     <span>Avatar</span>
                     <input
-                      
-                       type='file'
+
+                        type='file'
                         name='perfil'
                         onChange={handleFile}
                     />
@@ -84,15 +84,14 @@ const EditUser = () =>{
                     <p className='error'>{response?.message}</p>
                 }
                 {response?.status === 'OK' &&
-                <>
-                <p>¡Felicidades! Se ha actualizado tu perfil correctamente</p>
-                    <Link to='/links'><button>Volver</button></Link>  
-                </>
+                    <>
+                    <MessageStatus message='Se ha actualizado tu perfil correctamente' navigate='/links'/>
+                    </>
                 }
             </form>
-            </div>
+        </div>
     )
-            
+
 
 }
 

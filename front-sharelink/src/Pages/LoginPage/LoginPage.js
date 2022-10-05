@@ -39,7 +39,7 @@ const Login = () => {
     }
 
     return (
-
+        
         <section className='bg' >
             <h2><Link to='/'>X</Link></h2>
             <section className='shadow'>
@@ -71,6 +71,7 @@ const Login = () => {
             </section>
             
         </section>
+       
     )
 }
 export default Login

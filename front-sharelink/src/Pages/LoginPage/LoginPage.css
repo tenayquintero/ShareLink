@@ -4,15 +4,6 @@
  
 }
 
-.shadow{
-    margin-top:1rem;
-    box-shadow: 4px 2px 8px 5px rgb(244, 244, 244);
-    height: 290px;
-    width: 290px;
-    display: grid;
-    place-content: center;
-    
-}
 
 .bg form {
     color: aliceblue;
@@ -21,14 +12,10 @@
     align-items: center;
     flex-direction: column;
     gap: 0.5rem;
-    box-shadow: 2px 2px 10px 10px rgba(0, 203, 244, 0.616);
-    background-color: black;
+    box-shadow: var(--boxShadow);
+    background-color: var(--background);
     height: 300px;
     width: 300px;
 }
 
-/* .pages-auth form button {
-    width: 50px;
-    border-radius: 5px;
 
-} */

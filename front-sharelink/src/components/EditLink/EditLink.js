@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import { useEditLink } from "../api";
 import useFetch from 'fetch-suspense'
 import './EditLink.css'
+import MessageStatus from "../MessageStatus/MessageStatus";
 
 const EditLink = () => {
     const user = useUser()
@@ -57,8 +58,7 @@ const EditLink = () => {
             </form>
             {response?.status === 'OK' &&
                 <>
-                    <p className="resultConfirmation">¡Felicidades! tu link ha sido modificado</p>
-                    <Link to='/mylinks' ><button>volver</button></Link>
+                    <MessageStatus message='Tu link se ha modificado correactamente' navigate='/mylinks'/>
                 </>
             }
             {response?.status === 'error' &&

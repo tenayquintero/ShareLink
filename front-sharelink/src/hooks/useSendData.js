@@ -3,8 +3,8 @@ import { useUser } from '../context/UserContext'
 
 const useSendData = (url) => {
     const user = useUser();
-    const [status, setStatus] = useState('')
-    const [response, setResponse] = useState()
+    const [status, setStatus] = useState('');
+    const [response, setResponse] = useState();
 
     const sendData = async (data, method = 'POST') => {
         setStatus('loading')
@@ -21,7 +21,9 @@ const useSendData = (url) => {
         setResponse(resData)
         if (res.ok) {
             setStatus('success')
+
         } else {
+
             setStatus('error')
         }
     }
