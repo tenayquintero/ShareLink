@@ -1,55 +1,45 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate, useParams } from "react-router-dom"
-import { useUser } from "../../context/UserContext";
-import './ValidateEmail.css'
+import { Link, useParams } from "react-router-dom";
+import MessageStatus from "../MessageStatus/MessageStatus";
+import "./ValidateEmail.css";
 const ValidateEmail = () => {
-    const user = useUser();
-    const { registration_code } = useParams();
-    const [message, setMessage] = useState();
+  const { registration_code } = useParams();
+  const [message, setMessage] = useState();
 
-    useEffect(() => {
-        const validateFunction = async () => {
-            const res = await fetch(`http://127.0.0.1:3000/users/validate`, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ registration_code })
-            });
+  useEffect(() => {
+    const validateFunction = async () => {
+      const res = await fetch(`http://127.0.0.1:3000/users/validate`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ registration_code }),
+      });
 
-            const resData = await res.json();
-            console.log('resData ', resData)
-            if (resData.status === 'error') {
-                setMessage('error')
-            } else {
-                setMessage('succes')
-            }
-        }
-        validateFunction();
-    }, [registration_code]);
+      const resData = await res.json();
+      console.log("resData ", resData);
+      if (resData.status === "error") {
+        setMessage("error");
+      } else {
+        setMessage("succes");
+      }
+    };
+    validateFunction();
+  }, [registration_code]);
 
-    if(user){
-        return <Navigate to='login' />
-    }
+  return (
+    <section className="bg">
+      <Link to="home">
+        {message === "error" && <p className="fg">Tú código no es válido</p>}
+      </Link>
 
-    return (
-
-        <section className="bg">
-            <Link to='home' >
-                {message === 'error' &&
-                    <p className="fg" >Tú código no es válido</p>
-                }
-            </Link>
-
-            {message === 'succes' &&
-                <>
-                    <p>Genial estás validado. Ya te puedes logearte</p>
-                    <Navigate to='/login' />
-                </>
-
-            }
-        </section>
-
-
-    )
-
-}
+      {message === "succes" && (
+        <>
+          <MessageStatus
+            message="Te has registrado correctamente, ya puedes logearte"
+            navigate="/login"
+          />
+        </>
+      )}
+    </section>
+  );
+};
 export default ValidateEmail;

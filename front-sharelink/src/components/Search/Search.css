@@ -1,6 +1,6 @@
 .formSearch {
     display: flex;
-    justify-content: end;
+    justify-content: center;
     margin: 1rem
 }
 
@@ -9,7 +9,7 @@
     color: aliceblue;
     border: none;
     height: 30px;
-    width: 250px;
+    width: 350px;
     padding: 1rem;
 
 }
@@ -31,9 +31,9 @@
     border: none;
     position: absolute;
     margin-top: 2rem;
-    margin-right: 2rem;
-
-
+    background-color: var(--background);
+    height: 400px;
+    width: 300px;
 
 }
 
@@ -43,8 +43,8 @@
     width: 200px;
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
-    background-color: black;
+    margin: 1rem auto;
+
 
 }
 
@@ -54,7 +54,6 @@
 }
 
 .formSearch .filter fieldset label input {
-    border: solid 2px red;
     width: 10px;
     height: 10px;
     margin-left: 0.5rem;
@@ -66,4 +65,12 @@
     border: none;
     height: 32px;
     width: 20px;
+}
+
+@media (max-width: 500px) {
+    .formSearch input {
+        width: 200px;
+
+    }
+
 }
