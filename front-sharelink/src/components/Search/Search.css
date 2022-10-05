@@ -5,11 +5,9 @@
 }
 
 .formSearch input {
-    background-color:rgba(53, 53, 53, 0.562);
+    background-color: var(--background);
     color: aliceblue;
     border: none;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
     height: 30px;
     width: 250px;
     padding: 1rem;
@@ -17,15 +15,55 @@
 }
 
 .formSearch input:focus {
-outline: 2px solid rgb(28, 212, 249);
-background: transparent;
+    outline: 2px solid rgb(28, 212, 249);
 
-} 
+}
 
 .buttonSearch {
     border: none;
-    background-color:white;
-    height: 30px;
+    background-color: white;
+    height: 32px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+.formSearch .filter {
+    border: none;
+    position: absolute;
+    margin-top: 2rem;
+    margin-right: 2rem;
+
+
+
+}
+
+.formSearch .filter fieldset {
+    border-radius: 15px;
+    border: solid 2px rgb(28, 212, 249);
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    background-color: black;
+
+}
+
+.formSearch .filter fieldset label {
+    text-align: start;
+    padding: 1rem;
+}
+
+.formSearch .filter fieldset label input {
+    border: solid 2px red;
+    width: 10px;
+    height: 10px;
+    margin-left: 0.5rem;
+}
+
+.buttonFilter {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: none;
+    height: 32px;
+    width: 20px;
 }

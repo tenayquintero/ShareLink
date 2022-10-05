@@ -39,7 +39,7 @@ const Login = () => {
     }
 
     return (
-
+        
         <section className='bg' >
             <h2><Link to='/'>X</Link></h2>
             <section className='shadow'>
@@ -68,6 +68,7 @@ const Login = () => {
                 {status === 'error' && <p className="error">{error}</p>}
             </section>
         </section>
+       
     )
 }
 export default Login

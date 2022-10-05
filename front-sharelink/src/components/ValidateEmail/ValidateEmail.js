@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom"
+import { useUser } from "../../context/UserContext";
 import './ValidateEmail.css'
 const ValidateEmail = () => {
-
+    const user = useUser();
     const { registration_code } = useParams();
     const [message, setMessage] = useState();
 
@@ -23,7 +24,11 @@ const ValidateEmail = () => {
             }
         }
         validateFunction();
-    }, [registration_code])
+    }, [registration_code]);
+
+    if(user){
+        return <Navigate to='login' />
+    }
 
     return (
 
@@ -36,7 +41,7 @@ const ValidateEmail = () => {
 
             {message === 'succes' &&
                 <>
-                    <p>Genial estás validado. Ya te puedes logear</p>
+                    <p>Genial estás validado. Ya te puedes logearte</p>
                     <Navigate to='/login' />
                 </>
 

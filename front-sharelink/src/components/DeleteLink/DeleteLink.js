@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useUser } from "../../context/UserContext"
+import MessageStatus from "../MessageStatus/MessageStatus";
 import './DeleteLink.css'
 const DeleteLink = () => {
     const user = useUser();
@@ -18,7 +19,8 @@ const DeleteLink = () => {
         setResult(resData);
     }
     return (
-        <section className="bg">
+        <div className="bg">
+        <section className="fg">
             {!result &&
                 <section className="deleteLink_confirmation">
                     <p>¿Quieres borrar tu publicación?</p>
@@ -30,11 +32,11 @@ const DeleteLink = () => {
             }
             {result?.status === 'ok' &&
                 <>
-                    <p className="resultConfirmation">Tu publicación se ha borrado correctamente</p>
-                <Link to='/mylinks' ><button>volver</button></Link>
+                    <MessageStatus message='Tu publicación se ha borrado correctamente' navigate='/mylinks'/>
                 </>
             }
         </section>
+        </div>
     )
 }
 
