@@ -6,24 +6,22 @@
 
 }
 
-.listLinks .link {
+.listLinks li .link,
+.listLinks li .myLink {
     border-radius: 15px;
-    box-shadow: 2px 2px 6px 8px rgb(110, 231, 255);
-    height: 500px;
+    box-shadow: var(--boxShadow);
+    min-height: 500px;
     width: 300px;
+    display: flex;
+    flex-direction: column;
 }
 
 .listLinks li {
     list-style: none;
     background-color: var(--background);
+
 }
 
-.listLinks li section {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
 
 .listLinks li section main {
     flex-grow: 1;
@@ -45,4 +43,8 @@
 
 .listLinks li .author {
     flex-grow: 1;
+}
+
+.listLinks li .author a {
+    color: rgb(110, 231, 255);
 }

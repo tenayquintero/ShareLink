@@ -1,49 +1,42 @@
-// POST - '/users/recoverPassword
-
 import { useState } from "react";
-import { useUser } from "../../context/UserContext";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const RecoverPass = () => {
-  const user = useUser();
-
-  const [email, setEmail] = useState("");
-  const [recover_code] = useState("");
-
+  const [email, setEmail] = useState();
   const [result, setResult] = useState();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("/users/recover_password", {
-      method: "PUT",
-      headers: user
-        ? { Authorization: user.data, "Content-type": "application/json" }
-        : {},
-      body: JSON.stringify({ recover_code, email }),
-    });
+    const res = await fetch(
+      `${process.env.REACT_APP_BACKEND}/users/recover_password`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      }
+    );
+    console.log(res);
     const data = await res.json();
     console.log("soy data de editPassword", data);
     setResult(data);
+    console.log(email);
   };
 
   return (
     <div className="bg">
-      <form onSubmit={handleSubmit} className="">
+      <form onSubmit={handleSubmit}>
         <label>
-          {" "}
           <p>Introduce tu mail para recuperar el Password</p>
           <input
-            email="email"
+            name="name"
+            type="email"
             value={email}
-            recover_code={recover_code}
             onChange={(e) => setEmail(e.target.value)}
-            //  setRecover_code(e.target.recover_code)}
           />
         </label>
         <button>Enviar</button>
       </form>
-
-      {result?.status === "OK" && <p>revisa tu mail</p>}
+      {result?.status === "Ok" && <Navigate to="recover_newpassword" />}
       <Link to={"/"}>Volver </Link>
       {result?.status === "error" && (
         <p>Recuerda que todos los campos son obligatorios</p>

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-//  import useFetch from "../../hooks/useFetch";
 import useFetch from "fetch-suspense";
 import { useUser } from "../../context/UserContext";
+import noImage from "../../img/avatarDefault.png";
 import "./GetUser.css";
 
 const GetUser = () => {
@@ -17,7 +17,14 @@ const GetUser = () => {
     <section className="getUser">
       <main>
         <h2>{name}</h2>
-        <img src={`${process.env.REACT_APP_BACKEND}/${perfil}`} alt={perfil} />
+        {perfil === null ? (
+          <img src={noImage} alt="noImage" />
+        ) : (
+          <img
+            src={`${process.env.REACT_APP_BACKEND}/${perfil}`}
+            alt={perfil}
+          />
+        )}
       </main>
       <footer>
         <p>{email}</p>

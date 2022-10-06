@@ -10,16 +10,16 @@ const EditUser = () => {
   const user = useUser();
   const setUser = useSetUser();
   const { id } = useParams();
+  const [response, setResponse] = useState();
 
   const userInformation = useFetch(`http://127.0.0.1:3000/users/${id}`, {
     headers: user ? { Authorization: user.data } : {},
   });
 
-  const [name, setName] = useState(userInformation.data.name || "");
+  const [name, setName] = useState(userInformation.data.name || " ");
   const [email, setEmail] = useState(userInformation.data.email);
   const [perfil, setPerfil] = useState();
   const [imagePreview, setImagePreview] = useState();
-  const [response, setResponse] = useState();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -89,6 +89,14 @@ const EditUser = () => {
               message="Se ha actualizado tu perfil correctamente"
               navigate="/links"
             />
+          </>
+        )}
+        {response?.status === "hold" && (
+          <>
+            <p>
+              Acabas de actualizar tu email por favor dirigete a tu bandeja de
+              entrada para confirmarlo
+            </p>
           </>
         )}
       </form>

@@ -99,6 +99,7 @@ const editUser = async (req, res, next) => {
         [name, email, registration_code, new Date(), id]
       );
       res.send({
+        status: 'hold',
         message:
           'You has updated your email please confirm the validation code in your e-mail',
       });
@@ -129,12 +130,6 @@ const editUser = async (req, res, next) => {
       email: result[0].email,
       avatar: result[0].perfil,
     });
-    console.log(
-      result[0].id_user,
-      result[0].name,
-      result[0].email,
-      result[0].perfil
-    );
   } catch (error) {
     next(error);
   } finally {

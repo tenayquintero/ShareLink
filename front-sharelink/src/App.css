@@ -41,7 +41,13 @@ html {
   flex-direction: column;
 }
 
-.fg {
+.bg>p {
+  margin-bottom: 2rem;
+
+}
+
+.fg,
+.messageResponse {
   height: 300px;
   width: 300px;
   box-shadow: var(--boxShadow);
@@ -52,7 +58,7 @@ html {
   align-items: center;
   gap: 1rem;
   font-size: 22px;
-  background-color: black;
+  background-color: var(--background);
 }
 
 

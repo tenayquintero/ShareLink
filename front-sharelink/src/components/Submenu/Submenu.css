@@ -1,22 +1,23 @@
-.submenuWeb{
+.submenuWeb {
     border-right: solid 2px white;
-    padding-left: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .submenuWeb ul li,
-.submenuMobile ul li{
+.submenuMobile ul li {
     list-style: none;
     margin-top: 0.5rem;
     text-align: start;
 }
 
 .submenuWeb h2,
-.submenuMobile h2{
+.submenuMobile h2 {
     margin-bottom: 3rem;
 }
 
 .submenuWeb ul li a,
-.submenuMobile ul li a{
+.submenuMobile ul li a {
     text-decoration: none;
     color: aliceblue;
 
