@@ -1,10 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useSetUser, useUser } from "../../context/UserContext";
 import iconOff from "../../img/iconOffpng.png";
 import avatarDefault from "../../img/avatarDefault.png";
-
 import "./Auth.css";
-// import useFetch from "../../hooks/useFetch";
 
 const Auth = () => {
   const user = useUser();
@@ -21,10 +19,7 @@ const Auth = () => {
             <NavLink to="/links">Links</NavLink>
           </li>
           <li>
-            <NavLink to="/mylinks">My Links</NavLink>
-          </li>
-          <li>
-            <NavLink to="/links/:id">New Link</NavLink>
+            <NavLink to="/mylinks">Mis Links</NavLink>
           </li>
         </ul>
         <section className="logeado">
@@ -38,7 +33,9 @@ const Auth = () => {
                 className="photoProfile"
               />
             )}
-            <p>{user?.email}</p>
+            <Link to={`/users/${user.id}`}>
+              <p>{user?.email}</p>
+            </Link>
           </div>
 
           <div

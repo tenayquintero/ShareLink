@@ -52,6 +52,7 @@ const newPasswordSchema = Joi.string()
 //Validación actualización datos usuario
 const editUserSchema = Joi.object().keys({
   name: Joi.string()
+    .optional()
     .max(50)
     .error(
       new Error(

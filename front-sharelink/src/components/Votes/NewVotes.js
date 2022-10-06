@@ -11,16 +11,19 @@ const NewVotes = ({ id, value }) => {
   const [response, setResponse] = useState();
 
   const doVote = useCallback(async () => {
-    const res = await fetch(`http://127.0.0.1:3000/links/${id}/votes`, {
-      method: "POST",
-      headers: user
-        ? {
-            Authorization: user.data,
-            "Content-type": "application/json",
-          }
-        : {},
-      body: JSON.stringify({ vote }),
-    });
+    const res = await fetch(
+      `${process.env.REACT_APP_BACKEND}/links/${id}/votes`,
+      {
+        method: "POST",
+        headers: user
+          ? {
+              Authorization: user.data,
+              "Content-type": "application/json",
+            }
+          : {},
+        body: JSON.stringify({ vote }),
+      }
+    );
     const resData = await res.json();
     console.log(resData, "soy resdata");
     setResponse(resData);

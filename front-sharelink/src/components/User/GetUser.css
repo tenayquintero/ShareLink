@@ -19,5 +19,7 @@
     margin-top: 1rem;
     width: 250px;
     height: 300px;
+    border-radius: 50%;
+    border: solid 2px white;
     object-fit: cover;
 }

@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# SHARE LINK FRONT-END🪢
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+_¿Y ahora?_
+Ahora llega lo mejor de una aplicación, la parte visual, lo que enamorará al usuario o hará que se eche para atrás.
+En esta ocasión hemos trabajado las interfaces de usuario con REACT.
 
-## Available Scripts
+- [react](https://es.reactjs.org/)
 
-In the project directory, you can run:
+## Vamos ayá 🚀
 
-### `npm start`
+_Las siguientes instrucciones te van a permitir obtener una copia del proyecto en tu máquina local para fines de desarrollo y pruebas._
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Pre-instalación 🪛
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+_Empecemos por crear un documento .env a raiz de la carpeta front-shareLink, en el documento .env.example vienen definidos los atributos que han de utilizarse en el doc .env_
 
-### `npm test`
+_Seguimos por arrancar el back-end_
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+npm run dev
+```
 
-### `npm run build`
+Para arrancarlo modo desarrollo
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Para arrancarlo en modo prueba
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Instalación 🛠
 
-### `npm run eject`
+_Realiza los siguientes pasos:_
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Con este comando realizarás la descarga completa de las dependencias utilizadas en la api
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Arrancamos nuestro front-end
 
-## Learn More
+_Ahora deberás ver en tu consola un aviso de funcionamiento y en tu navegador una preciosa aplicación._
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# EJECUCIÓN DE PRUEBAS 📝
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+_Simplemente muevete por la interfaz de usuario y disfruta de la experiencia._
 
-### Code Splitting
+## Herramientas. ⚙️
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom) - Enrutamiento.
+- [Fetch-suspense](https://www.npmjs.com/package/react-suspense-fetch) - Requerimiento datos asíncronos.
 
-### Analyzing the Bundle Size
+### Nota 🗒
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+_Las herramientas utilizadas se instalaran previamente al ejecutar el comando anteriormente mencionado_
 
-### Making a Progressive Web App
+_Importante y ¡extremadamente importante!, la instalación de las dependencia y el arranque de la aplicación se ha de hacer dentro la carpeta front-sharlink_
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+_No hará falta realizar ninguna otra instalación de paquetes_
 
-### Advanced Configuration
+## Autores ✒️
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Gregorio Visiedo** [🧔🏽Goyo](https://github.com/gvisiedo).
+- **Leonardo** [👨🏽‍🦱Leo](https://github.com/Lenard743).
+- **Yaneth Quintero** [👱🏽‍♀️Yaneth](https://github.com/tenayquintero).
 
-### Deployment
+## Agradecimientos 🎁
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+_En especial a Stefano💗 y a los profes hack a boss que nos guiaron para sacar adelante la api_
 
-### `npm run build` fails to minify
+## Nota final
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+_-Un buen programador es alguien que siempre mira en las dos direcciones antes de cruzar una carretera de sentido único. (Doug Linder)_
