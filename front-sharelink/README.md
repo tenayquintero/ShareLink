@@ -71,8 +71,8 @@ _No hará falta realizar ninguna otra instalación de paquetes_
 
 ## Agradecimientos 🎁
 
-_En especial a Stefano💗 y a los profes hack a boss que nos guiaron para sacar adelante la api_
+_💗 a los profes hack a boss que nos guiaron para sacar adelante este front_
 
 ## Nota final
 
-_-Un buen programador es alguien que siempre mira en las dos direcciones antes de cruzar una carretera de sentido único. (Doug Linder)_
+_Un buen programador es alguien que siempre mira en las dos direcciones antes de cruzar una carretera de sentido único. (Doug Linder)_
