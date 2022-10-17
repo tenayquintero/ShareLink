@@ -29,7 +29,7 @@ const NewLink = ({ reload }) => {
     <div className="newLink">
       <form onSubmit={handleSubmit} className="form_newLink">
         <p>
-          Comparte tu enlaces aquí y ayuda a otras personas en su día a día{" "}
+          Comparte tus enlaces aquí y ayuda a otras personas en su día a día
         </p>
         <input
           placeholder="título...."

@@ -12,6 +12,7 @@ export const useGetSearch = (params, order, direction, key) =>
     `${process.env.REACT_APP_BACKEND}/links?search=${params}&order=${order}&direction=${direction}`,
     key
   );
+export const useGetUser = (id) => useFetch(`http://127.0.0.1:3000/users/${id}`);
 
 export const useLogin = () =>
   useSendData(`${process.env.REACT_APP_BACKEND}/users/login`);

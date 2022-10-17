@@ -7,12 +7,13 @@
 html {
   --boxShadow: 2px 2px 6px 8px rgb(110, 231, 255);
   --background: rgb(0, 14, 32);
+  --line: rgb(110, 231, 255);
 }
 
 .App {
   text-align: center;
   background-image: url(./img/linkBackground.jpg);
-  background-color: rgb(0, 14, 32);
+  background-color: var(--background);
   background-repeat: no-repeat;
   background-size: contain;
   min-height: 100vh;
@@ -41,6 +42,11 @@ html {
   flex-direction: column;
 }
 
+.bg a {
+  text-decoration: none;
+  color: aliceblue;
+}
+
 .bg>p {
   margin-bottom: 2rem;
 
@@ -60,6 +66,52 @@ html {
   font-size: 22px;
   background-color: var(--background);
 }
+
+
+form:not(.formSearch) {
+  min-height: 300px;
+  width: 300px;
+  background-color: var(--background);
+  margin: 4rem auto;
+  padding: 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: var(--boxShadow);
+
+}
+
+input:not(.inputSearch),
+textarea {
+  height: 30px;
+  padding: 0.5rem;
+  width: 200px;
+  border: none;
+  background-color: transparent;
+  color: aliceblue;
+  margin-top: 1rem;
+  border-bottom: 1px solid var(--line);
+
+}
+
+
+textarea {
+  height: 100px;
+}
+
+textarea:focus {
+  outline: solid 3px var(--line);
+  border-radius: 15px;
+}
+
+input:focus {
+  outline: solid 3px var(--line);
+  border-radius: 15px;
+}
+
+
 
 
 /* errores */

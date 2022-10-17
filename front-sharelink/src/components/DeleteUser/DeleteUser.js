@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useUser } from "../../context/UserContext";
 import { useDeleteUser } from "../api";
 import MessageStatus from "../MessageStatus/MessageStatus";
+import "./DeleteUser.css";
 
 const DeleteUser = () => {
   const user = useUser();
@@ -14,11 +15,19 @@ const DeleteUser = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>hola</h1>
-      <input value={password} onChange={(e) => setPassword(e.target.value)} />
+    <form onSubmit={handleSubmit} className="formDeleteUser">
+      <h3>Eliminar cuenta</h3>
+      <p>Por favor introduce tu contraseña</p>
+      <input
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="contraseña"
+        type="password"
+      />
       <button>Eliminar</button>
-      {response?.status === "error" && <p>La contraseña no es correcta</p>}
+      {response?.status === "error" && (
+        <p className="error">La contraseña no es correcta</p>
+      )}
       {response?.status === "ok" && (
         <MessageStatus
           title="¡Vaya!"
@@ -27,6 +36,7 @@ const DeleteUser = () => {
           navigate="/"
         />
       )}
+      {response?.status === "ok" && user === null}
     </form>
   );
 };

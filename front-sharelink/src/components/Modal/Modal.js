@@ -18,10 +18,10 @@ function Modal() {
         <div className="bg" onClick={() => setShow(false)}>
           <div className="fg" onClick={(e) => e.stopPropagation()}>
             <menu className="submenuMobile">
-              <h2>Tools</h2>
+              <h2>Herramientas</h2>
               <ul>
                 <li>
-                  <Link to={`/users/edit/${user?.id}`}> Editar perfil</Link>
+                  <Link to={`/users/edit/${user?.id}`}>Editar perfil</Link>
                 </li>
                 <li>
                   <Link to={`/users/${user?.id}/password`}>

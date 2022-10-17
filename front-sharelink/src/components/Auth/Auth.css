@@ -13,6 +13,7 @@ nav ul {
     font-size: 0;
     background-size: cover;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .photoProfile {

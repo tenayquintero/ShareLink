@@ -12,7 +12,7 @@ const Submenu = () => {
           <Link to={`/users/edit/${user?.id}`}> Editar perfil</Link>
         </li>
         <li>
-          <Link to={`/users/${user?.id}/password`}>Cambiar contrasña</Link>
+          <Link to={`/users/${user?.id}/password`}>Cambiar contraseña</Link>
         </li>
         <li>
           <Link to={"/deleteuser"}>Eliminar cuenta</Link>

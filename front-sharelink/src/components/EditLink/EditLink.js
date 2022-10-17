@@ -28,34 +28,35 @@ const EditLink = () => {
   }
 
   return (
-    <div className="bg">
-      <form onSubmit={handleSubmit} className="form_editLink">
-        <label>
-          <input
-            name="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="title..."
-          />
-        </label>
-        <label>
-          <input
-            name="url"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            placeholder="url..."
-          />
-        </label>
-        <label>
-          <textarea
-            name="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="description..."
-          />
-        </label>
-        <button>Guardar</button>
-      </form>
+    <form onSubmit={handleSubmit} className="editLink">
+      <label>
+        <input
+          name="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="title..."
+        />
+      </label>
+      <label>
+        <input
+          name="url"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          placeholder="url..."
+        />
+      </label>
+      <label>
+        <textarea
+          name="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="description..."
+        />
+      </label>
+      <button>Guardar</button>
+      {response?.status === "error" && (
+        <p>Recuerda que todos los campos son obligatorios</p>
+      )}
       {response?.status === "OK" && (
         <>
           <MessageStatus
@@ -64,10 +65,7 @@ const EditLink = () => {
           />
         </>
       )}
-      {response?.status === "error" && (
-        <p>Recuerda que todos los campos son obligatorios</p>
-      )}
-    </div>
+    </form>
   );
 };
 

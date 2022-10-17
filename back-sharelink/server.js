@@ -115,6 +115,7 @@ app.use((error, req, res, next) => {
   res.status(error.httpStatus || 500).send({
     status: 'error',
     message: error.message,
+    code: error.httpStatus,
   });
 });
 //middleware Not Found-404

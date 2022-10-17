@@ -1,16 +1,16 @@
-import { useState } from 'react'
+import { useState } from "react";
 
-function Accordion({  children, name }) {
-    const [show, setShow] = useState(false)
+function Accordion({ children, name }) {
+  const [show, setShow] = useState(false);
 
-    return (
-        <>
-            {show && children}
-            <button className={name} onClick={() => setShow(!show)}>
-                {show ? 'X' : '🌪️'}
-            </button>
-        </>
-    )
+  return (
+    <>
+      {show && children}
+      <span className={name} onClick={() => setShow(!show)}>
+        <p className={show ? "cross" : "x"}>+</p>
+      </span>
+    </>
+  );
 }
 
-export default Accordion
+export default Accordion;

@@ -7,7 +7,6 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState();
-  const [error, setError] = useState();
 
   const user = useUser();
   const setUser = useSetUser();
@@ -26,7 +25,6 @@ const Login = () => {
     console.log(resData);
     if (resData.status === "error") {
       setStatus("error");
-      setError(resData.message);
     } else {
       setUser(resData);
     }
@@ -40,32 +38,37 @@ const Login = () => {
       <h2>
         <Link to="/">X</Link>
       </h2>
-      <section className="shadow">
-        <form onSubmit={handle}>
-          <h2>Login</h2>
-          <label htmlFor="email">
-            <input
-              id="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
-            />
-          </label>
-          <label htmlFor="password">
-            <input
-              id="password"
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-            />
-          </label>
-          <button>Let's go</button>
-          <Link to={`/users/recover_password`}>Recuperar Contraseña</Link>
-        </form>
-        {status === "error" && <p className="error">{error}</p>}
-      </section>
+
+      <form onSubmit={handle} className="login">
+        <h2>Acceso</h2>
+        <label htmlFor="email">
+          <input
+            id="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            placeholder="email"
+          />
+        </label>
+        <label htmlFor="password">
+          <input
+            id="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            placeholder="contraseña"
+          />
+        </label>
+        <button>¡Vamos!</button>
+        <Link to={`/users/recover_password`}>Recuperar Contraseña</Link>
+        {status === "error" && (
+          <p className="error">
+            "¡Ups! el email o la contraseña no son correctos"
+          </p>
+        )}
+      </form>
     </section>
   );
 };

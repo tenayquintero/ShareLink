@@ -6,8 +6,7 @@ import "./ListLinks.css";
 
 const ListLinks = ({ reload, result, fetchKey }) => {
   const user = useUser();
-  const links = useGetLinks(fetchKey);
-  console.log(links);
+  const [links] = useGetLinks(fetchKey);
 
   if (!user) {
     return <Navigate to="/" />;

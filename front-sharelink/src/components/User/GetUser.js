@@ -1,34 +1,37 @@
 import { useParams } from "react-router-dom";
-import useFetch from "fetch-suspense";
-import { useUser } from "../../context/UserContext";
 import noImage from "../../img/avatarDefault.png";
+import { useGetUser } from "../api";
+import MessageStatus from "../MessageStatus/MessageStatus";
 import "./GetUser.css";
 
 const GetUser = () => {
   const { id } = useParams();
-  const user = useUser();
 
-  const userInformation = useFetch("http://127.0.0.1:3000/users/" + id, {
-    headers: user ? { Authorization: user.data } : {},
-  });
-  const { email, name, perfil } = userInformation.data;
+  const [userInformation, error] = useGetUser(id);
 
   return (
     <section className="getUser">
       <main>
-        <h2>{name}</h2>
-        {perfil === null ? (
+        <h2>{userInformation?.data.name}</h2>
+        {userInformation?.data.perfil === null ? (
           <img src={noImage} alt="noImage" />
         ) : (
           <img
-            src={`${process.env.REACT_APP_BACKEND}/${perfil}`}
-            alt={perfil}
+            src={`${process.env.REACT_APP_BACKEND}/${userInformation?.data.perfil}`}
+            alt={userInformation?.data.name}
           />
         )}
       </main>
       <footer>
-        <p>{email}</p>
+        <p>{userInformation?.data.email}</p>
       </footer>
+      {error && (
+        <MessageStatus
+          title="Ups!!!"
+          message="El usuario no existe"
+          navigate="/links"
+        />
+      )}
     </section>
   );
 };

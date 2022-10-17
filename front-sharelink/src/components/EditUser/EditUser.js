@@ -48,59 +48,57 @@ const EditUser = () => {
   };
 
   return (
-    <div className="bg">
-      <form onSubmit={handleSubmit} className="form_editLink">
-        <label>
-          <p>Nombre</p>
-          <input
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Email</p>
-          <input
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <label>
-          <p className="up_photo">Sube tu foto aquí</p>
-          <p className="up_photo">📷</p>
-          <input
-            type="file"
-            name="perfil"
-            onChange={handleFile}
-            className="input_file"
-          />
-          {imagePreview && (
-            <img src={imagePreview} alt="preview" className="imagePreview" />
-          )}
-        </label>
-        <button>Guardar</button>
-        {response?.status === "error" && (
-          <p className="error">{response?.message}</p>
+    <form onSubmit={handleSubmit} className="editUser">
+      <label>
+        <p>Nombre</p>
+        <input
+          name="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </label>
+      <label>
+        <p>Email</p>
+        <input
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </label>
+      <label>
+        <p className="up_photo">Sube tu foto aquí</p>
+        <p className="up_photo">📷</p>
+        <input
+          type="file"
+          name="perfil"
+          onChange={handleFile}
+          className="input_file"
+        />
+        {imagePreview && (
+          <img src={imagePreview} alt="preview" className="imagePreview" />
         )}
-        {response?.status === "OK" && (
-          <>
-            <MessageStatus
-              message="Se ha actualizado tu perfil correctamente"
-              navigate="/links"
-            />
-          </>
-        )}
-        {response?.status === "hold" && (
-          <>
-            <p>
-              Acabas de actualizar tu email por favor dirigete a tu bandeja de
-              entrada para confirmarlo
-            </p>
-          </>
-        )}
-      </form>
-    </div>
+      </label>
+      <button>Guardar</button>
+      {response?.status === "error" && (
+        <p className="error">{response?.message}</p>
+      )}
+      {response?.status === "OK" && (
+        <>
+          <MessageStatus
+            message="Se ha actualizado tu perfil correctamente"
+            navigate="/links"
+          />
+        </>
+      )}
+      {response?.status === "hold" && (
+        <>
+          <p>
+            Acabas de actualizar tu email por favor dirigete a tu bandeja de
+            entrada para confirmarlo
+          </p>
+        </>
+      )}
+    </form>
   );
 };
 

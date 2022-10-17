@@ -71,10 +71,12 @@ const Search = ({ setResult, fetchKey }) => {
                 />
               </label>
             </fieldset>
+            <button>filtrar</button>
           </fieldset>
         </Accordion>
         <label htmlFor="search">
           <input
+            className="inputSearch"
             id="search"
             onChange={(e) => setSearchInput(e.target.value)}
             value={searchInput}

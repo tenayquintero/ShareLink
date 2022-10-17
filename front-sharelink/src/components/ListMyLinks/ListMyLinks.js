@@ -6,7 +6,7 @@ import OneMyLink from "../OneMyLink/OneMyLink";
 
 const ListMyLinks = () => {
   const user = useUser();
-  const myLinks = useGetMyLinks();
+  const [myLinks] = useGetMyLinks();
 
   if (!user) {
     return <Navigate to="/" />;
